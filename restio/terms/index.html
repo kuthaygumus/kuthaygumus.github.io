@@ -3,591 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Terms of Use for Restio — the mindful rest timer for iOS.">
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)">
+    <meta name="description" content="Terms of Use for Restio, a mindful rest timer for iOS.">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
     <meta property="og:title" content="Restio — Terms of Use">
-    <meta property="og:description" content="Terms of Use for the Restio app. Subscription details, auto-renewal terms, and your rights.">
+    <meta property="og:description" content="Terms of Use for Restio. Subscription details, auto-renewal, and user agreement.">
     <meta property="og:type" content="website">
     <title>Restio — Terms of Use</title>
     <style>
         :root {
-            --bg: #ffffff;
-            --bg-secondary: #f5f5f7;
-            --text-primary: #1d1d1f;
+            --bg: #fbfbfd;
+            --text: #1d1d1f;
             --text-secondary: #424245;
-            --text-tertiary: #86868b;
-            --accent: #0071e3;
-            --accent-hover: #0077ed;
-            --border: #d2d2d7;
-            --card-bg: #ffffff;
-            --card-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.04);
-            --header-gradient-start: #667eea;
-            --header-gradient-end: #764ba2;
-            --section-icon-bg: #f0f0f5;
+            --text-muted: #86868b;
+            --link: #0066cc;
+            --link-hover: #004499;
+            --rule: rgba(0,0,0,0.08);
+            --nav-bg: rgba(251,251,253,0.92);
         }
-
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg: #1c1c1e;
-                --bg-secondary: #2c2c2e;
-                --text-primary: #f5f5f7;
+                --bg: #111111;
+                --text: #f5f5f7;
                 --text-secondary: #a1a1a6;
-                --text-tertiary: #6e6e73;
-                --accent: #2997ff;
-                --accent-hover: #40a9ff;
-                --border: #38383a;
-                --card-bg: #2c2c2e;
-                --card-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.2);
-                --section-icon-bg: #3a3a3c;
+                --text-muted: #6e6e73;
+                --link: #2997ff;
+                --link-hover: #64b5f6;
+                --rule: rgba(255,255,255,0.08);
+                --nav-bg: rgba(17,17,17,0.92);
             }
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-        }
-
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.65;
-            color: var(--text-primary);
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: var(--text);
             background: var(--bg);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
-            padding: 56px 24px 48px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        /* Top bar */
+        .topbar {
+            border-bottom: 1px solid var(--rule);
+            padding: 14px 0;
         }
-
-        .header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.12) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .header-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.18);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.25);
-            border-radius: 100px;
-            padding: 6px 16px 6px 8px;
-            margin-bottom: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            color: #fff;
-            letter-spacing: 0.02em;
-        }
-
-        .header-badge-icon {
-            width: 28px;
-            height: 28px;
-            background: rgba(255,255,255,0.25);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-        }
-
-        .header h1 {
-            font-size: clamp(28px, 5vw, 36px);
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
-        }
-
-        .header .subtitle {
-            font-size: 15px;
-            color: rgba(255,255,255,0.8);
-            font-weight: 400;
-        }
-
-        /* Container */
-        .container {
-            max-width: 720px;
+        .topbar-inner {
+            max-width: 980px;
             margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Last Updated Bar */
-        .meta-bar {
+            padding: 0 22px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 16px;
-            padding: 16px 24px;
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border);
-            font-size: 13px;
-            color: var(--text-tertiary);
+            justify-content: space-between;
         }
-
-        .meta-bar span {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* Table of Contents */
-        .toc {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px 28px;
-            margin: 32px auto;
-            max-width: 720px;
-            box-shadow: var(--card-shadow);
-        }
-
-        .toc-title {
-            font-size: 11px;
+        .topbar-brand {
+            font-size: 21px;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-tertiary);
-            margin-bottom: 12px;
-        }
-
-        .toc-list {
-            list-style: none;
-            columns: 2;
-            column-gap: 24px;
-        }
-
-        @media (max-width: 540px) {
-            .toc-list { columns: 1; }
-        }
-
-        .toc-list li {
-            break-inside: avoid;
-            margin-bottom: 6px;
-        }
-
-        .toc-list a {
-            font-size: 14px;
-            color: var(--accent);
+            color: var(--text);
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 3px 0;
-            transition: color 0.15s ease;
-        }
-
-        .toc-list a:hover {
-            color: var(--accent-hover);
-        }
-
-        .toc-list a::before {
-            content: "";
-            width: 4px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 50%;
-            flex-shrink: 0;
-            opacity: 0.5;
-        }
-
-        /* Sections */
-        .content {
-            padding: 8px 0 64px;
-        }
-
-        .section {
-            margin: 32px 0;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .section-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--section-icon-bg);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .section h2 {
-            font-size: 20px;
-            font-weight: 650;
-            color: var(--text-primary);
             letter-spacing: -0.01em;
         }
-
-        .section p {
-            font-size: 15px;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            line-height: 1.7;
+        .topbar-nav { display: flex; gap: 24px; }
+        .topbar-nav a {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-decoration: none;
+            letter-spacing: 0;
+            transition: color 0.2s;
         }
+        .topbar-nav a:hover { color: var(--link); }
+        .topbar-nav a[aria-current="page"] { color: var(--text); font-weight: 500; }
 
-        .section ul {
-            padding-left: 20px;
-            margin-bottom: 12px;
+        /* Article */
+        article {
+            max-width: 660px;
+            margin: 0 auto;
+            padding: 48px 22px 80px;
         }
-
-        .section li {
-            font-size: 15px;
-            color: var(--text-secondary);
-            margin-bottom: 6px;
-            line-height: 1.65;
-        }
-
-        .section li::marker {
-            color: var(--accent);
-        }
-
-        .section li strong {
-            color: var(--text-primary);
-        }
-
-        /* Highlight Card */
-        .highlight {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px 24px;
-            margin: 16px 0;
-        }
-
-        .highlight p {
-            margin-bottom: 0;
-            font-size: 14px;
-        }
-
-        .highlight strong {
-            color: var(--text-primary);
-        }
-
-        /* Pricing Table */
-        .pricing-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            margin: 16px 0;
-        }
-
-        .pricing-table th,
-        .pricing-table td {
-            padding: 12px 16px;
-            text-align: left;
-            font-size: 14px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .pricing-table th {
-            background: var(--bg-secondary);
-            font-weight: 600;
-            font-size: 11px;
+        article > header { margin-bottom: 40px; }
+        article > header p {
+            font-size: 12px;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--text-tertiary);
+            letter-spacing: 0.04em;
+            margin-bottom: 8px;
         }
-
-        .pricing-table td {
+        h1 {
+            font-size: 40px;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--text);
+        }
+        h2 {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            color: var(--text);
+            margin-top: 48px;
+            margin-bottom: 16px;
+            padding-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+        h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        p:last-child { margin-bottom: 0; }
+        ul, ol {
+            padding-left: 1.3em;
+            margin-bottom: 16px;
             color: var(--text-secondary);
         }
+        li { margin-bottom: 6px; }
+        li:last-child { margin-bottom: 0; }
+        strong { color: var(--text); font-weight: 600; }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 3px; }
 
-        .pricing-table tr:last-child td {
-            border-bottom: none;
+        /* Pricing table */
+        .plan-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
         }
-
-        .pricing-table td:last-child {
+        .plan-table th {
+            text-align: left;
+            font-size: 11px;
             font-weight: 600;
-            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            padding: 0 0 10px;
+            border-bottom: 1px solid var(--rule);
         }
-
-        /* Divider */
-        .divider {
-            height: 1px;
-            background: var(--border);
-            margin: 40px 0;
-            border: none;
+        .plan-table td {
+            padding: 12px 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--rule);
+            vertical-align: top;
+        }
+        .plan-table td:first-child { font-weight: 500; color: var(--text); }
+        .plan-table td:last-child { text-align: right; font-weight: 600; color: var(--text); }
+        .plan-table tr:last-child td { border-bottom: none; }
+        .plan-note {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 8px;
         }
 
         /* Footer */
-        .footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            padding: 32px 24px;
-            text-align: center;
+        footer {
+            border-top: 1px solid var(--rule);
+            padding: 20px 0;
         }
-
-        .footer p {
-            font-size: 13px;
-            color: var(--text-tertiary);
-            margin-bottom: 4px;
+        .footer-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
         }
-
-        .footer a {
-            color: var(--accent);
+        footer small {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        footer nav { display: flex; gap: 20px; }
+        footer nav a {
+            font-size: 12px;
+            color: var(--text-muted);
             text-decoration: none;
         }
+        footer nav a:hover { color: var(--link); }
 
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-links {
-            margin-top: 12px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .footer-links a {
-            font-size: 13px;
-            color: var(--text-tertiary);
-            transition: color 0.15s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-        }
-
-        a:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-            border-radius: 4px;
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; }
+            h2 { font-size: 21px; }
+            article { padding: 32px 20px 60px; }
+            .plan-table { font-size: 14px; }
         }
     </style>
 </head>
 <body>
-    <header class="header" role="banner">
-        <div class="header-badge">
-            <span class="header-badge-icon" aria-hidden="true">😌</span>
-            Restio
+    <div class="topbar" role="banner">
+        <div class="topbar-inner">
+            <a href="/restio/terms/" class="topbar-brand">Restio</a>
+            <nav class="topbar-nav" aria-label="Legal">
+                <a href="/restio/privacy/">Privacy</a>
+                <a href="/restio/terms/" aria-current="page">Terms</a>
+            </nav>
         </div>
-        <h1>Terms of Use</h1>
-        <p class="subtitle">The agreement between you and Restio.</p>
-    </header>
-
-    <div class="meta-bar" role="contentinfo">
-        <span>Effective: March 3, 2026</span>
-        <span aria-hidden="true">·</span>
-        <span>Version 1.0</span>
     </div>
 
-    <div class="container">
-        <nav class="toc" aria-label="Table of Contents">
-            <p class="toc-title">On this page</p>
-            <ol class="toc-list">
-                <li><a href="#service">Description of Service</a></li>
-                <li><a href="#subscriptions">Subscriptions &amp; Pricing</a></li>
-                <li><a href="#auto-renewal">Auto-Renewal</a></li>
-                <li><a href="#trial">Free Trial</a></li>
-                <li><a href="#manage">Managing Subscriptions</a></li>
-                <li><a href="#refunds">Refunds</a></li>
-                <li><a href="#health">Health Disclaimer</a></li>
-                <li><a href="#ip">Intellectual Property</a></li>
-                <li><a href="#liability">Limitation of Liability</a></li>
-                <li><a href="#changes">Changes to These Terms</a></li>
-                <li><a href="#law">Governing Law</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ol>
-        </nav>
+    <article role="main">
+        <header>
+            <p>Last updated: March 3, 2026</p>
+            <h1>Terms of Use</h1>
+        </header>
 
-        <main class="content" role="main">
-            <div class="section">
-                <p>These Terms of Use ("Terms") govern your use of the Restio application ("the app"). By downloading, installing, or using Restio, you agree to be bound by these Terms. If you do not agree, please do not use the app.</p>
-            </div>
+        <p>Please read these Terms of Use ("Terms") carefully before using the Restio application ("the app"). By downloading, installing, or using Restio, you agree to be bound by these Terms. If you do not agree to these Terms, do not use the app.</p>
 
-            <hr class="divider">
+        <h2 id="license">License and Use</h2>
+        <p>Restio grants you a limited, non-exclusive, non-transferable, revocable license to use the app for your personal, non-commercial purposes, subject to these Terms and the <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener noreferrer">Apple Licensed Application End User License Agreement</a> (the "Standard EULA"). In the event of a conflict between these Terms and the Standard EULA, the Standard EULA shall govern.</p>
 
-            <div class="section" id="service">
-                <div class="section-header">
-                    <div class="section-icon" aria-hidden="true">📱</div>
-                    <h2>Description of Service</h2>
-                </div>
-                <p>Restio is a mindful rest timer that helps you build healthier screen break habits. The app provides guided rest sessions, streak tracking, focus modes, a buddy system, and optional Apple Watch and Live Activity support.</p>
-            </div>
+        <h2 id="description">Description of Service</h2>
+        <p>Restio is a general wellness application that provides timed rest session reminders, streak tracking, focus modes, and optional social features. The app is available for iPhone, iPad, and Apple Watch.</p>
 
-            <hr class="divider">
+        <h2 id="subscriptions">Subscriptions and Pricing</h2>
+        <p>Restio offers free core features. Optional premium features are available through the following plans:</p>
+        <table class="plan-table">
+            <thead>
+                <tr>
+                    <th>Plan</th>
+                    <th>Details</th>
+                    <th>Price (USD)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Yearly</td>
+                    <td>Billed annually, includes 7-day free trial</td>
+                    <td>$14.99</td>
+                </tr>
+                <tr>
+                    <td>Monthly</td>
+                    <td>Billed monthly</td>
+                    <td>$1.99</td>
+                </tr>
+                <tr>
+                    <td>Lifetime</td>
+                    <td>One-time purchase, perpetual access</td>
+                    <td>$29.99</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="plan-note">Prices shown are in U.S. dollars. Actual prices may vary by country and are displayed in your local currency at the time of purchase in the App Store.</p>
 
-            <div class="section" id="subscriptions">
-                <div class="section-header">
-                    <div class="section-icon" aria-hidden="true">💎</div>
-                    <h2>Subscriptions &amp; Pricing</h2>
-                </div>
-                <p>Restio offers optional premium features through the following plans, billed via your Apple ID:</p>
-                <table class="pricing-table">
-                    <thead>
-                        <tr>
-                            <th>Plan</th>
-                            <th>Billing</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Yearly</td>
-                            <td>Annual (7-day free trial)</td>
-                            <td>$14.99 / year</td>
-                        </tr>
-                        <tr>
-                            <td>Monthly</td>
-                            <td>Monthly</td>
-                            <td>$1.99 / month</td>
-                        </tr>
-                        <tr>
-                            <td>Lifetime</td>
-                            <td>One-time purchase</td>
-                            <td>$29.99</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p>Prices may vary by region and are displayed in your local currency in the App Store. Prices are subject to change with notice.</p>
-            </div>
+        <h2 id="auto-renewal">Auto-Renewal</h2>
+        <p>Yearly and Monthly subscriptions automatically renew unless auto-renewal is turned off at least 24 hours before the end of the current billing period. Your Apple ID account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your device's <strong>Settings &gt; [Your Name] &gt; Subscriptions</strong>.</p>
 
-            <hr class="divider">
+        <h2 id="free-trial">Free Trial</h2>
+        <p>The Yearly plan may include a 7-day free trial. If you do not cancel before the trial period ends, your subscription will automatically convert to a paid Yearly subscription and your Apple ID will be charged. Any unused portion of a free trial period is forfeited when you purchase a subscription. Eligibility for a free trial is determined by Apple and may be limited to one trial per Apple ID.</p>
 
-            <div class="section" id="auto-renewal">
-                <div class="section-header">
-                    <div class="section-icon" aria-hidden="true">🔄</div>
-                    <h2>Auto-Renewal</h2>
-                </div>
-                <p>Subscriptions (Yearly and Monthly plans) automatically renew unless auto-renew is turned off at least 24 hours before the end of the current billing period. Your Apple ID account will be charged for renewal within 24 hours prior to the end of the current period at the rate of your selected plan.</p>
-            </div>
+        <h2 id="refunds">Payments and Refunds</h2>
+        <p>All payments are processed by Apple, Inc. through your Apple ID. We do not have access to your payment information. To request a refund for any purchase, please visit <a href="https://reportaproblem.apple.com" rel="noopener noreferrer">reportaproblem.apple.com</a> or contact Apple Support. We are unable to process refunds directly.</p>
 
-            <hr class="divider">
+        <h2 id="health-disclaimer">Health and Wellness Disclaimer</h2>
+        <p>Restio is a general wellness application intended to encourage mindful rest habits. <strong>Restio is not a medical device, does not provide medical advice, and is not intended to diagnose, treat, cure, or prevent any disease or medical condition.</strong></p>
+        <p>The content and features provided by Restio are for informational and general wellness purposes only. You should not rely on the app as a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions regarding a medical condition. If you have or suspect a medical emergency, contact your local emergency services immediately.</p>
 
-            <div class="section" id="trial">
-                <div class="section-header">
-                    <div class="section-icon" aria-hidden="true">🎁</div>
-                    <h2>Free Trial</h2>
-                </div>
-                <p>The Yearly plan includes a 7-day free trial. If you do not cancel before the free trial period ends, your subscription will automatically convert to a paid yearly subscription and your Apple ID will be charged.</p>
-                <div class="highlight">
-                    <p><strong>Note:</strong> You may cancel at any time during the trial period at no charge. Unused portions of a free trial are forfeited upon purchasing a subscription.</p>
-                </div>
-            </div>
+        <h2 id="intellectual-property">Intellectual Property</h2>
+        <p>All content, design, graphics, code, and functionality of Restio are the property of the developer and are protected by applicable copyright, trademark, and intellectual property laws. You may not reproduce, distribute, modify, create derivative works of, publicly display, or otherwise exploit any part of the app without prior written permission.</p>
 
-            <hr class="divider">
+        <h2 id="acceptable-use">Acceptable Use</h2>
+        <p>You agree not to:</p>
+        <ul>
+            <li>Use the app for any unlawful purpose or in violation of any applicable laws or regulations</li>
+            <li>Attempt to reverse-engineer, decompile, or disassemble the app</li>
+            <li>Interfere with or disrupt the integrity or performance of the app or its related systems</li>
+            <li>Use the buddy feature to harass, abuse, or harm another person</li>
+        </ul>
 
-            <div class="section" id="manage">
-                <div class="section-header">
-                    <div class="section-icon" aria-hidden="true">⚙️</div>
-                    <h2>Managing Subscriptions</h2>
-                </div>
-                <p>You can manage or cancel your subscription at any time through your device:</p>
-                <p><strong>Settings &gt; [Your Name] &gt; Subscriptions</strong></p>
-                <p>Cancellation takes effect at the end of the current billing period. You will continue to have access to premium features until that date.</p>
-            </div>
+        <h2 id="disclaimer">Disclaimer of Warranties</h2>
+        <p>The app is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, whether express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the app will be uninterrupted, error-free, or free of harmful components.</p>
 
-            <hr class="divider">
+        <h2 id="limitation-of-liability">Limitation of Liability</h2>
+        <p>To the maximum extent permitted by applicable law, in no event shall the developer be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, or goodwill, arising out of or in connection with your access to or use of or inability to access or use the app.</p>
 
-            <div class="section" id="refunds">
-                <div class="section-header">
-                    <div class="section-icon" aria-hidden="true">💰</div>
-                    <h2>Refunds</h2>
-                </div>
-                <p>All purchases are processed by Apple, Inc. To request a refund, visit <a href="https://reportaproblem.apple.com" rel="noopener noreferrer">reportaproblem.apple.com</a> or contact Apple Support directly. Restio does not process payments or issue refunds independently.</p>
-            </div>
+        <h2 id="termination">Termination</h2>
+        <p>We reserve the right to suspend or terminate your access to the app at our sole discretion, without prior notice, for conduct that we believe violates these Terms or is harmful to other users, us, or third parties, or for any other reason. Upon termination, your right to use the app will cease immediately.</p>
 
-            <hr class="divider">
+        <h2 id="changes">Changes to These Terms</h2>
+        <p>We may revise these Terms at any time by updating this page. The "Last updated" date at the top indicates when the Terms were last modified. Your continued use of Restio after any changes constitutes acceptance of the revised Terms. If you do not agree to the revised Terms, you must discontinue use of the app.</p>
 
-            <div class="section" id="health">
-                <div class="section-header">
-                    <div class="section-icon" aria-hidden="true">🩺</div>
-                    <h2>Health Disclaimer</h2>
-                </div>
-                <p>Restio is a general wellness tool designed to encourage mindful rest habits. It does not provide medical advice, diagnosis, or treatment. The app is not intended to be a substitute for professional medical guidance.</p>
-                <p>Always consult a qualified healthcare provider with any questions about a medical condition or health objectives. Never disregard professional medical advice because of information provided by the app.</p>
-            </div>
+        <h2 id="governing-law">Governing Law</h2>
+        <p>These Terms shall be governed by and construed in accordance with the laws of the Republic of Turkey, without regard to conflict of law principles. Any disputes arising under or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts of Istanbul, Turkey.</p>
 
-            <hr class="divider">
+        <h2 id="contact">Contact</h2>
+        <p>If you have any questions about these Terms, please contact us at <a href="mailto:kuthaygumus@icloud.com">kuthaygumus@icloud.com</a>.</p>
+    </article>
 
-            <div class="section" id="ip">
-                <div class="section-header">
-                    <div class="section-icon" aria-hidden="true">©️</div>
-                    <h2>Intellectual Property</h2>
-                </div>
-                <p>All content, design, graphics, and functionality of Restio are the exclusive property of the developer and are protected by applicable copyright, trademark, and other intellectual property laws. You may not copy, reproduce, modify, distribute, or create derivative works based on the app without prior written consent.</p>
-            </div>
-
-            <hr class="divider">
-
-            <div class="section" id="liability">
-                <div class="section-header">
-                    <div class="section-icon" aria-hidden="true">⚖️</div>
-                    <h2>Limitation of Liability</h2>
-                </div>
-                <p>Restio is provided on an "as is" and "as available" basis without warranties of any kind, either express or implied. To the maximum extent permitted by applicable law, the developer shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use the app.</p>
-            </div>
-
-            <hr class="divider">
-
-            <div class="section" id="changes">
-                <div class="section-header">
-                    <div class="section-icon" aria-hidden="true">📝</div>
-                    <h2>Changes to These Terms</h2>
-                </div>
-                <p>We reserve the right to update these Terms at any time. When we do, we will revise the effective date at the top of this page. Your continued use of Restio after changes are posted constitutes your acceptance of the revised Terms.</p>
-            </div>
-
-            <hr class="divider">
-
-            <div class="section" id="law">
-                <div class="section-header">
-                    <div class="section-icon" aria-hidden="true">🏛️</div>
-                    <h2>Governing Law</h2>
-                </div>
-                <p>These Terms shall be governed by and construed in accordance with the laws of the Republic of Turkey, without regard to its conflict of law provisions.</p>
-            </div>
-
-            <hr class="divider">
-
-            <div class="section" id="contact">
-                <div class="section-header">
-                    <div class="section-icon" aria-hidden="true">✉️</div>
-                    <h2>Contact</h2>
-                </div>
-                <p>If you have questions or concerns about these Terms, please reach out to us at <a href="mailto:kuthaygumus@icloud.com">kuthaygumus@icloud.com</a>.</p>
-            </div>
-        </main>
-    </div>
-
-    <footer class="footer" role="contentinfo">
-        <p>&copy; 2026 Restio. All rights reserved.</p>
-        <div class="footer-links">
-            <a href="/restio/privacy/">Privacy Policy</a>
-            <a href="/restio/terms/">Terms of Use</a>
+    <footer role="contentinfo">
+        <div class="footer-inner">
+            <small>Copyright &copy; 2026 Restio. All rights reserved.</small>
+            <nav aria-label="Footer">
+                <a href="/restio/privacy/">Privacy Policy</a>
+                <a href="/restio/terms/">Terms of Use</a>
+            </nav>
         </div>
     </footer>
 </body>
