@@ -3,67 +3,505 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy Policy for Restio — the mindful rest timer for iOS.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="Restio — Privacy Policy">
+    <meta property="og:description" content="Learn how Restio protects your privacy. No tracking, no analytics, no third-party data collection.">
+    <meta property="og:type" content="website">
     <title>Restio — Privacy Policy</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
-            line-height: 1.6;
-            color: #1d1d1f;
-            background: #fff;
-            padding: 40px 24px;
-            max-width: 680px;
-            margin: 0 auto;
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text-primary: #1d1d1f;
+            --text-secondary: #424245;
+            --text-tertiary: #86868b;
+            --accent: #0071e3;
+            --accent-hover: #0077ed;
+            --border: #d2d2d7;
+            --card-bg: #ffffff;
+            --card-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.04);
+            --header-gradient-start: #667eea;
+            --header-gradient-end: #764ba2;
+            --section-icon-bg: #f0f0f5;
         }
-        h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
-        h2 { font-size: 20px; font-weight: 600; margin-top: 32px; margin-bottom: 12px; }
-        p, li { font-size: 15px; color: #333; margin-bottom: 12px; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
-        .date { font-size: 13px; color: #86868b; margin-bottom: 32px; }
-        a { color: #0071e3; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1c1c1e;
+                --bg-secondary: #2c2c2e;
+                --text-primary: #f5f5f7;
+                --text-secondary: #a1a1a6;
+                --text-tertiary: #6e6e73;
+                --accent: #2997ff;
+                --accent-hover: #40a9ff;
+                --border: #38383a;
+                --card-bg: #2c2c2e;
+                --card-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.2);
+                --section-icon-bg: #3a3a3c;
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.65;
+            color: var(--text-primary);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
+            padding: 56px 24px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 100px;
+            padding: 6px 16px 6px 8px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #fff;
+            letter-spacing: 0.02em;
+        }
+
+        .header-badge-icon {
+            width: 28px;
+            height: 28px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+
+        .header h1 {
+            font-size: clamp(28px, 5vw, 36px);
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 15px;
+            color: rgba(255,255,255,0.8);
+            font-weight: 400;
+        }
+
+        /* Container */
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Last Updated Bar */
+        .meta-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 16px 24px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        .meta-bar span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin: 32px auto;
+            max-width: 720px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .toc-title {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-tertiary);
+            margin-bottom: 12px;
+        }
+
+        .toc-list {
+            list-style: none;
+            columns: 2;
+            column-gap: 24px;
+        }
+
+        @media (max-width: 540px) {
+            .toc-list { columns: 1; }
+        }
+
+        .toc-list li {
+            break-inside: avoid;
+            margin-bottom: 6px;
+        }
+
+        .toc-list a {
+            font-size: 14px;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 0;
+            transition: color 0.15s ease;
+        }
+
+        .toc-list a:hover {
+            color: var(--accent-hover);
+        }
+
+        .toc-list a::before {
+            content: "";
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+            opacity: 0.5;
+        }
+
+        /* Sections */
+        .content {
+            padding: 8px 0 64px;
+        }
+
+        .section {
+            margin: 32px 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--section-icon-bg);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 650;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        .section p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .section ul {
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .section li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            line-height: 1.65;
+        }
+
+        .section li::marker {
+            color: var(--accent);
+        }
+
+        /* Highlight Card */
+        .highlight {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 16px 0;
+        }
+
+        .highlight p {
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+
+        .highlight strong {
+            color: var(--text-primary);
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 40px 0;
+            border: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            margin-bottom: 4px;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            transition: color 0.15s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+
+        /* Focus styles */
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
-    <h1>Privacy Policy</h1>
-    <p class="date">Effective date: March 3, 2026</p>
+    <header class="header" role="banner">
+        <div class="header-badge">
+            <span class="header-badge-icon" aria-hidden="true">😌</span>
+            Restio
+        </div>
+        <h1>Privacy Policy</h1>
+        <p class="subtitle">How we protect your data and respect your privacy.</p>
+    </header>
 
-    <p>Restio ("we", "our", or "the app") is a mindful rest timer designed to help you build healthier screen break habits. Your privacy is fundamental to how we build Restio. This policy explains what data is collected and how it is handled.</p>
+    <div class="meta-bar" role="contentinfo">
+        <span>Effective: March 3, 2026</span>
+        <span aria-hidden="true">·</span>
+        <span>Version 1.0</span>
+    </div>
 
-    <h2>Data We Do Not Collect</h2>
-    <p>Restio does not use analytics, tracking, advertising SDKs, or any third-party data collection services. We do not collect, transmit, or sell your personal information to anyone.</p>
+    <div class="container">
+        <nav class="toc" aria-label="Table of Contents">
+            <p class="toc-title">On this page</p>
+            <ol class="toc-list">
+                <li><a href="#no-collect">Data We Do Not Collect</a></li>
+                <li><a href="#on-device">On-Device Data</a></li>
+                <li><a href="#icloud">iCloud Sync</a></li>
+                <li><a href="#cloudkit">CloudKit &amp; Buddy Feature</a></li>
+                <li><a href="#healthkit">Apple HealthKit</a></li>
+                <li><a href="#camera">Camera Access</a></li>
+                <li><a href="#subscriptions">Subscriptions</a></li>
+                <li><a href="#children">Children's Privacy</a></li>
+                <li><a href="#changes">Changes to This Policy</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ol>
+        </nav>
 
-    <h2>On-Device Data</h2>
-    <p>All your rest sessions, streaks, preferences, and settings are stored locally on your device using Apple's SwiftData framework. This data never leaves your device unless you enable iCloud sync.</p>
+        <main class="content" role="main">
+            <div class="section">
+                <p>Restio is a mindful rest timer designed to help you build healthier screen break habits. Your privacy is fundamental to how we build Restio. This policy explains what data we access, how it is handled, and the choices you have.</p>
+            </div>
 
-    <h2>iCloud Sync</h2>
-    <p>If you have iCloud enabled, Restio uses your personal iCloud account to sync your data across your Apple devices. This data is stored in your private iCloud container and is accessible only to you. Apple's iCloud privacy policy governs this storage.</p>
+            <hr class="divider">
 
-    <h2>CloudKit (Buddy Feature)</h2>
-    <p>If you choose to use the buddy feature, Restio uses Apple CloudKit to share limited information with your selected buddy:</p>
-    <ul>
-        <li>Your display name (chosen by you)</li>
-        <li>Your current rest streak</li>
-    </ul>
-    <p>This sharing is user-initiated and can be stopped at any time. No other personal data is shared through the buddy feature.</p>
+            <div class="section" id="no-collect">
+                <div class="section-header">
+                    <div class="section-icon" aria-hidden="true">🚫</div>
+                    <h2>Data We Do Not Collect</h2>
+                </div>
+                <p>Restio does not use analytics, tracking, advertising SDKs, or any third-party data collection services. We do not collect, transmit, or sell your personal information to anyone — ever.</p>
+                <div class="highlight">
+                    <p><strong>In short:</strong> No tracking. No ads. No data brokers. Your rest habits are yours alone.</p>
+                </div>
+            </div>
 
-    <h2>Apple HealthKit</h2>
-    <p>With your explicit permission, Restio can write Mindful Session data to Apple Health. This is write-only access — Restio does not read any health data. HealthKit data is processed entirely on your device and is never sent to external servers.</p>
+            <hr class="divider">
 
-    <h2>Camera Access</h2>
-    <p>Restio may request camera access for on-device face detection to enhance the rest experience. All camera processing happens locally on your device using Apple's Vision framework. No images or video are stored, transmitted, or recorded.</p>
+            <div class="section" id="on-device">
+                <div class="section-header">
+                    <div class="section-icon" aria-hidden="true">📱</div>
+                    <h2>On-Device Data</h2>
+                </div>
+                <p>All your rest sessions, streaks, preferences, and settings are stored locally on your device using Apple's SwiftData framework. This data never leaves your device unless you choose to enable iCloud sync.</p>
+            </div>
 
-    <h2>Subscriptions</h2>
-    <p>Restio offers optional subscriptions managed entirely through Apple's App Store. We do not have access to your payment information. Apple's privacy policy governs all purchase transactions.</p>
+            <hr class="divider">
 
-    <h2>Children's Privacy</h2>
-    <p>Restio does not knowingly collect any personal information from children. The app does not require account creation or personal data input.</p>
+            <div class="section" id="icloud">
+                <div class="section-header">
+                    <div class="section-icon" aria-hidden="true">☁️</div>
+                    <h2>iCloud Sync</h2>
+                </div>
+                <p>If you have iCloud enabled, Restio uses your personal iCloud account to sync data across your Apple devices. This data is stored in your private iCloud container and is accessible only to you. We cannot access your iCloud data. Apple's iCloud privacy practices govern this storage.</p>
+            </div>
 
-    <h2>Changes to This Policy</h2>
-    <p>If we update this policy, we will post the revised version on this page with a new effective date.</p>
+            <hr class="divider">
 
-    <h2>Contact</h2>
-    <p>If you have questions about this privacy policy, contact us at <a href="mailto:kuthaygumus@gmail.com">kuthaygumus@gmail.com</a>.</p>
+            <div class="section" id="cloudkit">
+                <div class="section-header">
+                    <div class="section-icon" aria-hidden="true">👥</div>
+                    <h2>CloudKit &amp; Buddy Feature</h2>
+                </div>
+                <p>If you choose to use the buddy feature, Restio uses Apple CloudKit to share limited information with your selected buddy:</p>
+                <ul>
+                    <li>Your display name (chosen by you)</li>
+                    <li>Your current rest streak</li>
+                </ul>
+                <p>This sharing is entirely user-initiated and can be stopped at any time by removing your buddy connection. No other personal data is shared through this feature.</p>
+            </div>
+
+            <hr class="divider">
+
+            <div class="section" id="healthkit">
+                <div class="section-header">
+                    <div class="section-icon" aria-hidden="true">❤️</div>
+                    <h2>Apple HealthKit</h2>
+                </div>
+                <p>With your explicit permission, Restio can write Mindful Session data to Apple Health. This is <strong>write-only</strong> access — Restio does not read any health data from HealthKit.</p>
+                <p>HealthKit data is processed entirely on your device and is never sent to our servers or any external service. Restio does not use HealthKit data for advertising or data mining purposes, in full compliance with Apple's HealthKit guidelines.</p>
+            </div>
+
+            <hr class="divider">
+
+            <div class="section" id="camera">
+                <div class="section-header">
+                    <div class="section-icon" aria-hidden="true">📷</div>
+                    <h2>Camera Access</h2>
+                </div>
+                <p>Restio may request camera access for on-device face detection to enhance the rest experience. All processing happens locally on your device using Apple's Vision framework.</p>
+                <div class="highlight">
+                    <p><strong>Important:</strong> No images or video are ever stored, transmitted, recorded, or sent off your device. Camera data is processed in real time and immediately discarded.</p>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="section" id="subscriptions">
+                <div class="section-header">
+                    <div class="section-icon" aria-hidden="true">💳</div>
+                    <h2>Subscriptions</h2>
+                </div>
+                <p>Restio offers optional premium subscriptions managed entirely through Apple's App Store. We do not have access to your payment details, billing address, or Apple ID credentials. All purchase transactions are governed by Apple's privacy practices.</p>
+            </div>
+
+            <hr class="divider">
+
+            <div class="section" id="children">
+                <div class="section-header">
+                    <div class="section-icon" aria-hidden="true">🧒</div>
+                    <h2>Children's Privacy</h2>
+                </div>
+                <p>Restio does not knowingly collect any personal information from children under 13 (or the applicable age in your jurisdiction). The app does not require account creation, login, or personal data input of any kind.</p>
+            </div>
+
+            <hr class="divider">
+
+            <div class="section" id="changes">
+                <div class="section-header">
+                    <div class="section-icon" aria-hidden="true">📝</div>
+                    <h2>Changes to This Policy</h2>
+                </div>
+                <p>If we update this privacy policy, we will post the revised version on this page with a new effective date. We encourage you to review this page periodically for any changes.</p>
+            </div>
+
+            <hr class="divider">
+
+            <div class="section" id="contact">
+                <div class="section-header">
+                    <div class="section-icon" aria-hidden="true">✉️</div>
+                    <h2>Contact</h2>
+                </div>
+                <p>If you have questions or concerns about this privacy policy or your data, please reach out to us at <a href="mailto:kuthaygumus@icloud.com">kuthaygumus@icloud.com</a>.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer" role="contentinfo">
+        <p>&copy; 2026 Restio. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/restio/privacy/">Privacy Policy</a>
+            <a href="/restio/terms/">Terms of Use</a>
+        </div>
+    </footer>
 </body>
 </html>
