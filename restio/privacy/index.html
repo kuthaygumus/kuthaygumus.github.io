@@ -19,7 +19,6 @@
             --link: #0066cc;
             --link-hover: #004499;
             --rule: rgba(0,0,0,0.08);
-            --nav-bg: rgba(251,251,253,0.92);
         }
         @media (prefers-color-scheme: dark) {
             :root {
@@ -30,7 +29,6 @@
                 --link: #2997ff;
                 --link-hover: #64b5f6;
                 --rule: rgba(255,255,255,0.08);
-                --nav-bg: rgba(17,17,17,0.92);
             }
         }
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -47,115 +45,34 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-
-        /* Top bar */
-        .topbar {
-            border-bottom: 1px solid var(--rule);
-            padding: 14px 0;
-        }
-        .topbar-inner {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 0 22px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .topbar-brand {
-            font-size: 21px;
-            font-weight: 600;
-            color: var(--text);
-            text-decoration: none;
-            letter-spacing: -0.01em;
-        }
+        .topbar { border-bottom: 1px solid var(--rule); padding: 14px 0; }
+        .topbar-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; }
+        .topbar-brand { font-size: 21px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
         .topbar-nav { display: flex; gap: 24px; }
-        .topbar-nav a {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-decoration: none;
-            letter-spacing: 0;
-            transition: color 0.2s;
-        }
+        .topbar-nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; letter-spacing: 0; transition: color 0.2s; }
         .topbar-nav a:hover { color: var(--link); }
         .topbar-nav a[aria-current="page"] { color: var(--text); font-weight: 500; }
-
-        /* Article */
-        article {
-            max-width: 660px;
-            margin: 0 auto;
-            padding: 48px 22px 80px;
-        }
+        article { max-width: 660px; margin: 0 auto; padding: 48px 22px 80px; }
         article > header { margin-bottom: 40px; }
-        article > header p {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            margin-bottom: 8px;
-        }
-        h1 {
-            font-size: 40px;
-            line-height: 1.1;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            color: var(--text);
-        }
-        h2 {
-            font-size: 24px;
-            line-height: 1.16667;
-            font-weight: 600;
-            letter-spacing: -0.015em;
-            color: var(--text);
-            margin-top: 48px;
-            margin-bottom: 16px;
-            padding-top: 32px;
-            border-top: 1px solid var(--rule);
-        }
+        article > header p { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+        h1 { font-size: 40px; line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+        h2 { font-size: 24px; line-height: 1.16667; font-weight: 600; letter-spacing: -0.015em; color: var(--text); margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid var(--rule); }
         h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
-        p {
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
+        p { color: var(--text-secondary); margin-bottom: 16px; }
         p:last-child { margin-bottom: 0; }
-        ul {
-            padding-left: 1.3em;
-            margin-bottom: 16px;
-            color: var(--text-secondary);
-        }
+        ul { padding-left: 1.3em; margin-bottom: 16px; color: var(--text-secondary); }
         li { margin-bottom: 6px; }
         li:last-child { margin-bottom: 0; }
         strong { color: var(--text); font-weight: 600; }
         a { color: var(--link); text-decoration: none; }
         a:hover { text-decoration: underline; }
         a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 3px; }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--rule);
-            padding: 20px 0;
-        }
-        .footer-inner {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 0 22px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        footer small {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
+        footer { border-top: 1px solid var(--rule); padding: 20px 0; }
+        .footer-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+        footer small { font-size: 12px; color: var(--text-muted); }
         footer nav { display: flex; gap: 20px; }
-        footer nav a {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-decoration: none;
-        }
+        footer nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; }
         footer nav a:hover { color: var(--link); }
-
         @media (max-width: 600px) {
             h1 { font-size: 32px; }
             h2 { font-size: 21px; }
@@ -197,20 +114,20 @@
             <li>A display name you provide</li>
             <li>Your current rest streak count</li>
         </ul>
-        <p>This sharing is initiated solely by you and may be discontinued at any time by removing the buddy connection. No additional personal data is transmitted through this feature. CloudKit data is governed by Apple's privacy practices.</p>
+        <p>This sharing is initiated solely by you and may be discontinued at any time by removing the buddy connection. No additional personal data is transmitted through this feature. CloudKit data is processed through Apple's infrastructure and is governed by Apple's privacy practices. Data shared through the buddy feature may be transferred to and processed in countries outside your country of residence in accordance with Apple's data handling practices.</p>
 
         <h2 id="healthkit">Apple HealthKit</h2>
         <p>With your explicit prior consent, Restio may write Mindful Session entries to Apple HealthKit. This access is <strong>write-only</strong> — Restio does not read, query, or access any existing health data from HealthKit.</p>
         <p>All HealthKit data remains on your device (or in your private Health data store if you use iCloud for Health). Restio does not use HealthKit data for advertising, data mining, or any purpose other than recording your rest sessions. This is in full compliance with Apple's <a href="https://developer.apple.com/documentation/healthkit" rel="noopener noreferrer">HealthKit guidelines</a>.</p>
 
-        <h2 id="camera">Camera</h2>
-        <p>Restio may request access to your device's camera to detect whether your eyes are closed during a rest session, using Apple's on-device Vision framework. All processing occurs locally on your device in real time. No images, video frames, or biometric data are stored, recorded, transmitted, or made accessible to us or any third party. Camera access may be revoked at any time through your device settings.</p>
-
         <h2 id="purchases">In-App Purchases</h2>
-        <p>Restio offers optional premium features through subscriptions and a lifetime purchase, managed entirely by Apple's App Store. We do not receive, process, or store your payment information, billing address, or Apple ID credentials. All transaction data is governed by Apple's <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">Privacy Policy</a>.</p>
+        <p>Restio offers optional premium features through subscriptions and a one-time purchase, managed entirely by Apple's App Store. We do not receive, process, or store your payment information, billing address, or Apple ID credentials. All transaction data is governed by Apple's <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">Privacy Policy</a>.</p>
 
         <h2 id="data-retention">Data Retention and Deletion</h2>
         <p>Because Restio does not collect data on external servers, there is no user data for us to retain. All app data stored on your device can be deleted at any time by deleting the app. If you use iCloud sync, you may also remove synced data through your iCloud storage settings.</p>
+
+        <h2 id="your-rights">Your Rights</h2>
+        <p>Depending on your jurisdiction, you may have rights regarding your personal data, including the right to access, correct, delete, or port your data, as well as the right to restrict or object to certain processing. Because Restio does not collect personal data on external servers, these rights are effectively exercised through your device and iCloud settings. If you have questions about exercising your rights, please contact us using the details below.</p>
 
         <h2 id="childrens-privacy">Children's Privacy</h2>
         <p>Restio does not knowingly collect personal information from children under 13 years of age (or the applicable minimum age in the relevant jurisdiction). The app does not require account creation, login credentials, or personal data input of any kind. If you believe a child has provided personal information through the app, please contact us so we can take appropriate action.</p>
