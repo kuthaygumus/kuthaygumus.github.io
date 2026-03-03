@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bloomind Gizlilik Politikası. Nefes ve meditasyon uygulaması için gizlilik bilgileri. Takip yok, analitik yok, üçüncü taraf veri toplama yok.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="Bloomind — Gizlilik Politikası">
+    <meta property="og:description" content="Bloomind Gizlilik Politikası. Takip yok, analitik yok, üçüncü taraf veri toplama yok.">
+    <meta property="og:type" content="website">
+    <link rel="alternate" hreflang="en" href="/bloomind/privacy/en/">
+    <link rel="alternate" hreflang="tr" href="/bloomind/privacy/tr/">
+    <title>Bloomind — Gizlilik Politikası</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <style>
+        :root {
+            --bg: #fbfbfd;
+            --text: #1d1d1f;
+            --text-secondary: #424245;
+            --text-muted: #86868b;
+            --link: #0066cc;
+            --link-hover: #004499;
+            --rule: rgba(0,0,0,0.08);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #111111;
+                --text: #f5f5f7;
+                --text-secondary: #a1a1a6;
+                --text-muted: #6e6e73;
+                --link: #2997ff;
+                --link-hover: #64b5f6;
+                --rule: rgba(255,255,255,0.08);
+            }
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .topbar { border-bottom: 1px solid var(--rule); padding: 14px 0; }
+        .topbar-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; }
+        .topbar-brand { font-size: 21px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+        .topbar-nav { display: flex; gap: 24px; align-items: center; }
+        .topbar-nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; letter-spacing: 0; transition: color 0.2s; }
+        .topbar-nav a:hover { color: var(--link); }
+        .topbar-nav a[aria-current="page"] { color: var(--text); font-weight: 500; }
+        .lang-switch { display: flex; align-items: center; gap: 6px; margin-left: 8px; padding-left: 16px; border-left: 1px solid var(--rule); font-size: 14px; }
+        .lang-switch span { opacity: 1; }
+        .lang-switch a { text-decoration: none; opacity: 0.45; transition: opacity 0.2s; font-size: 14px; }
+        .lang-switch a:hover { opacity: 1; text-decoration: none; }
+        article { max-width: 660px; margin: 0 auto; padding: 48px 22px 80px; }
+        article > header { margin-bottom: 40px; }
+        article > header p { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+        h1 { font-size: 40px; line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+        h2 { font-size: 24px; line-height: 1.16667; font-weight: 600; letter-spacing: -0.015em; color: var(--text); margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid var(--rule); }
+        h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+        p { color: var(--text-secondary); margin-bottom: 16px; }
+        p:last-child { margin-bottom: 0; }
+        ul { padding-left: 1.3em; margin-bottom: 16px; color: var(--text-secondary); }
+        li { margin-bottom: 6px; }
+        li:last-child { margin-bottom: 0; }
+        strong { color: var(--text); font-weight: 600; }
+        .highlight { color: var(--text); font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 3px; }
+        footer { border-top: 1px solid var(--rule); padding: 20px 0; }
+        .footer-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+        footer small { font-size: 12px; color: var(--text-muted); }
+        footer nav { display: flex; gap: 20px; }
+        footer nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; }
+        footer nav a:hover { color: var(--link); }
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; }
+            h2 { font-size: 21px; }
+            article { padding: 32px 20px 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar" role="banner">
+        <div class="topbar-inner">
+            <a href="/bloomind/" class="topbar-brand">Bloomind</a>
+            <nav class="topbar-nav" aria-label="Gezinme">
+                <a href="/bloomind/privacy/tr/" aria-current="page">Gizlilik</a>
+                <a href="/bloomind/terms/">Koşullar</a>
+                <a href="/bloomind/support/">Destek</a>
+                <div class="lang-switch" aria-label="Dil seçimi">
+                    <a href="/bloomind/privacy/en/" title="English">&#x1F1EC;&#x1F1E7;</a>
+                    <span aria-current="true" title="Türkçe">&#x1F1F9;&#x1F1F7;</span>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <article role="main">
+        <header>
+            <p>Son güncelleme: 6 Mart 2026</p>
+            <h1>Gizlilik Politikası</h1>
+        </header>
+
+        <p>Bloomind ("biz" veya "uygulama"), Kuthay Gumus ("geliştirici") tarafından geliştirilen, rehberli nefes egzersizleri ve her seansla büyüyen bir bahçe aracılığıyla nefes pratiği oluşturmanıza yardımcı olan bir iOS nefes ve meditasyon uygulamasıdır. Geliştirici, yürürlükteki veri koruma mevzuatı kapsamında veri sorumlusudur. Bu Gizlilik Politikası, Bloomind'ın hangi bilgilere eriştiğini, bu bilgilerin nasıl işlendiğini ve size sunulan seçenekleri açıklamaktadır.</p>
+
+        <h2 id="toplamadigimiz-bilgiler">Toplamadığımız Bilgiler</h2>
+        <p>Bloomind, kişisel bilgilerinizi tarafımıza ait veya tarafımızca işletilen herhangi bir sunucuya toplamaz, depolamaz veya iletmez. Uygulama <span class="highlight">analitik çerçeve, reklam SDK'sı, çökme raporlama hizmeti ve hiçbir türde üçüncü taraf takibi içermez</span>. Parmak izi veya herhangi bir kullanıcı tanımlama yöntemi kullanmıyoruz. Cihaz tanımlayıcıları, IP adresleri veya konum verileri toplamıyoruz. Kullanıcı verilerini hiçbir üçüncü tarafa satmıyor, paylaşmıyor veya kiralamıyoruz.</p>
+
+        <h2 id="olusturdugunuz-veriler">Oluşturduğunuz Veriler</h2>
+        <p>Bloomind yalnızca sizin uygulamayı kullanarak oluşturduğunuz verileri toplar. Bunlar şunları içerebilir:</p>
+        <ul>
+            <li>Nefes seansı kayıtları (kullanılan teknik, süre, tamamlanma durumu)</li>
+            <li>Seanslardan önce ve sonra kaydedilen ruh hali girişleri — <strong>sağlıkla ilgili veri, aşağıya bakınız</strong></li>
+            <li>Bahçe ve bitki büyüme ilerlemesi</li>
+            <li>Seri ve başarı verileri</li>
+            <li>Uygulama tercihleri ve ayarları</li>
+        </ul>
+        <p>Tüm bu veriler uygulamayı kullanımınız aracılığıyla oluşturulur. Otomatik olarak herhangi bir veri toplamıyoruz.</p>
+
+        <h2 id="saglik-verileri">Sağlıkla İlgili ve Ruh Hali Verileri</h2>
+        <p>Bloomind, nefes seanslarından önce ve sonra ruh hali girişleri kaydetmenize olanak tanır. Yürürlükteki veri koruma yasaları kapsamında (KVKK ve GDPR Madde 9 dahil), zihinsel sağlıkla ilgili veriler ek koruma gerektiren <strong>özel nitelikli / hassas kişisel veri</strong> olarak sınıflandırılabilir.</p>
+        <p>Bu veriler yalnızca sizin <strong>açık rızanız</strong> temelinde işlenmektedir; bu rıza, verileri kaydetme kararınızla ortaya konmaktadır. <span class="highlight">Bu veriler yalnızca sizin cihazınızda (ve eşitleme etkinse özel iCloud kapsayıcınızda) saklanır.</span> Bu verilere hiçbir zaman erişemez, işleyemez veya iletemeyiz. Herhangi bir ruh hali kaydını istediğiniz zaman uygulama içinden silebilirsiniz.</p>
+
+        <h2 id="cihaz-uzerinde-veri">Cihaz Üzerinde Veri</h2>
+        <p>Tüm verileriniz Apple'ın SwiftData çerçevesi kullanılarak cihazınızda yerel olarak saklanır. Seans geçmişiniz, bahçe ilerlemeniz, ruh hali girişleriniz, tercihleriniz ve uygulama ayarları cihazınızda kalır ve tarafımızca erişilemez.</p>
+        <p><span class="highlight">Sunucularımız yoktur. Kendi veritabanımız yoktur. Verileriniz hiçbir zaman bizim altyapımıza ulaşmaz.</span></p>
+
+        <h2 id="icloud-esitleme">iCloud Eşitleme</h2>
+        <p>Cihazınızda iCloud etkinse, Bloomind uygulama verilerinizi Apple'ın CloudKit hizmeti aracılığıyla özel iCloud kapsayıcınız üzerinden Apple cihazlarınız arasında eşitleyebilir. Bu verilere yalnızca siz Apple Kimliğiniz aracılığıyla erişebilirsiniz. iCloud verilerinize erişme, okuma veya değiştirme imkanımız yoktur. iCloud depolama ve iletimi Apple'ın <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">Gizlilik Politikası</a> tarafından yönetilmektedir.</p>
+        <p>iCloud aracılığıyla eşitlenen veriler, Apple'ın veri işleme uygulamalarına uygun olarak ikamet ettiğiniz ülkenin dışındaki ülkelere aktarılabilir ve işlenebilir.</p>
+
+        <h2 id="apple-healthkit">Apple HealthKit</h2>
+        <p>Açık önceden rızanızla, Bloomind Apple HealthKit'e Bilinçli Seans girişleri yazabilir. Bu erişim <strong>yalnızca yazma</strong> amaçlıdır — Bloomind HealthKit'ten mevcut sağlık verilerini okumaz, sorgulamaz veya erişmez.</p>
+        <p>Tüm HealthKit verileri cihazınızda kalır (veya Sağlık için iCloud kullanıyorsanız özel Sağlık veri deponuzda). Bloomind, HealthKit verilerini nefes seanslarınızı kaydetmek dışında reklam, veri madenciliği veya herhangi bir amaçla kullanmaz. Bu, Apple'ın <a href="https://developer.apple.com/documentation/healthkit" rel="noopener noreferrer">HealthKit yönergelerine</a> tam uyumludur.</p>
+
+        <h2 id="apple-watch">Apple Watch</h2>
+        <p>Bloomind, isteğe bağlı bir Apple Watch eşlikçi uygulaması içerir. Veriler, iPhone ve Apple Watch arasında Apple'ın WatchConnectivity çerçevesi kullanılarak eşitlenir. Bu iletişim doğrudan eşleştirilmiş cihazlarınız arasında gerçekleşir ve herhangi bir harici sunucudan geçmez. Cihazlarınız arasında aktarılan verilere erişimimiz yoktur.</p>
+
+        <h2 id="widget-ve-canli-aktiviteler">Widget'lar ve Canlı Aktiviteler</h2>
+        <p>Bloomind, nefes rehberliği ve seri verilerini görüntülemek için Ana Ekran widget'ları ve Canlı Aktiviteler (Dynamic Island) sunar. Widget verileri, ana uygulama ile widget uzantısı arasında cihazınızdaki yerel bir Uygulama Grubu kapsayıcısı kullanılarak paylaşılır. Bu veriler cihazınızdan asla ayrılmaz ve tarafımızca veya herhangi bir üçüncü tarafça erişilemez.</p>
+
+        <h2 id="uygulama-ici-satin-almalar">Uygulama İçi Satın Almalar</h2>
+        <p>Bloomind, tamamen Apple App Store tarafından yönetilen abonelikler ve tek seferlik satın alma yoluyla isteğe bağlı premium özellikler sunar. Ödeme bilgilerinizi, fatura adresinizi veya Apple Kimliği bilgilerinizi almıyor, işlemiyor veya saklamıyoruz. Tüm işlem verileri Apple'ın <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">Gizlilik Politikası</a> tarafından yönetilmektedir.</p>
+
+        <h2 id="yasal-dayanak">İşlemenin Yasal Dayanağı</h2>
+        <p>KVKK, GDPR ve eşdeğer veri koruma düzenlemeleri kapsamında veri işleme bir yasal dayanak gerektirir. Bloomind'ın verilerinizi işleme yasal dayanağı şunlardır:</p>
+        <ul>
+            <li><strong>Rıza (GDPR Madde 6(1)(a) / KVKK Madde 5(1)):</strong> Tüm verileri uygulamayı kullanarak gönüllü olarak oluşturursunuz. Aktif katılımınız olmadan hiçbir veri toplanmaz.</li>
+            <li><strong>Sağlıkla ilgili veriler için açık rıza (GDPR Madde 9(2)(a) / KVKK Madde 6):</strong> Ruh hali girişleri tamamen sizin takdirinizle kaydedilir. Verileri silerek rızanızı istediğiniz zaman geri çekebilirsiniz.</li>
+            <li><strong>Sözleşmenin ifası (GDPR Madde 6(1)(b)):</strong> İşleme, uygulamanın temel işlevselliğini sağlamak (oluşturduğunuz verileri saklamak ve görüntülemek) için gereklidir.</li>
+        </ul>
+
+        <h2 id="veri-saklama-ve-silme">Veri Saklama ve Silme</h2>
+        <p>Bloomind harici sunucularda veri toplamadığından, saklamamız gereken kullanıcı verisi yoktur. Cihazınızda saklanan tüm uygulama verileri istediğiniz zaman şu yollarla silinebilir:</p>
+        <ul>
+            <li>Uygulama içinden bireysel seansları, ruh hali girişlerini veya tüm verileri silme</li>
+            <li>Uygulamayı cihazınızdan silme (yerel olarak saklanan tüm verileri kaldırır)</li>
+            <li>iCloud depolamanızı cihazınızın Ayarlar bölümünden yönetme (eşitleme etkinse)</li>
+        </ul>
+
+        <h2 id="haklariniz">Haklarınız</h2>
+        <p>Bulunduğunuz yargı bölgesine bağlı olarak (KVKK, GDPR, CCPA ve eşdeğer düzenlemeler kapsamındaki haklar dahil ancak bunlarla sınırlı olmaksızın), kişisel verilerinize erişme, düzeltme, silme veya taşıma hakkınız ile belirli işlemeleri kısıtlama veya itiraz etme hakkınız olabilir. Bloomind harici sunucularda kişisel veri toplamadığından, bu haklar fiilen cihazınız ve iCloud ayarlarınız aracılığıyla kullanılmaktadır. Haklarınızı kullanma konusunda sorularınız varsa lütfen aşağıdaki iletişim bilgilerini kullanarak bizimle iletişime geçin.</p>
+
+        <h2 id="cocuklarin-gizliligi">Çocukların Gizliliği</h2>
+        <p>Bloomind, 13 yaşın altındaki (veya ilgili yargı bölgesinde geçerli asgari yaşın altındaki) çocuklardan bilerek kişisel bilgi toplamaz. Uygulama hesap oluşturma, giriş bilgileri veya herhangi bir türde kişisel veri girişi gerektirmez. Bir çocuğun uygulama aracılığıyla kişisel bilgi sağladığını düşünüyorsanız, uygun önlemleri almamız için lütfen bizimle iletişime geçin.</p>
+
+        <h2 id="degisiklikler">Bu Politikadaki Değişiklikler</h2>
+        <p>Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Güncellediğimizde, bu sayfanın üstündeki "Son güncelleme" tarihini revize edeceğiz. Bu sayfayı düzenli olarak incelemenizi öneririz. Herhangi bir değişiklikten sonra Bloomind'ı kullanmaya devam etmeniz, güncellenmiş politikayı kabul ettiğiniz anlamına gelir.</p>
+
+        <h2 id="iletisim">İletişim</h2>
+        <p>Bu Gizlilik Politikası hakkında sorularınız veya endişeleriniz varsa lütfen <a href="mailto:kuthaygumus@icloud.com">kuthaygumus@icloud.com</a> adresinden bizimle iletişime geçin.</p>
+
+        <p style="margin-top: 32px; padding: 20px; border-radius: 12px; background: rgba(0,122,255,0.06); border: 1px solid rgba(0,122,255,0.12);"><span class="highlight">Özetle: Analitik yok. Reklam yok. Takip yok. Ruh hali verileriniz dahil tüm bilgiler yalnızca sizin cihazınızda saklanır. Sunucularımız yoktur — verileriniz hiçbir zaman bizim altyapımıza ulaşmaz.</span></p>
+    </article>
+
+    <footer role="contentinfo">
+        <div class="footer-inner">
+            <small>Telif Hakkı &copy; 2026 Kuthay Gumus. Tüm hakları saklıdır.</small>
+            <nav aria-label="Alt bilgi">
+                <a href="/bloomind/privacy/tr/">Gizlilik Politikası</a>
+                <a href="/bloomind/terms/">Kullanım Koşulları</a>
+                <a href="/bloomind/support/">Destek</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

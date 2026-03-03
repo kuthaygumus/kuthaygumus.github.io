@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    text { font-family: 'Inter', 'SF Pro Display', -apple-system, system-ui, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.5px; }
+    @media (prefers-color-scheme: light) { text { fill: #1a1a1a; } }
+    @media (prefers-color-scheme: dark) { text { fill: #f0f0f0; } }
+  </style>
+  <text x="50%" y="54%" dominant-baseline="central" text-anchor="middle">KG</text>
+</svg>

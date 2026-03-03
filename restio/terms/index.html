@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Terms of Use for Restio, a mindful rest timer for iOS.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="Restio — Terms of Use">
+    <meta property="og:description" content="Terms of Use for Restio. Subscription details, auto-renewal, and user agreement.">
+    <meta property="og:type" content="website">
+    <title>Restio — Terms of Use</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <style>
+        :root {
+            --bg: #fbfbfd;
+            --text: #1d1d1f;
+            --text-secondary: #424245;
+            --text-muted: #86868b;
+            --link: #0066cc;
+            --link-hover: #004499;
+            --rule: rgba(0,0,0,0.08);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #111111;
+                --text: #f5f5f7;
+                --text-secondary: #a1a1a6;
+                --text-muted: #6e6e73;
+                --link: #2997ff;
+                --link-hover: #64b5f6;
+                --rule: rgba(255,255,255,0.08);
+            }
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .topbar { border-bottom: 1px solid var(--rule); padding: 14px 0; }
+        .topbar-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; }
+        .topbar-brand { font-size: 21px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+        .topbar-nav { display: flex; gap: 24px; }
+        .topbar-nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; letter-spacing: 0; transition: color 0.2s; }
+        .topbar-nav a:hover { color: var(--link); }
+        .topbar-nav a[aria-current="page"] { color: var(--text); font-weight: 500; }
+        article { max-width: 660px; margin: 0 auto; padding: 48px 22px 80px; }
+        article > header { margin-bottom: 40px; }
+        article > header p { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+        h1 { font-size: 40px; line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+        h2 { font-size: 24px; line-height: 1.16667; font-weight: 600; letter-spacing: -0.015em; color: var(--text); margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid var(--rule); }
+        h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+        p { color: var(--text-secondary); margin-bottom: 16px; }
+        p:last-child { margin-bottom: 0; }
+        ul, ol { padding-left: 1.3em; margin-bottom: 16px; color: var(--text-secondary); }
+        li { margin-bottom: 6px; }
+        li:last-child { margin-bottom: 0; }
+        strong { color: var(--text); font-weight: 600; }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 3px; }
+        .plan-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px; }
+        .plan-table th { text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); padding: 0 0 10px; border-bottom: 1px solid var(--rule); }
+        .plan-table td { padding: 12px 0; color: var(--text-secondary); border-bottom: 1px solid var(--rule); vertical-align: top; }
+        .plan-table td:first-child { font-weight: 500; color: var(--text); }
+        .plan-table td:last-child { text-align: right; font-weight: 600; color: var(--text); }
+        .plan-table tr:last-child td { border-bottom: none; }
+        .plan-note { font-size: 14px; color: var(--text-muted); margin-top: 8px; }
+        footer { border-top: 1px solid var(--rule); padding: 20px 0; }
+        .footer-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+        footer small { font-size: 12px; color: var(--text-muted); }
+        footer nav { display: flex; gap: 20px; }
+        footer nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; }
+        footer nav a:hover { color: var(--link); }
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; }
+            h2 { font-size: 21px; }
+            article { padding: 32px 20px 60px; }
+            .plan-table { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar" role="banner">
+        <div class="topbar-inner">
+            <a href="/restio/" class="topbar-brand">Restio</a>
+            <nav class="topbar-nav" aria-label="Navigation">
+                <a href="/restio/privacy/">Privacy</a>
+                <a href="/restio/terms/" aria-current="page">Terms</a>
+                <a href="/restio/support/">Support</a>
+            </nav>
+        </div>
+    </div>
+
+    <article role="main">
+        <header>
+            <p>Last updated: March 5, 2026</p>
+            <h1>Terms of Use</h1>
+        </header>
+
+        <p>Please read these Terms of Use ("Terms") carefully before using the Restio application ("the app"). By downloading, installing, or using Restio, you agree to be bound by these Terms. If you do not agree to these Terms, do not use the app.</p>
+
+        <h2 id="license">License and Use</h2>
+        <p>Restio grants you a limited, non-exclusive, non-transferable, revocable license to use the app for your personal, non-commercial purposes, subject to these Terms and the <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener noreferrer">Apple Licensed Application End User License Agreement</a> (the "Standard EULA"). In the event of a conflict between these Terms and the Standard EULA, the Standard EULA shall govern.</p>
+
+        <h2 id="eligibility">Eligibility</h2>
+        <p>You must be at least 18 years of age (or the age of legal majority in your jurisdiction) to use Restio and accept these Terms. If you are between 13 and 18 years of age, you may use the app only with the consent and supervision of a parent or legal guardian who agrees to be bound by these Terms. By using the app, you represent and warrant that you meet these eligibility requirements.</p>
+
+        <h2 id="description">Description of Service</h2>
+        <p>Restio is a general wellness application that provides timed rest session reminders, streak tracking, focus modes, and optional social features. The app is available for iPhone, iPad, and Apple Watch.</p>
+
+        <h2 id="subscriptions">Subscriptions and Pricing</h2>
+        <p>Restio offers free core features. Optional premium features are available through the following plans:</p>
+        <table class="plan-table">
+            <thead>
+                <tr>
+                    <th>Plan</th>
+                    <th>Details</th>
+                    <th>Price (USD)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Yearly</td>
+                    <td>Billed annually, includes 7-day free trial</td>
+                    <td>$14.99</td>
+                </tr>
+                <tr>
+                    <td>Monthly</td>
+                    <td>Billed monthly</td>
+                    <td>$1.99</td>
+                </tr>
+                <tr>
+                    <td>Lifetime</td>
+                    <td>One-time purchase</td>
+                    <td>$29.99</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="plan-note">Prices shown are in U.S. dollars. Actual prices may vary by country and are displayed in your local currency at the time of purchase in the App Store. Prices are subject to change. Any price changes will take effect for subsequent billing periods and will be communicated in accordance with applicable App Store policies.</p>
+
+        <h2 id="auto-renewal">Auto-Renewal</h2>
+        <p>Yearly and Monthly subscriptions automatically renew unless auto-renewal is turned off at least 24 hours before the end of the current billing period. Your Apple ID account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your device's <strong>Settings &gt; [Your Name] &gt; Subscriptions</strong>.</p>
+
+        <h2 id="free-trial">Free Trial</h2>
+        <p>The Yearly plan may include a 7-day free trial. If you do not cancel before the trial period ends, your subscription will automatically convert to a paid Yearly subscription and your Apple ID will be charged. Any unused portion of a free trial period is forfeited when you purchase a subscription. Eligibility for a free trial is determined by Apple and may be limited to one trial per Apple ID.</p>
+
+        <h2 id="lifetime-purchase">Lifetime Purchase</h2>
+        <p>The Lifetime plan is a one-time, non-recurring purchase that grants access to premium features for the lifetime of the application's availability on the App Store. "Lifetime" refers to the operational life of the app, not the lifetime of the purchaser. In the event that Restio is permanently removed from the App Store, the Lifetime purchase will remain functional on devices where it has already been installed and activated.</p>
+
+        <h2 id="refunds">Payments and Refunds</h2>
+        <p>All payments are processed by Apple, Inc. through your Apple ID. We do not have access to your payment information. To request a refund for any purchase, please visit <a href="https://reportaproblem.apple.com" rel="noopener noreferrer">reportaproblem.apple.com</a> or contact Apple Support. We are unable to process refunds directly.</p>
+
+        <h2 id="your-content">Your Content and Data</h2>
+        <p>You retain full ownership of all data you enter into the app, including rest session logs, streak data, buddy information, and preferences. We do not claim any rights to your content. You are responsible for the accuracy of the information you provide and for maintaining backups of your data.</p>
+
+        <h2 id="health-disclaimer">Health and Wellness Disclaimer</h2>
+        <p>Restio is a general wellness application intended to encourage mindful rest habits. <strong>Restio is not a medical device, does not provide medical advice, and is not intended to diagnose, treat, cure, or prevent any disease or medical condition.</strong></p>
+        <p>The content and features provided by Restio are for informational and general wellness purposes only. You should not rely on the app as a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions regarding a medical condition. If you have or suspect a medical emergency, contact your local emergency services immediately.</p>
+
+        <h2 id="intellectual-property">Intellectual Property</h2>
+        <p>All content, design, graphics, code, and functionality of Restio are the property of the developer and are protected by applicable copyright, trademark, and intellectual property laws. You may not reproduce, distribute, modify, create derivative works of, publicly display, or otherwise exploit any part of the app without prior written permission.</p>
+
+        <h2 id="acceptable-use">Acceptable Use</h2>
+        <p>You agree not to:</p>
+        <ul>
+            <li>Use the app for any unlawful purpose or in violation of any applicable laws or regulations</li>
+            <li>Attempt to reverse-engineer, decompile, or disassemble the app</li>
+            <li>Interfere with or disrupt the integrity or performance of the app or its related systems</li>
+            <li>Use the buddy feature to harass, abuse, or harm another person</li>
+        </ul>
+
+        <h2 id="disclaimer">Disclaimer of Warranties</h2>
+        <p>The app is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, whether express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the app will be uninterrupted, error-free, or free of harmful components.</p>
+
+        <h2 id="limitation-of-liability">Limitation of Liability</h2>
+        <p>To the maximum extent permitted by applicable law, in no event shall the developer be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, or goodwill, arising out of or in connection with your access to or use of or inability to access or use the app.</p>
+        <p>In any event, the developer's total aggregate liability arising out of or in connection with these Terms or the use of the app shall not exceed the total amount you have actually paid to the developer through the App Store in the twelve (12) months immediately preceding the event giving rise to the claim, or ten U.S. dollars ($10.00), whichever is greater.</p>
+
+        <h2 id="indemnification">Indemnification</h2>
+        <p>You agree to indemnify, defend, and hold harmless the developer from and against any claims, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising out of or related to your use of the app, your violation of these Terms, or your violation of any rights of a third party.</p>
+
+        <h2 id="termination">Termination</h2>
+        <p>We reserve the right to suspend or terminate your access to the app at our sole discretion, without prior notice, for conduct that we believe violates these Terms or is harmful to other users, us, or third parties, or for any other reason. Upon termination, your right to use the app will cease immediately.</p>
+
+        <h2 id="changes">Changes to These Terms</h2>
+        <p>We may revise these Terms at any time by updating this page. The "Last updated" date at the top indicates when the Terms were last modified. Your continued use of Restio after changes are posted constitutes acceptance of the revised Terms. If you do not agree to the revised Terms, you must discontinue use of the app.</p>
+
+        <h2 id="governing-law">Governing Law</h2>
+        <p>These Terms shall be governed by and construed in accordance with the laws of the Republic of Turkey, without regard to conflict of law principles. Any disputes arising under or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts of Istanbul, Turkey. Nothing in these Terms shall deprive consumers of the protection afforded by mandatory provisions of the law of their country of residence, including but not limited to consumer protection rights under EU, UK, or other applicable law.</p>
+
+        <h2 id="general-provisions">General Provisions</h2>
+        <p><strong>Severability.</strong> If any provision of these Terms is held to be invalid, illegal, or unenforceable by a court of competent jurisdiction, such provision shall be modified to the minimum extent necessary to make it valid and enforceable, or if modification is not possible, shall be severed from these Terms. The remaining provisions shall continue in full force and effect.</p>
+        <p><strong>Entire Agreement.</strong> These Terms, together with the Standard EULA and our Privacy Policy, constitute the entire agreement between you and the developer regarding the use of Restio, and supersede any prior agreements or understandings.</p>
+        <p><strong>Waiver.</strong> The failure of the developer to enforce any right or provision of these Terms shall not constitute a waiver of such right or provision. Any waiver must be in writing and signed by the developer to be effective.</p>
+        <p><strong>Assignment.</strong> You may not assign or transfer these Terms or your rights hereunder without the developer's prior written consent. The developer may assign these Terms without restriction.</p>
+
+        <h2 id="contact">Contact</h2>
+        <p>If you have any questions about these Terms, please contact us at <a href="mailto:kuthaygumus@icloud.com">kuthaygumus@icloud.com</a>.</p>
+    </article>
+
+    <footer role="contentinfo">
+        <div class="footer-inner">
+            <small>Copyright &copy; 2026 Kuthay Gumus. All rights reserved.</small>
+            <nav aria-label="Footer">
+                <a href="/restio/privacy/">Privacy Policy</a>
+                <a href="/restio/terms/">Terms of Use</a>
+                <a href="/restio/support/">Support</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

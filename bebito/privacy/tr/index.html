@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bebito Gizlilik Politikası. Bebek takip uygulaması için gizlilik bilgileri. Takip yok, analitik yok, üçüncü taraf veri toplama yok.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="Bebito — Gizlilik Politikası">
+    <meta property="og:description" content="Bebito Gizlilik Politikası. Takip yok, analitik yok, üçüncü taraf veri toplama yok.">
+    <meta property="og:type" content="website">
+    <link rel="alternate" hreflang="en" href="/bebito/privacy/en/">
+    <link rel="alternate" hreflang="tr" href="/bebito/privacy/tr/">
+    <title>Bebito — Gizlilik Politikası</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <style>
+        :root {
+            --bg: #fbfbfd;
+            --text: #1d1d1f;
+            --text-secondary: #424245;
+            --text-muted: #86868b;
+            --link: #0066cc;
+            --link-hover: #004499;
+            --rule: rgba(0,0,0,0.08);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #111111;
+                --text: #f5f5f7;
+                --text-secondary: #a1a1a6;
+                --text-muted: #6e6e73;
+                --link: #2997ff;
+                --link-hover: #64b5f6;
+                --rule: rgba(255,255,255,0.08);
+            }
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .topbar { border-bottom: 1px solid var(--rule); padding: 14px 0; }
+        .topbar-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; }
+        .topbar-brand { font-size: 21px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+        .topbar-nav { display: flex; gap: 24px; align-items: center; }
+        .topbar-nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; letter-spacing: 0; transition: color 0.2s; }
+        .topbar-nav a:hover { color: var(--link); }
+        .topbar-nav a[aria-current="page"] { color: var(--text); font-weight: 500; }
+        .lang-switch { display: flex; align-items: center; gap: 6px; margin-left: 8px; padding-left: 16px; border-left: 1px solid var(--rule); font-size: 14px; }
+        .lang-switch span { opacity: 1; }
+        .lang-switch a { text-decoration: none; opacity: 0.45; transition: opacity 0.2s; font-size: 14px; }
+        .lang-switch a:hover { opacity: 1; text-decoration: none; }
+        article { max-width: 660px; margin: 0 auto; padding: 48px 22px 80px; }
+        article > header { margin-bottom: 40px; }
+        article > header p { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+        h1 { font-size: 40px; line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+        h2 { font-size: 24px; line-height: 1.16667; font-weight: 600; letter-spacing: -0.015em; color: var(--text); margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid var(--rule); }
+        h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+        p { color: var(--text-secondary); margin-bottom: 16px; }
+        p:last-child { margin-bottom: 0; }
+        ul { padding-left: 1.3em; margin-bottom: 16px; color: var(--text-secondary); }
+        li { margin-bottom: 6px; }
+        li:last-child { margin-bottom: 0; }
+        strong { color: var(--text); font-weight: 600; }
+        .highlight { color: var(--text); font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 3px; }
+        footer { border-top: 1px solid var(--rule); padding: 20px 0; }
+        .footer-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+        footer small { font-size: 12px; color: var(--text-muted); }
+        footer nav { display: flex; gap: 20px; }
+        footer nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; }
+        footer nav a:hover { color: var(--link); }
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; }
+            h2 { font-size: 21px; }
+            article { padding: 32px 20px 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar" role="banner">
+        <div class="topbar-inner">
+            <a href="/bebito/" class="topbar-brand">Bebito</a>
+            <nav class="topbar-nav" aria-label="Gezinme">
+                <a href="/bebito/privacy/tr/" aria-current="page">Gizlilik</a>
+                <a href="/bebito/terms/">Koşullar</a>
+                <a href="/bebito/support/">Destek</a>
+                <div class="lang-switch" aria-label="Dil seçimi">
+                    <a href="/bebito/privacy/en/" title="English">&#x1F1EC;&#x1F1E7;</a>
+                    <span aria-current="true" title="Türkçe">&#x1F1F9;&#x1F1F7;</span>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <article role="main">
+        <header>
+            <p>Son güncelleme: 5 Mart 2026</p>
+            <h1>Gizlilik Politikası</h1>
+        </header>
+
+        <p>Bebito ("biz" veya "uygulama"), Kuthay Gumus ("geliştirici") tarafından geliştirilen, ebeveynlerin ve bakım verenlerin bebeklerinin günlük aktivitelerini kaydetmelerine ve izlemelerine yardımcı olan bir iOS bebek takip uygulamasıdır. Geliştirici, yürürlükteki veri koruma mevzuatı kapsamında veri sorumlusudur. Bu Gizlilik Politikası, Bebito'nun hangi bilgilere eriştiğini, bu bilgilerin nasıl işlendiğini ve size sunulan seçenekleri açıklamaktadır.</p>
+
+        <h2 id="toplamadigimiz-bilgiler">Toplamadığımız Bilgiler</h2>
+        <p>Bebito, kişisel bilgilerinizi tarafımıza ait veya tarafımızca işletilen herhangi bir sunucuya toplamaz, depolamaz veya iletmez. Uygulama <span class="highlight">analitik çerçeve, reklam SDK'sı, çökme raporlama hizmeti ve hiçbir türde üçüncü taraf takibi içermez</span>. Parmak izi veya herhangi bir kullanıcı tanımlama yöntemi kullanmıyoruz. Cihaz tanımlayıcıları, IP adresleri veya konum verileri toplamıyoruz. Kullanıcı verilerini hiçbir üçüncü tarafa satmıyor, paylaşmıyor veya kiralamıyoruz.</p>
+
+        <h2 id="girdiginiz-veriler">Girdiğiniz Veriler</h2>
+        <p>Bebito yalnızca sizin uygulamaya açıkça girdiğiniz verileri toplar. Bunlar şunları içerebilir:</p>
+        <ul>
+            <li>Bebek profilleri (isim, doğum tarihi, cinsiyet)</li>
+            <li>Beslenme kayıtları (tür, süre, miktar, taraf)</li>
+            <li>Uyku kayıtları (başlangıç zamanı, bitiş zamanı)</li>
+            <li>Alt değiştirme kayıtları (tür, notlar, isteğe bağlı fotoğraf)</li>
+            <li>Büyüme ölçümleri (kilo, boy, baş çevresi)</li>
+            <li>Gelişim kilometre taşları (açıklama, tarih, isteğe bağlı fotoğraf)</li>
+            <li>Sağlık kayıtları (ruh hali girişleri, ateş, ilaçlar, aşı kayıtları, doktor ziyaretleri, alerjiler) — <strong>hassas veri, aşağıya bakınız</strong></li>
+            <li>Bakım veren adı</li>
+            <li>Etkinliklere veya bebek profillerine eklediğiniz fotoğraflar</li>
+        </ul>
+        <p>Tüm bu veriler tarafınızca gönüllü olarak girilmektedir. Otomatik olarak herhangi bir veri toplamıyoruz.</p>
+
+        <h2 id="hassas-veriler">Hassas ve Sağlıkla İlgili Veriler</h2>
+        <p>Bebito, çocuğunuzla ilgili sağlık bilgilerini kaydetmenize olanak tanır: vücut ısısı, ilaçlar, aşı kayıtları, doktor ziyaretleri, alerjiler ve ruh hali girişleri. Yürürlükteki veri koruma yasaları kapsamında (KVKK ve GDPR Madde 9 dahil), sağlık verileri ek koruma gerektiren <strong>özel nitelikli / hassas kişisel veri</strong> olarak sınıflandırılmaktadır.</p>
+        <p>Bu hassas veriler yalnızca sizin <strong>açık rızanız</strong> temelinde işlenmektedir; bu rıza, verileri uygulamaya gönüllü olarak girme kararınızla ortaya konmaktadır. <span class="highlight">Bu veriler yalnızca sizin cihazınızda (ve eşitleme etkinse özel iCloud kapsayıcınızda) saklanır.</span> Bu verilere hiçbir zaman erişemez, işleyemez veya iletemeyiz. Herhangi bir sağlık kaydını istediğiniz zaman uygulama içinden silebilirsiniz.</p>
+
+        <h2 id="yasal-dayanak">İşlemenin Yasal Dayanağı</h2>
+        <p>KVKK, GDPR ve eşdeğer veri koruma düzenlemeleri kapsamında veri işleme bir yasal dayanak gerektirir. Bebito'nun verilerinizi işleme yasal dayanağı şunlardır:</p>
+        <ul>
+            <li><strong>Rıza (GDPR Madde 6(1)(a) / KVKK Madde 5(1)):</strong> Tüm verileri uygulamaya gönüllü olarak girmeyi siz tercih edersiniz. Aktif girişiniz olmadan hiçbir veri toplanmaz.</li>
+            <li><strong>Hassas veriler için açık rıza (GDPR Madde 9(2)(a) / KVKK Madde 6):</strong> Sağlıkla ilgili veriler tamamen sizin takdirinizle girilir. Verileri silerek rızanızı istediğiniz zaman geri çekebilirsiniz.</li>
+            <li><strong>Sözleşmenin ifası (GDPR Madde 6(1)(b)):</strong> İşleme, uygulamanın temel işlevselliğini sağlamak (girdiğiniz verileri saklamak ve görüntülemek) için gereklidir.</li>
+        </ul>
+
+        <h2 id="cihaz-uzerinde-veri">Cihaz Üzerinde Veri</h2>
+        <p>Tüm verileriniz Apple'ın SwiftData çerçevesi kullanılarak cihazınızda yerel olarak saklanır. Bebeğinizin bilgileri, etkinlik kayıtları, tercihleriniz ve uygulama ayarları cihazınızda kalır ve tarafımızca erişilemez.</p>
+        <p><span class="highlight">Sunucularımız yoktur. Kendi veritabanımız yoktur. Verileriniz hiçbir zaman bizim altyapımıza ulaşmaz.</span></p>
+
+        <h2 id="icloud-esitleme">iCloud Eşitleme</h2>
+        <p>Bebito Pro abonesi iseniz ve cihazınızda iCloud etkinse, Bebito uygulama verilerinizi Apple'ın CloudKit hizmeti aracılığıyla özel iCloud kapsayıcınız üzerinden Apple cihazlarınız arasında eşitleyebilir. Bu verilere yalnızca siz Apple Kimliğiniz aracılığıyla erişebilirsiniz. iCloud verilerinize erişme, okuma veya değiştirme imkanımız yoktur. iCloud depolama ve iletimi Apple'ın <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">Gizlilik Politikası</a> tarafından yönetilmektedir.</p>
+        <p>iCloud aracılığıyla eşitlenen veriler, Apple'ın veri işleme uygulamalarına uygun olarak ikamet ettiğiniz ülkenin dışındaki ülkelere aktarılabilir ve işlenebilir.</p>
+
+        <h2 id="fotograflar">Fotoğraflar</h2>
+        <p><span class="highlight">Fotoğraflarınız dahil tüm bilgiler yalnızca sizin cihazınızda saklanır.</span> Kilometre taşlarına, alt değiştirme etkinliklerine veya bebek profillerine eklediğiniz fotoğraflar cihazınızda yerel olarak ve iCloud hesabınızda (eşitleme etkinse) saklanır. Fotoğraflarınıza erişmiyor, işlemiyor, yüklemiyor veya herhangi bir harici hizmete iletmiyoruz. Fotoğraflar yalnızca uygulama içinde görüntüleme amacıyla kullanılır ve tamamen sizin kontrolünüzde kalır.</p>
+
+        <h2 id="apple-watch">Apple Watch</h2>
+        <p>Bebito, isteğe bağlı bir Apple Watch eşlikçi uygulaması içerir. Veriler, iPhone ve Apple Watch arasında Apple'ın WatchConnectivity çerçevesi kullanılarak eşitlenir. Bu iletişim doğrudan eşleştirilmiş cihazlarınız arasında gerçekleşir ve herhangi bir harici sunucudan geçmez. Cihazlarınız arasında aktarılan verilere erişimimiz yoktur.</p>
+
+        <h2 id="widget-ve-canli-aktiviteler">Widget'lar ve Canlı Aktiviteler</h2>
+        <p>Bebito, bebeğinizin son aktivite verilerini görüntülemek için Ana Ekran widget'ları, Kilit Ekranı widget'ları ve Canlı Aktiviteler (Dynamic Island) sunar. Widget verileri, ana uygulama ile widget uzantısı arasında cihazınızdaki yerel bir Uygulama Grubu kapsayıcısı kullanılarak paylaşılır. Bu veriler cihazınızdan asla ayrılmaz ve tarafımızca veya herhangi bir üçüncü tarafça erişilemez.</p>
+
+        <h2 id="bildirimler">Bildirimler</h2>
+        <p>Açık rızanızla, Bebito beslenme programları, uyku düzenleri ve aşı randevuları hakkında sizi hatırlatmak için yerel bildirimler gönderebilir. Tüm bildirim planlaması cihazınızda yerel olarak gerçekleştirilir. Anlık bildirim hizmetleri kullanmıyoruz ve hiçbir bildirim verisi harici sunuculara iletilmez.</p>
+
+        <h2 id="veri-disari-aktarma">Veri Dışarı Aktarma ve Paylaşım</h2>
+        <p>Bebito, verilerinizi PDF raporları veya CSV dosyaları olarak dışarı aktarmanıza ve günlük özet görselleri paylaşmanıza olanak tanır. Bu dışarı aktarmalar cihazınızda yerel olarak oluşturulur. Dışarı aktarmayı veya paylaşmayı tercih ettiğiniz verileri almıyor, kesmiyor veya saklamıyoruz. Dışarı aktarılan verileri nasıl dağıtacağınız sizin sorumluluğunuzdadır.</p>
+
+        <h2 id="uygulama-ici-satin-almalar">Uygulama İçi Satın Almalar</h2>
+        <p>Bebito, tamamen Apple App Store tarafından yönetilen abonelikler ve tek seferlik satın alma yoluyla isteğe bağlı premium özellikler sunar. Ödeme bilgilerinizi, fatura adresinizi veya Apple Kimliği bilgilerinizi almıyor, işlemiyor veya saklamıyoruz. Tüm işlem verileri Apple'ın <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">Gizlilik Politikası</a> tarafından yönetilmektedir.</p>
+
+        <h2 id="veri-saklama-ve-silme">Veri Saklama ve Silme</h2>
+        <p>Bebito harici sunucularda veri toplamadığından, saklamamız gereken kullanıcı verisi yoktur. Cihazınızda saklanan tüm uygulama verileri istediğiniz zaman şu yollarla silinebilir:</p>
+        <ul>
+            <li>Uygulama içinden bireysel etkinlikleri, bebek profillerini veya tüm verileri silme</li>
+            <li>Uygulamayı cihazınızdan silme (yerel olarak saklanan tüm verileri kaldırır)</li>
+            <li>iCloud depolamanızı cihazınızın Ayarlar bölümünden yönetme (eşitleme etkinse)</li>
+        </ul>
+
+        <h2 id="haklariniz">Haklarınız</h2>
+        <p>Bulunduğunuz yargı bölgesine bağlı olarak (KVKK, GDPR, CCPA ve eşdeğer düzenlemeler kapsamındaki haklar dahil ancak bunlarla sınırlı olmaksızın), kişisel verilerinize erişme, düzeltme, silme veya taşıma hakkınız ile belirli işlemeleri kısıtlama veya itiraz etme hakkınız olabilir. Bebito harici sunucularda kişisel veri toplamadığından, bu haklar fiilen cihazınız ve iCloud ayarlarınız aracılığıyla kullanılmaktadır. Tüm verilerinizi istediğiniz zaman Ayarlar ekranından dışarı aktarabilirsiniz. Haklarınızı kullanma konusunda sorularınız varsa lütfen aşağıdaki iletişim bilgilerini kullanarak bizimle iletişime geçin.</p>
+
+        <h2 id="cocuklarin-gizliligi">Çocukların Gizliliği</h2>
+        <p>Bebito, ebeveynlerin ve bakım verenlerin çocuklarının aktivitelerini takip etmeleri için tasarlanmıştır. Uygulama doğrudan çocuklardan veri toplamaz. Tüm veriler ebeveyn veya bakım veren tarafından girilir. COPPA (Çocukların Çevrimiçi Gizliliğini Koruma Yasası), GDPR-K (Madde 8) ve diğer yargı bölgelerindeki eşdeğer düzenlemelere uyuyoruz. Sunucularımıza veri toplamadığımız, saklamadığımız veya iletmediğimiz için çocuk verileri tamamen ebeveyn kontrolünde, cihazda kalmaktadır.</p>
+
+        <h2 id="degisiklikler">Bu Politikadaki Değişiklikler</h2>
+        <p>Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Güncellediğimizde, bu sayfanın üstündeki "Son güncelleme" tarihini revize edecek ve önemli değişiklikleri uygulama aracılığıyla size bildireceğiz. Bu sayfayı düzenli olarak incelemenizi öneririz. Herhangi bir değişiklikten sonra Bebito'yu kullanmaya devam etmeniz, güncellenmiş politikayı kabul ettiğiniz anlamına gelir.</p>
+
+        <h2 id="iletisim">İletişim</h2>
+        <p>Bu Gizlilik Politikası hakkında sorularınız veya endişeleriniz varsa lütfen <a href="mailto:kuthaygumus@icloud.com">kuthaygumus@icloud.com</a> adresinden bizimle iletişime geçin.</p>
+
+        <p style="margin-top: 32px; padding: 20px; border-radius: 12px; background: rgba(0,122,255,0.06); border: 1px solid rgba(0,122,255,0.12);"><span class="highlight">Özetle: Analitik yok. Reklam yok. Takip yok. Fotoğraflarınız ve sağlık verileri dahil tüm bilgiler yalnızca sizin cihazınızda saklanır. Sunucularımız yoktur — verileriniz hiçbir zaman bizim altyapımıza ulaşmaz.</span></p>
+    </article>
+
+    <footer role="contentinfo">
+        <div class="footer-inner">
+            <small>Telif Hakkı &copy; 2026 Kuthay Gumus. Tüm hakları saklıdır.</small>
+            <nav aria-label="Alt bilgi">
+                <a href="/bebito/privacy/tr/">Gizlilik Politikası</a>
+                <a href="/bebito/terms/">Kullanım Koşulları</a>
+                <a href="/bebito/support/">Destek</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
