@@ -12,6 +12,8 @@
     <meta property="og:title" content="Restio — Privacy Policy">
     <meta property="og:description" content="Privacy Policy for Restio. No tracking, no analytics, no third-party data collection.">
     <meta property="og:type" content="website">
+    <link rel="alternate" hreflang="en" href="/restio/privacy/">
+    <link rel="alternate" hreflang="tr" href="/restio/privacy/tr/">
     <title>Restio — Privacy Policy</title>
     <style>
         :root {
@@ -51,10 +53,14 @@
         .topbar { border-bottom: 1px solid var(--rule); padding: 14px 0; }
         .topbar-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; }
         .topbar-brand { font-size: 21px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
-        .topbar-nav { display: flex; gap: 24px; }
+        .topbar-nav { display: flex; gap: 24px; align-items: center; }
         .topbar-nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; letter-spacing: 0; transition: color 0.2s; }
         .topbar-nav a:hover { color: var(--link); }
         .topbar-nav a[aria-current="page"] { color: var(--text); font-weight: 500; }
+        .lang-switch { display: flex; align-items: center; gap: 6px; margin-left: 8px; padding-left: 16px; border-left: 1px solid var(--rule); font-size: 14px; }
+        .lang-switch span { opacity: 1; }
+        .lang-switch a { text-decoration: none; opacity: 0.45; transition: opacity 0.2s; font-size: 14px; }
+        .lang-switch a:hover { opacity: 1; text-decoration: none; }
         article { max-width: 660px; margin: 0 auto; padding: 48px 22px 80px; }
         article > header { margin-bottom: 40px; }
         article > header p { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
@@ -91,6 +97,10 @@
                 <a href="/restio/privacy/" aria-current="page">Privacy</a>
                 <a href="/restio/terms/">Terms</a>
                 <a href="/restio/support/">Support</a>
+                <div class="lang-switch" aria-label="Language">
+                    <span aria-current="true" title="English">&#x1F1EC;&#x1F1E7;</span>
+                    <a href="/restio/privacy/tr/" title="Türkçe">&#x1F1F9;&#x1F1F7;</a>
+                </div>
             </nav>
         </div>
     </div>
