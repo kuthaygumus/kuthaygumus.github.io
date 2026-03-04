@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support for Restio. Get help with the 20-20-20 timer, Pomodoro mode, buddy feature, and more.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="Restio — Support">
+    <meta property="og:description" content="Get help with Restio. FAQs, getting started, and contact information.">
+    <meta property="og:type" content="website">
+    <title>Restio — Support</title>
+    <style>
+        :root {
+            --bg: #fbfbfd;
+            --text: #1d1d1f;
+            --text-secondary: #424245;
+            --text-muted: #86868b;
+            --link: #0066cc;
+            --link-hover: #004499;
+            --rule: rgba(0,0,0,0.08);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #111111;
+                --text: #f5f5f7;
+                --text-secondary: #a1a1a6;
+                --text-muted: #6e6e73;
+                --link: #2997ff;
+                --link-hover: #64b5f6;
+                --rule: rgba(255,255,255,0.08);
+            }
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .topbar { border-bottom: 1px solid var(--rule); padding: 14px 0; }
+        .topbar-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; }
+        .topbar-brand { font-size: 21px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+        .topbar-nav { display: flex; gap: 24px; }
+        .topbar-nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; letter-spacing: 0; transition: color 0.2s; }
+        .topbar-nav a:hover { color: var(--link); }
+        .topbar-nav a[aria-current="page"] { color: var(--text); font-weight: 500; }
+        article { max-width: 660px; margin: 0 auto; padding: 48px 22px 80px; }
+        article > header { margin-bottom: 40px; }
+        h1 { font-size: 40px; line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+        h2 { font-size: 24px; line-height: 1.16667; font-weight: 600; letter-spacing: -0.015em; color: var(--text); margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid var(--rule); }
+        h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+        h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); margin-top: 28px; margin-bottom: 8px; }
+        p { color: var(--text-secondary); margin-bottom: 16px; }
+        p:last-child { margin-bottom: 0; }
+        ul, ol { padding-left: 1.3em; margin-bottom: 16px; color: var(--text-secondary); }
+        li { margin-bottom: 6px; }
+        li:last-child { margin-bottom: 0; }
+        strong { color: var(--text); font-weight: 600; }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 3px; }
+        footer { border-top: 1px solid var(--rule); padding: 20px 0; }
+        .footer-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+        footer small { font-size: 12px; color: var(--text-muted); }
+        footer nav { display: flex; gap: 20px; }
+        footer nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; }
+        footer nav a:hover { color: var(--link); }
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; }
+            h2 { font-size: 21px; }
+            article { padding: 32px 20px 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar" role="banner">
+        <div class="topbar-inner">
+            <a href="/restio/" class="topbar-brand">Restio</a>
+            <nav class="topbar-nav" aria-label="Navigation">
+                <a href="/restio/privacy/">Privacy</a>
+                <a href="/restio/terms/">Terms</a>
+                <a href="/restio/support/" aria-current="page">Support</a>
+            </nav>
+        </div>
+    </div>
+
+    <article role="main">
+        <header>
+            <h1>Support</h1>
+        </header>
+
+        <h2 id="getting-started">Getting Started</h2>
+        <p>Restio helps you protect your eyes using the <strong>20-20-20 rule</strong>: every 20 minutes of screen time, look at something 20 feet away for 20 seconds. Open the app, tap Start, and Restio will remind you when it's time to rest.</p>
+        <p>You can also switch to <strong>Pomodoro mode</strong> for longer focus sessions with built-in rest breaks. Customize your timer durations, sounds, and notification preferences in Settings.</p>
+
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <h3 id="timer">How does the timer work?</h3>
+        <p>Restio runs a countdown timer in the background. When the timer ends, you receive a notification reminding you to take a rest break. During your break, you can follow a guided rest session or simply look away from your screen. The timer supports both the 20-20-20 rule and customizable Pomodoro intervals.</p>
+
+        <h3 id="pomodoro">What is Pomodoro mode?</h3>
+        <p>Pomodoro mode uses the popular Pomodoro Technique: focused work sessions (typically 25 minutes) followed by short breaks (5 minutes), with a longer break after every four sessions. You can customize the durations to suit your workflow.</p>
+
+        <h3 id="buddy">How do I use the buddy feature?</h3>
+        <p>The buddy feature lets you pair with a friend to stay accountable. Go to <strong>Settings &gt; Buddy</strong> and share your invite link. Once connected, you can see each other's streak count and cheer each other on. Both users need Restio installed to use this feature.</p>
+
+        <h3 id="sync">How do I sync across devices?</h3>
+        <p>Restio uses iCloud to keep your data in sync across all your Apple devices. Make sure iCloud is enabled on your devices under <strong>Settings &gt; [Your Name] &gt; iCloud</strong>. Sync happens automatically in the background.</p>
+
+        <h3 id="healthkit">How do I enable HealthKit?</h3>
+        <p>Go to <strong>Restio Settings &gt; HealthKit</strong> and enable the integration. Restio will ask for permission to write Mindful Minutes to Apple Health. Each completed rest session is then logged automatically. Restio only writes data to HealthKit &mdash; it does not read any of your existing health data.</p>
+
+        <h3 id="widgets">How do I use widgets?</h3>
+        <p>Long-press your Home Screen, tap the <strong>+</strong> button in the top-left corner, and search for Restio. Choose from available widgets to display your current timer, streak, or daily progress. Lock Screen widgets are also available for quick access.</p>
+
+        <h3 id="premium">What do I get with Premium?</h3>
+        <p>Premium unlocks all timer modes, guided rest sessions with ambient sounds, eye exercises, detailed statistics, the buddy system, Apple Watch app, widgets, Siri Shortcuts, and HealthKit integration. Free users get the basic 20-20-20 timer and streak tracking.</p>
+
+        <h2 id="subscriptions">Managing Subscriptions</h2>
+        <p>All subscriptions are managed through Apple. To view, change, or cancel your subscription:</p>
+        <ol>
+            <li>Open <strong>Settings</strong> on your iPhone or iPad</li>
+            <li>Tap your name at the top</li>
+            <li>Tap <strong>Subscriptions</strong></li>
+            <li>Select <strong>Restio</strong> to manage your plan</li>
+        </ol>
+        <p>Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current billing period. For refunds, visit <a href="https://reportaproblem.apple.com" rel="noopener noreferrer">reportaproblem.apple.com</a>.</p>
+
+        <h2 id="compatibility">Device Compatibility</h2>
+        <p>Restio is available on:</p>
+        <ul>
+            <li><strong>iPhone</strong> &mdash; Full experience with all features</li>
+            <li><strong>iPad</strong> &mdash; Full experience optimized for larger screens</li>
+            <li><strong>Apple Watch</strong> &mdash; Timer reminders and session tracking from your wrist</li>
+        </ul>
+
+        <h2 id="contact">Contact</h2>
+        <p>Can't find what you're looking for? Reach out to us directly at <a href="mailto:kuthaygumus@icloud.com">kuthaygumus@icloud.com</a>. We typically respond within 24 hours.</p>
+    </article>
+
+    <footer role="contentinfo">
+        <div class="footer-inner">
+            <small>Copyright &copy; 2026 Restio. All rights reserved.</small>
+            <nav aria-label="Footer">
+                <a href="/restio/privacy/">Privacy Policy</a>
+                <a href="/restio/terms/">Terms of Use</a>
+                <a href="/restio/support/">Support</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
