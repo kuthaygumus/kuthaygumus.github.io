@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support for Bloomind. Get help with breathing techniques, your garden, subscriptions, and more.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="Bloomind — Support">
+    <meta property="og:description" content="Get help with Bloomind. FAQs, getting started, and contact information.">
+    <meta property="og:type" content="website">
+    <title>Bloomind — Support</title>
+    <style>
+        :root {
+            --bg: #fbfbfd;
+            --text: #1d1d1f;
+            --text-secondary: #424245;
+            --text-muted: #86868b;
+            --link: #0066cc;
+            --link-hover: #004499;
+            --rule: rgba(0,0,0,0.08);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #111111;
+                --text: #f5f5f7;
+                --text-secondary: #a1a1a6;
+                --text-muted: #6e6e73;
+                --link: #2997ff;
+                --link-hover: #64b5f6;
+                --rule: rgba(255,255,255,0.08);
+            }
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .topbar { border-bottom: 1px solid var(--rule); padding: 14px 0; }
+        .topbar-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; }
+        .topbar-brand { font-size: 21px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+        .topbar-nav { display: flex; gap: 24px; }
+        .topbar-nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; letter-spacing: 0; transition: color 0.2s; }
+        .topbar-nav a:hover { color: var(--link); }
+        .topbar-nav a[aria-current="page"] { color: var(--text); font-weight: 500; }
+        article { max-width: 660px; margin: 0 auto; padding: 48px 22px 80px; }
+        article > header { margin-bottom: 40px; }
+        h1 { font-size: 40px; line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+        h2 { font-size: 24px; line-height: 1.16667; font-weight: 600; letter-spacing: -0.015em; color: var(--text); margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid var(--rule); }
+        h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+        h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); margin-top: 28px; margin-bottom: 8px; }
+        p { color: var(--text-secondary); margin-bottom: 16px; }
+        p:last-child { margin-bottom: 0; }
+        ul, ol { padding-left: 1.3em; margin-bottom: 16px; color: var(--text-secondary); }
+        li { margin-bottom: 6px; }
+        li:last-child { margin-bottom: 0; }
+        strong { color: var(--text); font-weight: 600; }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 3px; }
+        footer { border-top: 1px solid var(--rule); padding: 20px 0; }
+        .footer-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+        footer small { font-size: 12px; color: var(--text-muted); }
+        footer nav { display: flex; gap: 20px; }
+        footer nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; }
+        footer nav a:hover { color: var(--link); }
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; }
+            h2 { font-size: 21px; }
+            article { padding: 32px 20px 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar" role="banner">
+        <div class="topbar-inner">
+            <a href="/bloomind/" class="topbar-brand">Bloomind</a>
+            <nav class="topbar-nav" aria-label="Navigation">
+                <a href="/bloomind/privacy/">Privacy</a>
+                <a href="/bloomind/terms/">Terms</a>
+                <a href="/bloomind/support/" aria-current="page">Support</a>
+            </nav>
+        </div>
+    </div>
+
+    <article role="main">
+        <header>
+            <h1>Support</h1>
+        </header>
+
+        <h2 id="getting-started">Getting Started</h2>
+        <p>Open Bloomind and choose a breathing technique from the main screen. Each technique is paired with a unique plant. Tap a technique card to see details, then tap <strong>Start</strong> to begin your session. Follow the organic breathing animation — inhale as it expands, exhale as it contracts.</p>
+        <p>After completing a session, your plant grows and you can optionally log your mood. Over time, your garden fills with plants that reflect your practice.</p>
+
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <h3 id="techniques">What breathing techniques are available?</h3>
+        <p>Bloomind includes 9 techniques across four categories: <strong>Calm &amp; Relaxation</strong> (4-7-8, Coherent Breathing, Pursed Lip), <strong>Focus &amp; Energy</strong> (Box Breathing, Energizing 2-1-4, Wim Hof Method), <strong>Panic &amp; Emergency</strong> (Panic Seed, Alternate Nostril), and <strong>Sleep</strong> (Deep Calm). Free users have access to 3 techniques; all 9 are available with Bloomind Pro.</p>
+
+        <h3 id="panic-seed">What is Panic Seed?</h3>
+        <p>Panic Seed is a quick breathing exercise designed for moments when you feel overwhelmed. It uses a simple, slow breathing pattern to help you regain composure. You can access it once per day for free, or unlimited times with Bloomind Pro. <strong>Panic Seed is a wellness tool, not a medical treatment.</strong> If you experience recurrent panic attacks or persistent anxiety, please consult a healthcare professional.</p>
+
+        <h3 id="garden">How does the garden work?</h3>
+        <p>Each breathing technique is linked to a unique plant species. When you complete a session, your plant grows through 5 stages: Seed, Sprout, Budding, Blooming, and Full Bloom. Your garden displays all your plants together, changing its appearance based on the time of day.</p>
+
+        <h3 id="mood">How does mood tracking work?</h3>
+        <p>After each session, Bloomind optionally asks how you feel. Your mood entries are stored locally on your device and help you see patterns over time in your statistics. You can disable mood prompts in Settings.</p>
+
+        <h3 id="sync">How do I sync across devices?</h3>
+        <p>Bloomind uses iCloud to sync your garden, session history, and preferences across all your Apple devices. Make sure iCloud is enabled under <strong>Settings &gt; [Your Name] &gt; iCloud</strong>. Sync happens automatically.</p>
+
+        <h3 id="healthkit">How do I enable Apple Health?</h3>
+        <p>Go to <strong>Bloomind Settings &gt; Apple Health</strong> and enable the integration. Bloomind will ask for permission to write Mindful Minutes. Each completed session is logged automatically. Bloomind only writes data — it does not read any of your existing health data.</p>
+
+        <h3 id="widgets">How do I use widgets?</h3>
+        <p>Long-press your Home Screen, tap the <strong>+</strong> button, and search for Bloomind. Choose from available widgets to display your streak or start a session quickly. During active sessions, a Live Activity appears on your Lock Screen and Dynamic Island.</p>
+
+        <h3 id="premium">What do I get with Bloomind Pro?</h3>
+        <p>Bloomind Pro unlocks all 9 breathing techniques, unlimited Panic Seed, all 4 soundscapes, streak freeze protection, custom breathing patterns, full statistics, Apple Watch app, widgets, Siri Shortcuts, and Apple Health integration. Free users get 3 techniques, basic streak tracking, and the garden.</p>
+
+        <h2 id="subscriptions">Managing Subscriptions</h2>
+        <p>All subscriptions are managed through Apple. To view, change, or cancel your subscription:</p>
+        <ol>
+            <li>Open <strong>Settings</strong> on your iPhone or iPad</li>
+            <li>Tap your name at the top</li>
+            <li>Tap <strong>Subscriptions</strong></li>
+            <li>Select <strong>Bloomind</strong> to manage your plan</li>
+        </ol>
+        <p>Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current billing period. For refunds, visit <a href="https://reportaproblem.apple.com" rel="noopener noreferrer">reportaproblem.apple.com</a>.</p>
+
+        <h2 id="compatibility">Device Compatibility</h2>
+        <p>Bloomind is available on:</p>
+        <ul>
+            <li><strong>iPhone</strong> — Full experience with all features</li>
+            <li><strong>iPad</strong> — Full experience optimized for larger screens</li>
+            <li><strong>Apple Watch</strong> — Breathing sessions from your wrist</li>
+        </ul>
+
+        <h2 id="contact">Contact</h2>
+        <p>Can't find what you're looking for? Reach out to us directly at <a href="mailto:kuthaygumus@icloud.com">kuthaygumus@icloud.com</a>. We typically respond within 24 hours.</p>
+    </article>
+
+    <footer role="contentinfo">
+        <div class="footer-inner">
+            <small>Copyright &copy; 2026 Kuthay Gumus. All rights reserved.</small>
+            <nav aria-label="Footer">
+                <a href="/bloomind/privacy/">Privacy Policy</a>
+                <a href="/bloomind/terms/">Terms of Use</a>
+                <a href="/bloomind/support/">Support</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
