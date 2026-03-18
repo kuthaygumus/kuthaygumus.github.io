@@ -17,52 +17,8 @@
     <title>Bloomind — Gizlilik Politikası</title>
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="/assets/shared.css">
     <style>
-        :root {
-            --bg: #fbfbfd;
-            --text: #1d1d1f;
-            --text-secondary: #424245;
-            --text-muted: #86868b;
-            --link: #0066cc;
-            --link-hover: #004499;
-            --rule: rgba(0,0,0,0.08);
-        }
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #111111;
-                --text: #f5f5f7;
-                --text-secondary: #a1a1a6;
-                --text-muted: #6e6e73;
-                --link: #2997ff;
-                --link-hover: #64b5f6;
-                --rule: rgba(255,255,255,0.08);
-            }
-        }
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-            font-size: 17px;
-            line-height: 1.47059;
-            font-weight: 400;
-            letter-spacing: -0.022em;
-            color: var(--text);
-            background: var(--bg);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .topbar { border-bottom: 1px solid var(--rule); padding: 14px 0; }
-        .topbar-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; }
-        .topbar-brand { font-size: 21px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
-        .topbar-nav { display: flex; gap: 24px; align-items: center; }
-        .topbar-nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; letter-spacing: 0; transition: color 0.2s; }
-        .topbar-nav a:hover { color: var(--link); }
-        .topbar-nav a[aria-current="page"] { color: var(--text); font-weight: 500; }
-        .lang-switch { display: flex; align-items: center; gap: 6px; margin-left: 8px; padding-left: 16px; border-left: 1px solid var(--rule); font-size: 14px; }
-        .lang-switch span { opacity: 1; }
-        .lang-switch a { text-decoration: none; opacity: 0.45; transition: opacity 0.2s; font-size: 14px; }
-        .lang-switch a:hover { opacity: 1; text-decoration: none; }
         article { max-width: 660px; margin: 0 auto; padding: 48px 22px 80px; }
         article > header { margin-bottom: 40px; }
         article > header p { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
@@ -76,15 +32,6 @@
         li:last-child { margin-bottom: 0; }
         strong { color: var(--text); font-weight: 600; }
         .highlight { color: var(--text); font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
-        a { color: var(--link); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 3px; }
-        footer { border-top: 1px solid var(--rule); padding: 20px 0; }
-        .footer-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-        footer small { font-size: 12px; color: var(--text-muted); }
-        footer nav { display: flex; gap: 20px; }
-        footer nav a { font-size: 12px; color: var(--text-muted); text-decoration: none; }
-        footer nav a:hover { color: var(--link); }
         @media (max-width: 600px) {
             h1 { font-size: 32px; }
             h2 { font-size: 21px; }
@@ -95,7 +42,11 @@
 <body>
     <div class="topbar" role="banner">
         <div class="topbar-inner">
-            <a href="/bloomind/" class="topbar-brand">Bloomind</a>
+            <div class="topbar-left">
+                <a href="/" class="topbar-back" aria-label="All apps by Kuthay Gumus">All Apps</a>
+                <span class="topbar-sep">/</span>
+                <a href="/bloomind/" class="topbar-brand">Bloomind</a>
+            </div>
             <nav class="topbar-nav" aria-label="Gezinme">
                 <a href="/bloomind/privacy/tr/" aria-current="page">Gizlilik</a>
                 <a href="/bloomind/terms/">Koşullar</a>

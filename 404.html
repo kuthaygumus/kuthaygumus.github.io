@@ -7,8 +7,8 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
     <meta property="og:title" content="Page Not Found — Kuthay Gumus">
     <meta property="og:image" content="https://kuthaygumus.github.io/assets/og-card.png">
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -16,39 +16,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/shared.css">
     <title>Page Not Found — Kuthay Gumus</title>
     <style>
-        :root {
-            --bg: #fafafa;
-            --text: #1a1a1a;
-            --text-secondary: #555555;
-            --text-tertiary: #999999;
-            --accent: #0071e3;
-            --accent-hover: #0060c0;
-        }
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #0a0a0a;
-                --text: #f0f0f0;
-                --text-secondary: #a0a0a0;
-                --text-tertiary: #666666;
-                --accent: #3b9eff;
-                --accent-hover: #5aafff;
-            }
-        }
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { -webkit-text-size-adjust: 100%; }
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-        }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
             font-size: 16px;
             line-height: 1.5;
-            color: var(--text);
-            background: var(--bg);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -76,12 +50,12 @@
             display: inline-block;
             font-size: 15px;
             font-weight: 500;
-            color: var(--accent);
+            color: var(--link);
             text-decoration: none;
             transition: color 0.15s ease;
         }
-        .not-found-link:hover { color: var(--accent-hover); }
-        .not-found-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+        .not-found-link:hover { color: var(--link-hover); }
+        .not-found-link:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 4px; }
     </style>
 </head>
 <body>

@@ -7,8 +7,8 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
     <meta property="og:title" content="Kuthay Gumus — Apps">
     <meta property="og:description" content="Beautiful and useful iOS apps, built with love.">
     <meta property="og:type" content="website">
@@ -19,64 +19,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/shared.css">
     <title>Kuthay Gumus — Apps</title>
     <style>
         :root {
-            --bg: #fafafa;
             --bg-elevated: #ffffff;
-            --text: #1a1a1a;
-            --text-secondary: #555555;
-            --text-tertiary: #999999;
-            --accent: #0071e3;
-            --accent-hover: #0060c0;
-            --rule: rgba(0,0,0,0.06);
             --card-border: rgba(0,0,0,0.06);
             --card-shadow: 0 1px 2px rgba(0,0,0,0.04);
             --card-hover-shadow: 0 8px 30px rgba(0,0,0,0.08);
             --icon-shadow: 0 4px 12px rgba(0,0,0,0.12);
-            --dot: #d4d4d4;
         }
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg: #0a0a0a;
                 --bg-elevated: #161616;
-                --text: #f0f0f0;
-                --text-secondary: #a0a0a0;
-                --text-tertiary: #666666;
-                --accent: #3b9eff;
-                --accent-hover: #5aafff;
-                --rule: rgba(255,255,255,0.06);
                 --card-border: rgba(255,255,255,0.06);
                 --card-shadow: 0 1px 2px rgba(0,0,0,0.2);
                 --card-hover-shadow: 0 8px 30px rgba(0,0,0,0.3);
                 --icon-shadow: 0 4px 12px rgba(0,0,0,0.4);
-                --dot: #333333;
             }
-        }
-
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
             font-size: 16px;
             line-height: 1.5;
-            color: var(--text);
-            background: var(--bg);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        a { color: var(--accent); text-decoration: none; transition: color 0.15s ease; }
-        a:hover { color: var(--accent-hover); }
-        a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+        a { transition: color 0.15s ease; }
+        a:focus-visible { outline-offset: 3px; border-radius: 4px; }
 
         .container { max-width: 640px; width: 100%; margin: 0 auto; padding: 0 24px; }
 
@@ -91,7 +64,7 @@
             gap: 6px;
             font-size: 13px;
             font-weight: 500;
-            color: var(--text-tertiary);
+            color: var(--text-muted);
             letter-spacing: 0.02em;
             margin-bottom: 24px;
         }
@@ -99,7 +72,7 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: var(--accent);
+            background: var(--link);
             opacity: 0.7;
         }
         .hero h1 {
@@ -130,7 +103,7 @@
         .divider-text {
             font-size: 11px;
             font-weight: 600;
-            color: var(--text-tertiary);
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.08em;
         }
@@ -228,38 +201,13 @@
         }
         .app-legal a {
             font-size: 13px;
-            color: var(--text-tertiary);
+            color: var(--text-muted);
             transition: color 0.15s ease;
         }
         .app-legal a:hover { color: var(--text-secondary); }
 
         /* ---- Footer ---- */
-        footer {
-            margin-top: auto;
-            padding: 40px 0;
-        }
-        .footer-content {
-            text-align: center;
-        }
-        .footer-content p {
-            font-size: 13px;
-            color: var(--text-tertiary);
-            line-height: 1.6;
-        }
-        .footer-content a {
-            color: var(--text-tertiary);
-            transition: color 0.15s ease;
-        }
-        .footer-content a:hover { color: var(--text-secondary); }
-        .footer-separator {
-            display: inline-block;
-            width: 3px;
-            height: 3px;
-            border-radius: 50%;
-            background: var(--dot);
-            margin: 0 10px;
-            vertical-align: middle;
-        }
+        footer { margin-top: auto; }
 
         /* ---- Responsive ---- */
         @media (max-width: 600px) {
@@ -384,14 +332,11 @@
     </main>
 
     <footer role="contentinfo">
-        <div class="container">
-            <div class="footer-content">
-                <p>
-                    &copy; 2026 Kuthay Gumus
-                    <span class="footer-separator"></span>
-                    <a href="mailto:kuthaygumus@icloud.com">kuthaygumus@icloud.com</a>
-                </p>
-            </div>
+        <div class="footer-inner">
+            <small>Copyright &copy; 2026 Kuthay Gumus. All rights reserved.</small>
+            <nav aria-label="Footer">
+                <a href="mailto:kuthaygumus@icloud.com">kuthaygumus@icloud.com</a>
+            </nav>
         </div>
     </footer>
 
