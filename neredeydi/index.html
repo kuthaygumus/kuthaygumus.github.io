@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Neredeydi — Türkiye ve dünya coğrafyasını günlük gizem, harita tahmin oyunları ve emoji skor kartlarıyla öğreten iOS oyunu.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="Neredeydi — Coğrafya Tahmin Oyunu">
+    <meta property="og:description" content="Günün gizemi, harita tahmin modları, Widget &amp; Siri kısayolu. Türkiye ve dünya coğrafyası senin için bir oyun haline geliyor.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kuthaygumus.github.io/neredeydi/">
+    <meta property="og:image" content="https://kuthaygumus.github.io/assets/og-card.png">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <title>Neredeydi — Coğrafya Tahmin Oyunu</title>
+    <link rel="stylesheet" href="/assets/shared.css">
+    <style>
+        .hero { text-align: center; padding: 64px 22px 48px; max-width: 660px; margin: 0 auto; }
+        .hero-icon { width: 120px; height: 120px; border-radius: 27px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); margin-bottom: 24px; }
+        .hero h1 { font-size: 44px; line-height: 1.08; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; }
+        .hero-subtitle { font-size: 21px; color: var(--text-secondary); line-height: 1.38; letter-spacing: -0.01em; }
+
+        .section { max-width: 660px; margin: 0 auto; padding: 0 22px 56px; }
+        .section-title { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+        .section-desc { color: var(--text-secondary); margin-bottom: 24px; }
+
+        .pillar-box { background: var(--card-bg); border-radius: 12px; padding: 24px; margin-bottom: 32px; }
+        .pillar-box p { color: var(--text-secondary); margin-bottom: 0; }
+        .pillar-row { display: flex; gap: 16px; margin-top: 16px; text-align: center; }
+        .pillar { flex: 1; }
+        .pillar .num { font-size: 28px; font-weight: 700; color: var(--link); }
+        .pillar .label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+        .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .feature { background: var(--card-bg); border-radius: 12px; padding: 20px; }
+        .feature-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .feature-desc { font-size: 14px; color: var(--text-muted); line-height: 1.4; }
+
+        .plan-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px; }
+        .plan-table th { text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); padding: 0 0 10px; border-bottom: 1px solid var(--rule); }
+        .plan-table td { padding: 12px 0; color: var(--text-secondary); border-bottom: 1px solid var(--rule); vertical-align: top; }
+        .plan-table td:first-child { font-weight: 500; color: var(--text); }
+        .plan-table td:last-child { text-align: right; font-weight: 600; color: var(--text); }
+        .plan-table tr:last-child td { border-bottom: none; }
+        .free-note { font-size: 15px; color: var(--text-secondary); margin-bottom: 16px; }
+
+        .badge-wrap { text-align: center; padding: 0 22px 56px; }
+        .app-store-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--text); color: var(--bg);
+            padding: 12px 24px; border-radius: 12px;
+            font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
+            text-decoration: none; transition: opacity 0.15s ease;
+        }
+        .app-store-badge:hover { opacity: 0.85; color: var(--bg); text-decoration: none; }
+        .app-store-badge svg { flex-shrink: 0; }
+        .badge-text-group { display: flex; flex-direction: column; line-height: 1; }
+        .badge-small { font-size: 9px; font-weight: 400; letter-spacing: 0.01em; opacity: 0.85; }
+        .badge-large { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; margin-top: 2px; }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 34px; }
+            .hero-subtitle { font-size: 19px; }
+            .hero-icon { width: 96px; height: 96px; border-radius: 22px; }
+            .section-title { font-size: 24px; }
+            .features { grid-template-columns: 1fr; }
+            .pillar-row { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar" role="banner">
+        <div class="topbar-inner">
+            <div class="topbar-left">
+                <a href="/" class="topbar-back" aria-label="Kuthay Gumus tüm uygulamaları">All Apps</a>
+                <span class="topbar-sep">/</span>
+                <a href="/neredeydi/" class="topbar-brand" aria-current="page">Neredeydi</a>
+            </div>
+            <nav class="topbar-nav" aria-label="Gezinme">
+                <a href="/neredeydi/privacy/">Gizlilik</a>
+                <a href="/neredeydi/terms/">Koşullar</a>
+                <a href="/neredeydi/support/">Destek</a>
+            </nav>
+        </div>
+    </div>
+
+    <main role="main">
+        <section class="hero">
+            <img src="/assets/icons/neredeydi.png" alt="Neredeydi uygulama simgesi" class="hero-icon" width="120" height="120" loading="eager">
+            <h1>Neredeydi</h1>
+            <p class="hero-subtitle">Günün gizemi, harita tahmin modları ve emoji skor kartlarıyla Türkiye'nin ve dünyanın coğrafyasını öğren.</p>
+        </section>
+
+        <section class="section" aria-labelledby="how-title">
+            <h2 id="how-title" class="section-title">Nasıl çalışır</h2>
+            <p class="section-desc">Her sabah yeni bir yer. Üç ipucu. Tek tahmin. Paylaşılır bir emoji kartı.</p>
+            <div class="pillar-box">
+                <p>Neredeydi'nin omurgası dört oyun moduna ve günlük bir gizem ritüeline dayanır. Klasik tahmin, zamana karşı yarış, ters mod (çoktan seçmeli) ve öğrenme modu — hepsi haritada.</p>
+                <div class="pillar-row">
+                    <div class="pillar"><div class="num">81</div><div class="label">il</div></div>
+                    <div class="pillar"><div class="num">5</div><div class="label">Türkiye kategorisi</div></div>
+                    <div class="pillar"><div class="num">4</div><div class="label">dünya kıtası</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="features-title">
+            <h2 id="features-title" class="section-title">Öne çıkanlar</h2>
+            <p class="section-desc">Karakterli bir maskot (Pingo), günlük seri (🔥), bölge bazlı ısı haritası ve daha fazlası.</p>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-name">Günün Gizemi</div>
+                    <div class="feature-desc">Üç kademeli ipucu sistemi. Doğru tahmin → emoji skor kartı (🟩🟨🟧🟥) paylaşılır.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Türkiye + Dünya</div>
+                    <div class="feature-desc">İl, dağ, göl, nehir, ova; dört kıta üzerinde başkentler ve ülkeler.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">4 Oyun Modu</div>
+                    <div class="feature-desc">Klasik, zamana karşı, çoktan seçmeli ters mod ve baskısız öğrenme modu.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Widget &amp; Siri</div>
+                    <div class="feature-desc">Ana ekran ve kilit ekranı widget'ı; "Hey Siri, günün gizemi" kısayolu.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Game Center</div>
+                    <div class="feature-desc">Liderlik tabloları ve başarımlar — isteğe bağlı, Apple Game Center hesabınla.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Bölge Isı Haritası</div>
+                    <div class="feature-desc">7 bölge bazlı performansını gör; hangi bölgeyi yakaladın, hangisi açık?</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="pricing-title">
+            <h2 id="pricing-title" class="section-title">Fiyatlandırma</h2>
+            <p class="free-note">İller tamamen ücretsiz. Diğer kategorilerden ve dünya modundan günde bir oyun ücretsiz oynayabilirsin. Sınırsız erişim için tek seferlik bir Pro yükseltmesi var — abonelik yok.</p>
+            <table class="plan-table">
+                <thead>
+                    <tr>
+                        <th>Plan</th>
+                        <th>Detay</th>
+                        <th>Fiyat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Ücretsiz</td><td>İller sınırsız + diğer kategorilerden 1/gün + Günün Gizemi</td><td>—</td></tr>
+                    <tr><td>Neredeydi Pro</td><td>Tüm kategoriler ve dünya modu, sınırsız oyun, ömür boyu</td><td>$2.99 / ₺99.99</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div class="badge-wrap">
+            <a href="https://apps.apple.com/app/neredeydi" class="app-store-badge" aria-label="Neredeydi'yi App Store'dan indir">
+                <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M16.87 12.65c-.03-2.7 2.2-3.99 2.3-4.05-1.25-1.83-3.2-2.08-3.9-2.11-1.66-.17-3.24.98-4.08.98-.84 0-2.15-.96-3.53-.93-1.82.03-3.5 1.06-4.44 2.69-1.89 3.28-.48 8.14 1.36 10.81.9 1.3 1.97 2.77 3.38 2.72 1.36-.05 1.87-.88 3.51-.88 1.64 0 2.1.88 3.54.85 1.46-.02 2.4-1.33 3.29-2.64 1.04-1.51 1.46-2.98 1.49-3.05-.03-.01-2.86-1.1-2.89-4.36l-.03-.03z" fill="currentColor"/>
+                    <path d="M14.13 4.32c.75-.91 1.25-2.17 1.11-3.43-1.08.04-2.38.72-3.15 1.62-.69.8-1.29 2.08-1.13 3.3 1.2.09 2.43-.61 3.17-1.49z" fill="currentColor"/>
+                </svg>
+                <span class="badge-text-group">
+                    <span class="badge-small">App Store'dan</span>
+                    <span class="badge-large">İndir</span>
+                </span>
+            </a>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-inner">
+            <small>Copyright &copy; 2026 Kuthay Gumus. All rights reserved.</small>
+            <nav aria-label="Footer">
+                <a href="/neredeydi/privacy/">Gizlilik</a>
+                <a href="/neredeydi/terms/">Koşullar</a>
+                <a href="/neredeydi/support/">Destek</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
