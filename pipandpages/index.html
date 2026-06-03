@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pip & Pages — a cozy, privacy-first reading companion for iPhone and iPad. Track books, time reading sessions, save quotes, and build reading streaks with Pip.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="Pip & Pages — Your Cozy Reading Companion">
+    <meta property="og:description" content="Track books, time reading sessions, save quotes, and build reading streaks with Pip. Privacy-first, on-device, on iPhone and iPad.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kuthaygumus.github.io/pipandpages/">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <title>Pip & Pages — Your Cozy Reading Companion</title>
+    <link rel="stylesheet" href="/assets/shared.css">
+    <style>
+        .hero { text-align: center; padding: 64px 22px 48px; max-width: 660px; margin: 0 auto; }
+        .hero h1 { font-size: 44px; line-height: 1.08; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; }
+        .hero-subtitle { font-size: 21px; color: var(--text-secondary); line-height: 1.38; letter-spacing: -0.01em; }
+
+        .section { max-width: 660px; margin: 0 auto; padding: 0 22px 56px; }
+        .section-title { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+        .section-desc { color: var(--text-secondary); margin-bottom: 24px; }
+
+        .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .feature { background: var(--card-bg); border-radius: 12px; padding: 20px; }
+        .feature-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .feature-desc { font-size: 14px; color: var(--text-muted); line-height: 1.4; }
+        .feature .tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--link); margin-left: 6px; }
+
+        .plan-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px; }
+        .plan-table th { text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); padding: 0 0 10px; border-bottom: 1px solid var(--rule); }
+        .plan-table td { padding: 12px 0; color: var(--text-secondary); border-bottom: 1px solid var(--rule); vertical-align: top; }
+        .plan-table td:first-child { font-weight: 500; color: var(--text); }
+        .plan-table td:last-child { text-align: right; font-weight: 600; color: var(--text); }
+        .plan-table tr:last-child td { border-bottom: none; }
+        .plan-note { font-size: 14px; color: var(--text-muted); margin-top: 8px; }
+        .free-note { font-size: 15px; color: var(--text-secondary); margin-bottom: 16px; }
+
+        .soon { text-align: center; padding: 0 22px 64px; }
+        .soon-pill { display: inline-block; background: var(--card-bg); color: var(--text-secondary); padding: 12px 24px; border-radius: 999px; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 34px; }
+            .hero-subtitle { font-size: 19px; }
+            .section-title { font-size: 24px; }
+            .features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar" role="banner">
+        <div class="topbar-inner">
+            <div class="topbar-left">
+                <a href="/" class="topbar-back" aria-label="All apps by Kuthay Gumus">All Apps</a>
+                <span class="topbar-sep">/</span>
+                <a href="/pipandpages/" class="topbar-brand">Pip &amp; Pages</a>
+            </div>
+            <nav class="topbar-nav" aria-label="Navigation">
+                <a href="/pipandpages/privacy/">Privacy</a>
+                <a href="/pipandpages/terms/">Terms</a>
+                <a href="/pipandpages/support/">Support</a>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <h1>Pip &amp; Pages</h1>
+            <p class="hero-subtitle">Your cozy reading companion. Track books, time your reading, and build a streak — with Pip, your reading mouse.</p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">A calmer way to read</h2>
+            <p class="section-desc">Pip &amp; Pages keeps your reading life in one cozy place — and keeps it entirely on your device. No accounts, no ads, no tracking. Ever.</p>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-name">Book Tracking</div>
+                    <div class="feature-desc">Add books by searching or scanning the barcode (ISBN), and follow your progress.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Reading Sessions</div>
+                    <div class="feature-desc">A gentle timer for your reading, with pages-per-hour and session history.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Quotes</div>
+                    <div class="feature-desc">Save the lines worth keeping<span class="tag">OCR · Pro</span></div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Reading Streaks</div>
+                    <div class="feature-desc">Build a daily reading habit and watch your streak grow.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Widgets</div>
+                    <div class="feature-desc">Your current book and streak on the Home Screen and Lock Screen.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Privacy-First</div>
+                    <div class="feature-desc">On-device storage with optional private iCloud sync across your devices.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Reflect</div>
+                    <div class="feature-desc">Mood logs and a year-end reading story<span class="tag">Pro</span></div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Make Pip Yours</div>
+                    <div class="feature-desc">Shareable quote cards, CSV import, and Pip costumes<span class="tag">Pro</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Pricing</h2>
+            <p class="free-note">Pip &amp; Pages is free to use — unlimited books, quotes, reading sessions, streaks, the widget, and iCloud sync are all included. Unlock everything with Pip Pro:</p>
+            <table class="plan-table">
+                <thead>
+                    <tr>
+                        <th>Plan</th>
+                        <th>Details</th>
+                        <th>Price (USD)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Yearly</td>
+                        <td>Auto-renewable, billed annually</td>
+                        <td>$4.99</td>
+                    </tr>
+                    <tr>
+                        <td>Lifetime</td>
+                        <td>One-time purchase</td>
+                        <td>$19.99</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="plan-note">Prices shown are in U.S. dollars. Actual prices may vary by country and are displayed in your local currency at the time of purchase.</p>
+        </section>
+
+        <div class="soon">
+            <span class="soon-pill">Coming soon to the App Store</span>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-inner">
+            <small>Copyright &copy; 2026 Kuthay Gumus. All rights reserved.</small>
+            <nav aria-label="Footer">
+                <a href="/pipandpages/privacy/">Privacy Policy</a>
+                <a href="/pipandpages/terms/">Terms of Use</a>
+                <a href="/pipandpages/support/">Support</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
