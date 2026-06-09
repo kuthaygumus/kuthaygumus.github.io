@@ -21,6 +21,7 @@
         .hero { text-align: center; padding: 64px 22px 48px; max-width: 660px; margin: 0 auto; }
         .hero h1 { font-size: 44px; line-height: 1.08; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; }
         .hero-subtitle { font-size: 21px; color: var(--text-secondary); line-height: 1.38; letter-spacing: -0.01em; }
+        .hero-icon { width: 120px; height: 120px; border-radius: 27px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); margin-bottom: 24px; }
 
         .section { max-width: 660px; margin: 0 auto; padding: 0 22px 56px; }
         .section-title { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
@@ -47,6 +48,7 @@
         @media (max-width: 600px) {
             .hero h1 { font-size: 34px; }
             .hero-subtitle { font-size: 19px; }
+            .hero-icon { width: 96px; height: 96px; border-radius: 22px; }
             .section-title { font-size: 24px; }
             .features { grid-template-columns: 1fr; }
         }
@@ -70,6 +72,7 @@
 
     <main>
         <section class="hero">
+            <img src="../assets/icons/pipandpages.png" alt="Pip & Pages app icon" class="hero-icon" width="120" height="120">
             <h1>Pip &amp; Pages</h1>
             <p class="hero-subtitle">Your cozy reading companion. Track books, time your reading, and build a streak — with Pip, your reading mouse.</p>
         </section>
@@ -126,14 +129,19 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td>Monthly</td>
+                        <td>Auto-renewable, billed monthly</td>
+                        <td>$2.99</td>
+                    </tr>
+                    <tr>
                         <td>Yearly</td>
-                        <td>Auto-renewable, billed annually</td>
-                        <td>$4.99</td>
+                        <td>Auto-renewable, billed annually &mdash; includes a 7-day free trial (best value)</td>
+                        <td>$14.99</td>
                     </tr>
                     <tr>
                         <td>Lifetime</td>
-                        <td>One-time purchase</td>
-                        <td>$19.99</td>
+                        <td>One-time purchase, no subscription</td>
+                        <td>$29.99</td>
                     </tr>
                 </tbody>
             </table>
