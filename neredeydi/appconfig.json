@@ -1,0 +1,7 @@
+{
+  "_doc": "Neredeydi remote version gate. Edit + push to control updates with NO app rebuild. 'minVersion': installed BELOW this gets a blocking 'update required' screen (hard force). 'latestVersion': installed below this (but at/above min) gets a dismissible soft nudge. Default below is soft-only (minVersion 1.0.0 blocks nobody). To force everyone onto a build, raise minVersion to that version. Fail-open: if this file is unreachable the app does nothing.",
+  "ios": {
+    "minVersion": "1.0.0",
+    "latestVersion": "1.1.0"
+  }
+}
