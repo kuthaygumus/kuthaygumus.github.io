@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A Truce Code duel — see your friend's streak and find out what day YOU are on.">
+    <!-- Smart App Banner: app-id filled once the ASC record exists. app-argument passes the full duel
+         URL so an installed Truce deep-links to the in-app head-to-head instead of rendering here. -->
+    <meta name="apple-itunes-app" content="app-id=APPSTORE_ID_TBD, app-argument=https://kuthaygumus.github.io/truce/vs/">
+    <!-- This page renders a duel payload CLIENT-SIDE (no backend, no build step). It therefore needs
+         script-src 'self' (external vs.js) — unlike the rest of the site which is script-src 'none'.
+         connect-src 'none': the decode is pure local string math, the page never phones home. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="Truce — kaçıncı gündesin?">
+    <meta property="og:description" content="Arkadaşın seni bir düelloya çağırdı. Sen kaçıncı gündesin?">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <title>Truce — Düello</title>
+    <link rel="stylesheet" href="/assets/shared.css">
+    <style>
+        .duel { max-width: 32rem; margin: 0 auto; padding: 2.5rem 1.25rem; text-align: center; }
+        .duel-card { border: 1px solid currentColor; border-radius: 1.25rem; padding: 1.75rem 1.25rem; margin: 1.5rem 0; }
+        .duel-day { font-size: clamp(3rem, 16vw, 5.5rem); font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+        .duel-label { font-size: 0.95rem; opacity: 0.65; }
+        .duel-stats { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; font-size: 0.9rem; opacity: 0.8; }
+        .duel-line { font-size: 1.2rem; line-height: 1.45; margin: 1.25rem 0; }
+        .duel-cta { display: inline-block; margin-top: 0.5rem; padding: 0.7rem 1.4rem; border-radius: 999px; border: 1px solid currentColor; text-decoration: none; font-weight: 600; }
+        .duel-fine { font-size: 0.8rem; opacity: 0.55; margin-top: 1.5rem; }
+    </style>
+</head>
+<body>
+    <main class="duel" id="duel">
+        <!-- vs.js fills this. The noscript fallback below keeps the joke landing even with JS disabled;
+             the share-sheet caption (set by the app) also carries the human-readable challenge per §2.1. -->
+        <noscript>
+            <h1>Sen kaçıncı gündesin?</h1>
+            <p class="duel-line">Bir arkadaşın seni Truce düellosuna çağırdı. 🫠</p>
+            <a class="duel-cta" href="/truce/">Truce'u aç →</a>
+        </noscript>
+    </main>
+    <script src="/truce/vs/vs.js"></script>
+</body>
+</html>

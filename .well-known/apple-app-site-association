@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["5G27VDC5EA.com.kgumus.truce"],
+        "components": [
+          {
+            "/": "/truce/*",
+            "comment": "Truce universal links: /truce (day-share landing) and /truce/vs (the Truce Code duel). The day number / payload is carried in the path or query; the app parses it. AASA must live at the domain ROOT (.well-known) even though links are scoped to /truce/*."
+          }
+        ]
+      }
+    ]
+  }
+}

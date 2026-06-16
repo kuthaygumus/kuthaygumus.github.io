@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support for Truce, a private on-device relationship streak tracker for iOS. FAQs, getting started, and contact information.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="Truce — Support">
+    <meta property="og:description" content="Get help with Truce. FAQs, getting started, and contact information.">
+    <meta property="og:type" content="website">
+    <link rel="alternate" hreflang="en" href="/truce/privacy/en/">
+    <link rel="alternate" hreflang="tr" href="/truce/privacy/tr/">
+    <title>Truce — Support</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="/assets/shared.css">
+    <style>
+        article { max-width: 660px; margin: 0 auto; padding: 48px 22px 80px; }
+        article > header { margin-bottom: 40px; }
+        h1 { font-size: 40px; line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+        h2 { font-size: 24px; line-height: 1.16667; font-weight: 600; letter-spacing: -0.015em; color: var(--text); margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid var(--rule); }
+        h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+        h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); margin-top: 28px; margin-bottom: 8px; }
+        p { color: var(--text-secondary); margin-bottom: 16px; }
+        p:last-child { margin-bottom: 0; }
+        ul, ol { padding-left: 1.3em; margin-bottom: 16px; color: var(--text-secondary); }
+        li { margin-bottom: 6px; }
+        li:last-child { margin-bottom: 0; }
+        strong { color: var(--text); font-weight: 600; }
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; }
+            h2 { font-size: 21px; }
+            article { padding: 32px 20px 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar" role="banner">
+        <div class="topbar-inner">
+            <div class="topbar-left">
+                <a href="/" class="topbar-back" aria-label="All apps by Kuthay Gumus">All Apps</a>
+                <span class="topbar-sep">/</span>
+                <a href="/truce/" class="topbar-brand">Truce</a>
+            </div>
+            <nav class="topbar-nav" aria-label="Navigation">
+                <a href="/truce/privacy/en/">Privacy</a>
+                <a href="/truce/support/" aria-current="page">Support</a>
+                <div class="lang-switch" aria-label="Language">
+                    <span aria-current="true" title="English">&#x1F1EC;&#x1F1E7;</span>
+                    <a href="/truce/privacy/tr/" title="Türkçe">&#x1F1F9;&#x1F1F7;</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <article role="main">
+        <header>
+            <h1>Support</h1>
+        </header>
+
+        <h2 id="getting-started">Getting Started</h2>
+        <p>Welcome to Truce! Truce is a private, on-device app that counts the days since your last argument — a lighthearted relationship humor and self-reflection streak tracker, guided by its mascot Bicky. To get started, open the app and your day counter begins. Everything you do stays on your device.</p>
+        <p>There is <strong>no account and no sign-in</strong> — just open the app and start your streak.</p>
+
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <h3 id="private">Is my data private?</h3>
+        <p>Yes. All of your data is stored <strong>locally on your device</strong> using Apple's SwiftData framework. There is no account, no sign-in, and no cloud sync. Truce operates no server or backend, makes no network requests to collect or transmit your data, and includes no analytics, tracking, advertising, or third-party SDKs. Truce also requests no access to your location, contacts, photos, microphone, camera, or health data.</p>
+
+        <h3 id="share">How do I share a streak or a duel?</h3>
+        <p>When <strong>you</strong> choose to share a streak or start a "Truce Code" duel, the app generates a link of the form <code>kuthaygumus.github.io/truce/vs?…</code> that encodes <strong>only the data you chose to share</strong>. The web page that renders a shared duel decodes that link <strong>in your browser (client-side only)</strong> — no server receives or stores it. Where you send the link, and to whom, is entirely your choice.</p>
+
+        <h3 id="backup">How do I restore a backup?</h3>
+        <p>Truce offers an optional encrypted <code>.truce</code> backup that you protect with a password and save wherever <strong>you</strong> choose (for example, the Files app or your own iCloud Drive at your discretion). To restore, open the exported <code>.truce</code> file from within the app and enter the password you set when you created it. Truce does not manage or upload your backup file — it stays under your control at all times.</p>
+
+        <h3 id="ai">Where is the in-app text generated?</h3>
+        <p>Any text the app generates is produced <strong>on your device</strong> using Apple Intelligence / an on-device model. Nothing is sent to a server, so this works privately and does not require a network connection.</p>
+
+        <h3 id="restore-purchases">How do I restore my purchases?</h3>
+        <p>In-app purchases go through Apple's StoreKit, and Apple processes the payment — Truce never sees your payment details. If you reinstall the app or set up a new device, open the app and use the <strong>Restore Purchases</strong> option to recover purchases tied to your Apple ID. Make sure you are signed in with the same Apple ID you used for the original purchase.</p>
+
+        <h2 id="contact">Contact</h2>
+        <p>Can't find what you're looking for? Reach out to us directly at <a href="mailto:kuthaygumus@icloud.com">kuthaygumus@icloud.com</a>. We typically respond within 24 hours.</p>
+    </article>
+
+    <footer role="contentinfo">
+        <div class="footer-inner">
+            <small>Copyright &copy; 2026 Kuthay Gumus. All rights reserved.</small>
+            <nav aria-label="Footer">
+                <a href="/truce/privacy/en/">Privacy Policy</a>
+                <a href="/truce/support/">Support</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Truce — a funny, private little counter for the days since you last argued with your spouse. Mostly stuck on Day 1. Made by Bicky, the long-suffering lovebird.">
+    <!-- Smart App Banner: the app-id is the NUMERIC App Store ID, which only exists after the
+         App Store Connect record is created (a Kral/ASC step). Fill APPSTORE_ID_TBD then. The
+         app-argument carries the universal link so an installed app deep-links instead of opening the page. -->
+    <meta name="apple-itunes-app" content="app-id=APPSTORE_ID_TBD, app-argument=https://kuthaygumus.github.io/truce/">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="Truce — Day 1. Again.">
+    <meta property="og:description" content="A funny, private counter for the days since you last argued. What day are YOU on?">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kuthaygumus.github.io/truce/">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <title>Truce — Day 1. Again.</title>
+    <link rel="stylesheet" href="/assets/shared.css">
+    <style>
+        .truce-hero { text-align: center; padding: 3rem 1.25rem 1.5rem; }
+        .truce-day { font-size: clamp(3.5rem, 18vw, 7rem); font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+        .truce-sub { font-size: 1.15rem; opacity: 0.7; margin-top: 0.5rem; }
+        .truce-pitch { max-width: 34rem; margin: 1.5rem auto; text-align: center; line-height: 1.5; }
+        .truce-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin: 1.25rem 0; }
+        .truce-badge { font-size: 0.85rem; padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid currentColor; opacity: 0.75; }
+    </style>
+</head>
+<body>
+    <main class="truce-hero">
+        <div class="truce-day">1<span style="font-size:0.4em;font-weight:600;opacity:0.6">. gün</span></div>
+        <p class="truce-sub">Eşimle tartışmadım. Yine. 🫠</p>
+
+        <div class="truce-badges">
+            <span class="truce-badge">Abonelik yok, hiçbir zaman</span>
+            <span class="truce-badge">No subscription, ever</span>
+            <span class="truce-badge">On-device · Data Not Collected</span>
+        </div>
+
+        <p class="truce-pitch">
+            <strong>Truce</strong> is a funny little counter for the days since you last argued with your
+            partner — usually stuck on Day&nbsp;1. When you reset, <strong>Bicky</strong> (the long-suffering
+            lovebird) reacts, and you get a share card worth screenshotting. Private, offline, one-time purchase.
+            <br><br>
+            <em>What day are YOU on?</em>
+        </p>
+
+        <!-- App Store badge goes here once live (id6xxxxxxxxx). Until then the Smart App Banner above
+             handles install on iOS. Privacy / Terms / Support pages are a submission-gate deliverable (TODO before submit). -->
+    </main>
+</body>
+</html>
