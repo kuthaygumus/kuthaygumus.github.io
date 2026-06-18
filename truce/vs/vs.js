@@ -17,6 +17,12 @@
 
   var PAYLOAD_VERSION = 1;
 
+  // The real App Store product (com.kgumus.truce → 6780033643). SINGLE LAUNCH FLAG: while LAUNCHED is
+  // false the duel CTA points at the landing page (whose Smart App Banner handles iOS install once the
+  // app is live) because the apps.apple.com URL 404s before publication. Flip to true at App Store launch.
+  var LAUNCHED = false;
+  var APP_STORE_URL = "https://apps.apple.com/app/id6780033643";
+
   // Canonical ReasonCode order (index === app enum rawValue: dishes=0 … other=7).
   var REASONS = {
     tr: ["Bulaşık", "Kıskançlık", "Telefon", "Klima savaşı", "Para", "Kayınlar", "Sebepsiz", "Diğer"],
@@ -35,7 +41,7 @@
       reason: "Baş suçlu",
       tier: "Bicky",
       challenge: function (d) { return "Arkadaşın " + d + ". günde. Sen kaçıncı gündesin? 🫠"; },
-      cta: "Truce'u aç →",
+      cta: "Truce'u indir, cevap ver →",
       stale: "Karşılaştırmak için Truce'u güncelle.",
       generic: "Bir arkadaşın seni Truce düellosuna çağırdı. Sen kaçıncı gündesin?",
       fine: "Truce: tartışmasız geçen günlerin komik sayacı. Abonelik yok. On-device."
@@ -47,7 +53,7 @@
       reason: "Prime suspect",
       tier: "Bicky",
       challenge: function (d) { return "Your friend is on Day " + d + ". What day are YOU on? 🫠"; },
-      cta: "Open Truce →",
+      cta: "Get Truce to answer →",
       stale: "Update Truce to compare.",
       generic: "A friend challenged you to a Truce duel. What day are YOU on?",
       fine: "Truce: a funny counter for the days since you last argued. No subscription. On-device."
@@ -90,7 +96,9 @@
 
   function ctaButton() {
     var a = el("a", "duel-cta", T.cta);
-    a.setAttribute("href", "/truce/");
+    // Pre-launch the apps.apple.com URL 404s, so fall back to the landing page (whose Smart App Banner
+    // carries the real app-id and handles iOS install). Flip LAUNCHED at App Store launch — one edit.
+    a.setAttribute("href", LAUNCHED ? APP_STORE_URL : "/truce/");
     return a;
   }
 

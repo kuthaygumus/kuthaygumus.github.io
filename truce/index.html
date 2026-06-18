@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Truce — a funny, private little counter for the days since you last argued with your spouse. Mostly stuck on Day 1. Made by Bicky, the long-suffering lovebird.">
-    <!-- Smart App Banner: the app-id is the NUMERIC App Store ID, which only exists after the
-         App Store Connect record is created (a Kral/ASC step). Fill APPSTORE_ID_TBD then. The
-         app-argument carries the universal link so an installed app deep-links instead of opening the page. -->
-    <meta name="apple-itunes-app" content="app-id=APPSTORE_ID_TBD, app-argument=https://kuthaygumus.github.io/truce/">
+    <!-- Smart App Banner: the NUMERIC App Store ID from the App Store Connect record
+         (com.kgumus.truce → 6780033643). iOS Safari renders the native install banner automatically
+         once the app is live, and stays silent until then — safe to ship pre-launch. The app-argument
+         carries the universal link so an installed app deep-links instead of opening the page. -->
+    <meta name="apple-itunes-app" content="app-id=6780033643, app-argument=https://kuthaygumus.github.io/truce/">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'none'; script-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -28,9 +29,17 @@
         .truce-pitch { max-width: 34rem; margin: 1.5rem auto; text-align: center; line-height: 1.5; }
         .truce-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin: 1.25rem 0; }
         .truce-badge { font-size: 0.85rem; padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid currentColor; opacity: 0.75; }
+        .truce-cta { display: inline-block; margin: 0.75rem auto 0; padding: 0.85rem 1.6rem; border-radius: 14px; background: #3E7C6B; color: #fff; font-weight: 700; font-size: 1.05rem; text-decoration: none; }
+        .truce-cta:active { opacity: 0.85; }
+        .truce-cta-note { font-size: 0.8rem; opacity: 0.6; margin-top: 0.65rem; }
+        /* SINGLE LAUNCH FLAG: while <body class="prelaunch">, the App Store CTA stays hidden because the
+           apps.apple.com link 404s until the app is published. To go live, delete `prelaunch` from the
+           <body> tag below — one edit. The Smart App Banner (real app-id above) already handles iOS
+           install the moment the app is live, with no further change. */
+        .prelaunch .truce-cta, .prelaunch .truce-cta-note { display: none; }
     </style>
 </head>
-<body>
+<body class="prelaunch">
     <main class="truce-hero">
         <div class="truce-day">1<span style="font-size:0.4em;font-weight:600;opacity:0.6">. gün</span></div>
         <p class="truce-sub">Eşimle tartışmadım. Yine. 🫠</p>
@@ -49,8 +58,10 @@
             <em>What day are YOU on?</em>
         </p>
 
-        <!-- App Store badge goes here once live (id6xxxxxxxxx). Until then the Smart App Banner above
-             handles install on iOS. Privacy / Terms / Support pages are a submission-gate deliverable (TODO before submit). -->
+        <!-- The real install CTA. Hidden by the `prelaunch` body class until the app is published
+             (the App Store URL 404s before launch). Remove `prelaunch` from <body> to reveal it. -->
+        <a class="truce-cta" href="https://apps.apple.com/app/id6780033643">Download on the App Store</a>
+        <p class="truce-cta-note">iPhone &amp; iPad · one-time purchase · no subscription</p>
     </main>
 </body>
 </html>
