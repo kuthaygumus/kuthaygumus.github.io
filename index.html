@@ -24,18 +24,22 @@
     <style>
         :root {
             --bg-elevated: #ffffff;
-            --card-border: rgba(0,0,0,0.06);
-            --card-shadow: 0 1px 2px rgba(0,0,0,0.04);
-            --card-hover-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            --icon-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            --card-border: rgba(0,0,0,0.07);
+            --card-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            --card-hover-shadow: 0 18px 40px -14px rgba(0,0,0,0.20), 0 6px 14px -8px rgba(0,0,0,0.10);
+            --icon-shadow: 0 6px 16px rgba(0,0,0,0.14);
+            --glow: rgba(0,102,204,0.10);
+            --ring: rgba(0,0,0,0.10);
         }
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg-elevated: #161616;
-                --card-border: rgba(255,255,255,0.06);
-                --card-shadow: 0 1px 2px rgba(0,0,0,0.2);
-                --card-hover-shadow: 0 8px 30px rgba(0,0,0,0.3);
-                --icon-shadow: 0 4px 12px rgba(0,0,0,0.4);
+                --bg-elevated: #181818;
+                --card-border: rgba(255,255,255,0.08);
+                --card-shadow: 0 1px 2px rgba(0,0,0,0.4);
+                --card-hover-shadow: 0 18px 44px -14px rgba(0,0,0,0.65), 0 6px 14px -8px rgba(0,0,0,0.45);
+                --icon-shadow: 0 6px 16px rgba(0,0,0,0.5);
+                --glow: rgba(41,151,255,0.16);
+                --ring: rgba(255,255,255,0.14);
             }
         }
 
@@ -54,140 +58,107 @@
         .container { max-width: 640px; width: 100%; margin: 0 auto; padding: 0 24px; }
 
         /* ---- Hero ---- */
-        .hero {
-            padding: 96px 0 72px;
-            text-align: center;
+        .hero { position: relative; padding: 104px 0 76px; text-align: center; overflow: hidden; }
+        .hero::before {
+            content: "";
+            position: absolute; left: 50%; top: -120px;
+            width: 720px; height: 720px; max-width: 150vw;
+            transform: translateX(-50%);
+            background: radial-gradient(circle, var(--glow) 0%, transparent 62%);
+            pointer-events: none;
+        }
+        .hero .container { position: relative; }
+        .hero-avatar {
+            width: 76px; height: 76px; margin: 0 auto 30px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 21px;
+            font-size: 29px; font-weight: 700; letter-spacing: -0.04em;
+            color: var(--text);
+            background: var(--bg-elevated);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--icon-shadow);
         }
         .hero-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 13px;
-            font-weight: 500;
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 13px; font-weight: 500;
             color: var(--text-muted);
-            letter-spacing: 0.02em;
-            margin-bottom: 24px;
+            letter-spacing: 0.01em;
+            margin-bottom: 22px;
         }
-        .hero-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--link);
-            opacity: 0.7;
-        }
+        .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--link); }
         .hero h1 {
-            font-size: 44px;
-            font-weight: 700;
-            letter-spacing: -0.035em;
-            line-height: 1.1;
-            color: var(--text);
-            margin-bottom: 20px;
+            font-size: 48px; font-weight: 700;
+            letter-spacing: -0.04em; line-height: 1.04;
+            color: var(--text); margin-bottom: 18px;
         }
         .hero-subtitle {
-            font-size: 18px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            letter-spacing: -0.01em;
-            max-width: 480px;
-            margin: 0 auto;
+            font-size: 19px; line-height: 1.55;
+            color: var(--text-secondary); letter-spacing: -0.01em;
+            max-width: 480px; margin: 0 auto;
+        }
+        .hero-values {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+            margin-top: 30px;
+        }
+        .hero-values span {
+            font-size: 12px; font-weight: 500; color: var(--text-muted);
+            padding: 5px 13px; border-radius: 999px;
+            background: var(--card-bg); border: 1px solid var(--card-border);
         }
 
-        /* ---- Divider ---- */
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 40px;
-        }
+        /* ---- Apps ---- */
+        .apps-inner { max-width: 1040px; width: 100%; margin: 0 auto; padding: 0 24px 8px; }
+        .divider { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
         .divider-line { flex: 1; height: 1px; background: var(--rule); }
-        .divider-text {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
+        .divider-text { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.10em; }
+
+        .app-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
         /* ---- App Card ---- */
         .app-card {
+            display: flex; flex-direction: column;
             background: var(--bg-elevated);
             border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 32px;
+            border-radius: 22px;
+            padding: 28px;
             box-shadow: var(--card-shadow);
-            transition: box-shadow 0.25s ease, transform 0.25s ease;
-            margin-bottom: 16px;
+            transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
         }
-        .app-card:hover {
-            box-shadow: var(--card-hover-shadow);
-            transform: translateY(-2px);
-        }
+        .app-card:hover { box-shadow: var(--card-hover-shadow); transform: translateY(-3px); border-color: var(--ring); }
 
         .app-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 20px;
-            text-decoration: none;
-            color: inherit;
+            display: flex; align-items: center; gap: 18px;
+            margin-bottom: 20px; text-decoration: none; color: inherit;
         }
         .app-header:hover { color: inherit; }
         .app-icon {
-            width: 72px;
-            height: 72px;
-            border-radius: 16px;
-            flex-shrink: 0;
-            box-shadow: var(--icon-shadow);
-            overflow: hidden;
+            width: 72px; height: 72px; border-radius: 16px;
+            flex-shrink: 0; box-shadow: var(--icon-shadow); overflow: hidden;
+            transition: transform 0.3s ease;
         }
-        .app-icon img {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
+        .app-card:hover .app-icon { transform: scale(1.04); }
+        .app-icon img { width: 100%; height: 100%; display: block; }
         .app-meta { flex: 1; min-width: 0; }
-        .app-name {
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--text);
-            margin-bottom: 2px;
-        }
-        .app-tagline {
-            font-size: 15px;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
+        .app-name { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 3px; }
+        .app-tagline { font-size: 15px; color: var(--text-secondary); line-height: 1.4; }
 
         .app-description {
-            font-size: 15px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            padding-bottom: 24px;
+            font-size: 15px; line-height: 1.6; color: var(--text-secondary);
+            margin-bottom: 24px; padding-bottom: 24px;
             border-bottom: 1px solid var(--rule);
         }
 
         .app-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 16px;
+            margin-top: auto;
         }
         .app-store-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--text);
-            color: var(--bg);
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            transition: opacity 0.15s ease;
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--text); color: var(--bg);
+            padding: 10px 18px; border-radius: 10px;
+            font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
+            transition: opacity 0.15s ease; text-decoration: none;
         }
         .app-store-badge:hover { opacity: 0.85; color: var(--bg); }
         .app-store-badge svg { flex-shrink: 0; }
@@ -195,26 +166,23 @@
         .badge-small { font-size: 9px; font-weight: 400; letter-spacing: 0.01em; opacity: 0.85; }
         .badge-large { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; margin-top: 2px; }
 
-        .app-legal {
-            display: flex;
-            gap: 20px;
-        }
-        .app-legal a {
-            font-size: 13px;
-            color: var(--text-muted);
-            transition: color 0.15s ease;
-        }
+        .app-legal { display: flex; gap: 18px; }
+        .app-legal a { font-size: 13px; color: var(--text-muted); transition: color 0.15s ease; }
         .app-legal a:hover { color: var(--text-secondary); }
 
         /* ---- Footer ---- */
         footer { margin-top: auto; }
 
         /* ---- Responsive ---- */
+        @media (max-width: 760px) {
+            .app-grid { grid-template-columns: 1fr; gap: 16px; }
+        }
         @media (max-width: 600px) {
-            .hero { padding: 64px 0 48px; }
-            .hero h1 { font-size: 34px; }
+            .hero { padding: 72px 0 52px; }
+            .hero-avatar { width: 66px; height: 66px; font-size: 25px; border-radius: 18px; margin-bottom: 24px; }
+            .hero h1 { font-size: 36px; }
             .hero-subtitle { font-size: 17px; }
-            .app-card { padding: 24px; border-radius: 16px; }
+            .app-card { padding: 24px; border-radius: 18px; }
             .app-icon { width: 60px; height: 60px; border-radius: 14px; }
             .app-name { font-size: 20px; }
             .app-footer { flex-direction: column; align-items: flex-start; }
@@ -226,20 +194,27 @@
     <main>
         <section class="hero">
             <div class="container">
+                <div class="hero-avatar" aria-hidden="true">KG</div>
                 <p class="hero-label"><span class="hero-dot"></span>Passionate Software Engineer from Planet Earth 🌍</p>
                 <h1>Kuthay Gumus</h1>
                 <p class="hero-subtitle">Building beautiful and useful iOS apps with a little too much love for the small things.</p>
+                <div class="hero-values">
+                    <span>Privacy-first</span>
+                    <span>No ads</span>
+                    <span>On-device</span>
+                </div>
             </div>
         </section>
 
         <section class="apps">
-            <div class="container">
+            <div class="apps-inner">
                 <div class="divider">
                     <span class="divider-line"></span>
                     <span class="divider-text">Apps</span>
                     <span class="divider-line"></span>
                 </div>
 
+                <div class="app-grid">
                 <div class="app-card">
                     <a href="/restio/" class="app-header" aria-label="Restio — Your mindful rest companion">
                         <div class="app-icon">
@@ -413,6 +388,7 @@
                             <a href="/truce/support/">Support</a>
                         </nav>
                     </div>
+                </div>
                 </div>
             </div>
         </section>
