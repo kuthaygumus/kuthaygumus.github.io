@@ -43,6 +43,18 @@
         .free-note { font-size: 15px; color: var(--text-secondary); margin-bottom: 16px; }
 
         .badge-wrap { text-align: center; padding: 0 22px 56px; }
+        .app-store-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--text); color: var(--bg);
+            padding: 12px 24px; border-radius: 12px;
+            font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
+            text-decoration: none; transition: opacity 0.15s ease;
+        }
+        .app-store-badge:hover { opacity: 0.85; color: var(--bg); text-decoration: none; }
+        .app-store-badge svg { flex-shrink: 0; }
+        .badge-text-group { display: flex; flex-direction: column; line-height: 1; }
+        .badge-small { font-size: 9px; font-weight: 400; letter-spacing: 0.01em; opacity: 0.85; }
+        .badge-large { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; margin-top: 2px; }
 
         @media (max-width: 600px) {
             .hero h1 { font-size: 34px; }

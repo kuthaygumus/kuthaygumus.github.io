@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Truce — a funny, private little counter for the days since you last argued with your spouse. Mostly stuck on Day 1. Made by Bicky, the long-suffering lovebird.">
+    <meta name="description" content="Truce — a funny, private little counter for the days since you last argued with your partner. Mostly stuck on Day 1. Made by Bicky, the long-suffering lovebird. iPhone & iPad. No subscription, ever.">
     <!-- Smart App Banner: the NUMERIC App Store ID from the App Store Connect record
          (com.kgumus.truce → 6780033643). iOS Safari renders the native install banner automatically
          once the app is live, and stays silent until then — safe to ship pre-launch. The app-argument
@@ -15,7 +15,7 @@
     <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
     <meta property="og:title" content="Truce — Day 1. Again.">
-    <meta property="og:description" content="A funny, private counter for the days since you last argued. What day are YOU on?">
+    <meta property="og:description" content="A funny, private counter for the days since you last argued. Mostly stuck on Day 1. What day are YOU on?">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kuthaygumus.github.io/truce/">
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -23,45 +23,189 @@
     <title>Truce — Day 1. Again.</title>
     <link rel="stylesheet" href="/assets/shared.css">
     <style>
-        .truce-hero { text-align: center; padding: 3rem 1.25rem 1.5rem; }
-        .truce-day { font-size: clamp(3.5rem, 18vw, 7rem); font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
-        .truce-sub { font-size: 1.15rem; opacity: 0.7; margin-top: 0.5rem; }
-        .truce-pitch { max-width: 34rem; margin: 1.5rem auto; text-align: center; line-height: 1.5; }
-        .truce-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin: 1.25rem 0; }
-        .truce-badge { font-size: 0.85rem; padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid currentColor; opacity: 0.75; }
-        .truce-cta { display: inline-block; margin: 0.75rem auto 0; padding: 0.85rem 1.6rem; border-radius: 14px; background: #3E7C6B; color: #fff; font-weight: 700; font-size: 1.05rem; text-decoration: none; }
-        .truce-cta:active { opacity: 0.85; }
-        .truce-cta-note { font-size: 0.8rem; opacity: 0.6; margin-top: 0.65rem; }
-        /* SINGLE LAUNCH FLAG: while <body class="prelaunch">, the App Store CTA stays hidden because the
-           apps.apple.com link 404s until the app is published. To go live, delete `prelaunch` from the
-           <body> tag below — one edit. The Smart App Banner (real app-id above) already handles iOS
-           install the moment the app is live, with no further change. */
-        .prelaunch .truce-cta, .prelaunch .truce-cta-note { display: none; }
+        /* Hero */
+        .hero { text-align: center; padding: 64px 22px 48px; max-width: 660px; margin: 0 auto; }
+        .hero-icon { width: 120px; height: 120px; border-radius: 27px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); margin-bottom: 24px; }
+        .hero h1 { font-size: 44px; line-height: 1.08; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; }
+        .hero-subtitle { font-size: 21px; color: var(--text-secondary); line-height: 1.38; letter-spacing: -0.01em; }
+
+        /* Section */
+        .section { max-width: 660px; margin: 0 auto; padding: 0 22px 56px; }
+        .section-title { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+        .section-desc { color: var(--text-secondary); margin-bottom: 24px; }
+
+        /* Feature grid */
+        .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .feature { background: var(--card-bg); border-radius: 12px; padding: 20px; }
+        .feature-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .feature-desc { font-size: 14px; color: var(--text-muted); line-height: 1.4; }
+
+        /* Pricing */
+        .plan-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px; }
+        .plan-table th { text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); padding: 0 0 10px; border-bottom: 1px solid var(--rule); }
+        .plan-table td { padding: 12px 0; color: var(--text-secondary); border-bottom: 1px solid var(--rule); vertical-align: top; }
+        .plan-table td:first-child { font-weight: 500; color: var(--text); }
+        .plan-table td:last-child { text-align: right; font-weight: 600; color: var(--text); }
+        .plan-table tr:last-child td { border-bottom: none; }
+        .plan-note { font-size: 14px; color: var(--text-muted); margin-top: 8px; }
+        .free-note { font-size: 15px; color: var(--text-secondary); margin-bottom: 16px; }
+
+        /* Badge */
+        .badge-wrap { text-align: center; padding: 0 22px 56px; }
+        .app-store-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--text); color: var(--bg);
+            padding: 12px 24px; border-radius: 12px;
+            font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
+            text-decoration: none; transition: opacity 0.15s ease;
+        }
+        .app-store-badge:hover { opacity: 0.85; color: var(--bg); text-decoration: none; }
+        .app-store-badge svg { flex-shrink: 0; }
+        .badge-text-group { display: flex; flex-direction: column; line-height: 1; }
+        .badge-small { font-size: 9px; font-weight: 400; letter-spacing: 0.01em; opacity: 0.85; }
+        .badge-large { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; margin-top: 2px; }
+        .badge-note { font-size: 13px; color: var(--text-muted); margin-top: 12px; }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 34px; }
+            .hero-subtitle { font-size: 19px; }
+            .hero-icon { width: 96px; height: 96px; border-radius: 22px; }
+            .section-title { font-size: 24px; }
+            .features { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
-<body class="prelaunch">
-    <main class="truce-hero">
-        <div class="truce-day">1<span style="font-size:0.4em;font-weight:600;opacity:0.6">. gün</span></div>
-        <p class="truce-sub">Eşimle tartışmadım. Yine. 🫠</p>
-
-        <div class="truce-badges">
-            <span class="truce-badge">Abonelik yok, hiçbir zaman</span>
-            <span class="truce-badge">No subscription, ever</span>
-            <span class="truce-badge">On-device · Data Not Collected</span>
+<body>
+    <div class="topbar" role="banner">
+        <div class="topbar-inner">
+            <div class="topbar-left">
+                <a href="/" class="topbar-back" aria-label="All apps by Kuthay Gumus">All Apps</a>
+                <span class="topbar-sep">/</span>
+                <a href="/truce/" class="topbar-brand">Truce</a>
+            </div>
+            <nav class="topbar-nav" aria-label="Navigation">
+                <a href="/truce/privacy/">Privacy</a>
+                <a href="/truce/terms/">Terms</a>
+                <a href="/truce/support/">Support</a>
+            </nav>
         </div>
+    </div>
 
-        <p class="truce-pitch">
-            <strong>Truce</strong> is a funny little counter for the days since you last argued with your
-            partner — usually stuck on Day&nbsp;1. When you reset, <strong>Bicky</strong> (the long-suffering
-            lovebird) reacts, and you get a share card worth screenshotting. Private, offline, one-time purchase.
-            <br><br>
-            <em>What day are YOU on?</em>
-        </p>
+    <main>
+        <section class="hero">
+            <img src="../assets/icons/truce.png" alt="Truce app icon" class="hero-icon" width="120" height="120">
+            <h1>Truce</h1>
+            <p class="hero-subtitle">A funny, private counter for the days since you last argued with your partner — usually stuck on Day&nbsp;1. What day are YOU on?</p>
+        </section>
 
-        <!-- The real install CTA. Hidden by the `prelaunch` body class until the app is published
-             (the App Store URL 404s before launch). Remove `prelaunch` from <body> to reveal it. -->
-        <a class="truce-cta" href="https://apps.apple.com/app/id6780033643">Download on the App Store</a>
-        <p class="truce-cta-note">iPhone &amp; iPad · one-time purchase · no subscription</p>
+        <section class="section">
+            <h2 class="section-title">It's not a fight tracker. It's a running joke.</h2>
+            <p class="section-desc">You're not tracking your partner — you're laughing at how human we all are. When the streak breaks, Bicky the lovebird reacts, and you get a card worth screenshotting. Private, offline, no subscription.</p>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-name">The Counter</div>
+                    <div class="feature-desc">Days since your last argument — with your partner, your mom, your boss, or yourself. Mostly stuck on Day 1.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Bicky the Lovebird</div>
+                    <div class="feature-desc">Your deadpan, long-suffering witness. He reacts to every reset and quietly evolves the longer you keep him around.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">The Reset Card</div>
+                    <div class="feature-desc">The funniest moment is the one you lose. Every reset auto-composes a share card worth screenshotting.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Truce Code Duel</div>
+                    <div class="feature-desc">Compare your day with a friend's — "your Day 1 vs their Day 9." No accounts, no sign-in, nothing leaves your phone.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Year in Fights</div>
+                    <div class="feature-desc">Your private history — longest peace, top reason, a harmony heatmap. The part a weekend clone can't copy: it's yours.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Widgets</div>
+                    <div class="feature-desc">Your current day right on the Home Screen and Lock Screen — a quiet little flex among your normal apps.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">Private by Design</div>
+                    <div class="feature-desc">Everything stays on your device. Data Not Collected, no accounts, no ads, no tracking — plus an optional encrypted backup you control.</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-name">No Subscription, Ever</div>
+                    <div class="feature-desc">No renewals, no "Truce+", no surprise charges. The app is free, and everything extra is a one-time purchase.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Pricing</h2>
+            <p class="free-note">Truce is free to download — the counter, Bicky, share cards, the duel, widgets, and your history are all included. No subscription, ever. A few optional one-time purchases unlock extra cosmetics:</p>
+            <table class="plan-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Details</th>
+                        <th>Price (USD)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Truce Forever</td>
+                        <td>One-time unlock — more Bicky skins, reaction packs &amp; share templates</td>
+                        <td>$3.99</td>
+                    </tr>
+                    <tr>
+                        <td>Bicky's Wardrobe</td>
+                        <td>Every Bicky skin, present and future — one tap, owned forever</td>
+                        <td>$9.99</td>
+                    </tr>
+                    <tr>
+                        <td>Bicky Skin</td>
+                        <td>A single skin, à la carte</td>
+                        <td>$1.99</td>
+                    </tr>
+                    <tr>
+                        <td>Reset Freeze</td>
+                        <td>"This one shouldn't count." A single freeze &mdash; nobody has to know</td>
+                        <td>$0.99</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="plan-note">Prices shown are in U.S. dollars. Actual prices may vary by country and are displayed in your local currency at the time of purchase.</p>
+        </section>
+
+        <div class="badge-wrap">
+            <!-- Truce is pre-launch: the App Store link 404s until the app is published. This disabled
+                 placeholder mirrors the home-page "coming soon" card. To go live, replace this <span>
+                 with the real download <a> (commented below) — one edit. The Smart App Banner meta in
+                 <head> already handles iOS install the moment the app is live. -->
+            <span class="app-store-badge" aria-disabled="true" aria-label="Truce — coming soon to the App Store" style="opacity:0.5;cursor:default;pointer-events:none;">
+                <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M16.87 12.65c-.03-2.7 2.2-3.99 2.3-4.05-1.25-1.83-3.2-2.08-3.9-2.11-1.66-.17-3.24.98-4.08.98-.84 0-2.15-.96-3.53-.93-1.82.03-3.5 1.06-4.44 2.69-1.89 3.28-.48 8.14 1.36 10.81.9 1.3 1.97 2.77 3.38 2.72 1.36-.05 1.87-.88 3.51-.88 1.64 0 2.1.88 3.54.85 1.46-.02 2.4-1.33 3.29-2.64 1.04-1.51 1.46-2.98 1.49-3.05-.03-.01-2.86-1.1-2.89-4.36l-.03-.03z" fill="currentColor"/>
+                    <path d="M14.13 4.32c.75-.91 1.25-2.17 1.11-3.43-1.08.04-2.38.72-3.15 1.62-.69.8-1.29 2.08-1.13 3.3 1.2.09 2.43-.61 3.17-1.49z" fill="currentColor"/>
+                </svg>
+                <span class="badge-text-group">
+                    <span class="badge-small">Coming soon to the</span>
+                    <span class="badge-large">App Store</span>
+                </span>
+            </span>
+            <!-- GO-LIVE: swap the <span> above for this link.
+            <a href="https://apps.apple.com/app/id6780033643" class="app-store-badge" aria-label="Download Truce on the App Store">
+                ... same svg + badge-text-group with "Download on the" ...
+            </a> -->
+            <p class="badge-note">iPhone &amp; iPad · one-time purchases · no subscription, ever</p>
+        </div>
     </main>
+
+    <footer role="contentinfo">
+        <div class="footer-inner">
+            <small>Copyright &copy; 2026 Kuthay Gumus. All rights reserved.</small>
+            <nav aria-label="Footer">
+                <a href="/truce/privacy/">Privacy Policy</a>
+                <a href="/truce/terms/">Terms of Use</a>
+                <a href="/truce/support/">Support</a>
+            </nav>
+        </div>
+    </footer>
 </body>
 </html>
