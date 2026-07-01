@@ -1,0 +1,7 @@
+{
+  "_doc": "Restio remote version gate, read at launch by AppUpdateGate (iOS 1.4.0+). Edit + push to control updates with NO app rebuild. 'ios.minVersion': installs BELOW this get a blocking 'Update Required' screen (hard force — use only for genuinely broken/insecure builds). 'ios.latestVersion': installs at/above min but below this get a dismissible soft nudge. Fail-open: any fetch/parse/404 error leaves the app ungated. The gate is forward-looking — only builds that already ship the gate code (1.4.0+) can be gated. To nudge 1.4.0 users onto a later release, raise latestVersion to that version once it is LIVE on the App Store. To hard-force, raise minVersion (never set it at/above the current live version).",
+  "ios": {
+    "minVersion": "1.0.0",
+    "latestVersion": "1.4.0"
+  }
+}
