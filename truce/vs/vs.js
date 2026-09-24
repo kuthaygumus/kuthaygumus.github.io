@@ -44,7 +44,7 @@
       cta: "Truce'u indir, cevap ver →",
       stale: "Karşılaştırmak için Truce'u güncelle.",
       generic: "Bir arkadaşın seni Truce düellosuna çağırdı. Sen kaçıncı gündesin?",
-      fine: "Truce: tartışmasız geçen günlerin komik sayacı. Abonelik yok. On-device."
+      fine: "Truce: tartışmasız geçen günlerin komik sayacı. Ücretsiz. Cihazında kalır."
     },
     en: {
       dayLabel: "Day ",
@@ -56,7 +56,7 @@
       cta: "Get Truce to answer →",
       stale: "Update Truce to compare.",
       generic: "A friend challenged you to a Truce duel. What day are YOU on?",
-      fine: "Truce: a funny counter for the days since you last argued. No subscription. On-device."
+      fine: "Truce: a funny counter for the days since you last argued. Free to use. On-device."
     }
   }[L];
 
