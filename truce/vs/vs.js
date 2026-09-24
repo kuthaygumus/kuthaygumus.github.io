@@ -23,10 +23,13 @@
   var LAUNCHED = false;
   var APP_STORE_URL = "https://apps.apple.com/app/id6780033643";
 
-  // Canonical ReasonCode order (index === app enum rawValue: dishes=0 … other=7).
+  // Canonical ReasonCode order (index === app enum rawValue: dishes=0 … other=7, then the 2.0.0
+  // append chores=8 … planChange=23). Append-only, like the app enum.
   var REASONS = {
-    tr: ["Bulaşık", "Kıskançlık", "Telefon", "Klima savaşı", "Para", "Kayınlar", "Sebepsiz", "Diğer"],
-    en: ["Dishes", "Jealousy", "Phone", "Thermostat war", "Money", "In-laws", "No reason", "Other"]
+    tr: ["Bulaşık", "Kıskançlık", "Telefon", "Klima savaşı", "Para", "Kayınlar", "Sebepsiz", "Diğer",
+         "Ev işleri", "Ne yesek", "Ne izlesek", "Alışveriş", "Geç cevap", "Ses tonu", "Söz kesme", "Unutulanlar", "Eski sevgili", "Arkadaşlar", "İş güç", "Uyku ve horlama", "Evcil hayvan", "Geç kalma", "Direksiyon", "Plan değişikliği"],
+    en: ["Dishes", "Jealousy", "Phone", "Thermostat war", "Money", "In-laws", "No reason", "Other",
+         "Chores", "What to Eat", "What to Watch", "Shopping", "Late Replies", "Tone of Voice", "Interrupting", "Forgetting", "The Ex", "Friends", "Work", "Sleep & Snore", "Pets", "Being Late", "Driving", "Plan Change"]
   };
   // Canonical MoltTier order (index === app enum rawValue: hatchling=0 … legendary=5).
   var MOLT = ["Hatchling", "Fledgling", "Streetwise", "Veteran", "Sage", "Legendary"];
