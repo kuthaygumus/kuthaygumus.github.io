@@ -60,7 +60,7 @@
 
     <article role="main">
         <header>
-            <p>Last updated: September 25, 2026</p>
+            <p>Last updated: October 2, 2026</p>
             <h1>Privacy Policy</h1>
         </header>
 
@@ -77,17 +77,18 @@
         <p>If iCloud is enabled on your device, Restio may sync your app data across your Apple devices through your private iCloud container. This data is accessible only to you through your Apple ID. We do not have the ability to access, read, or modify your iCloud data. Apple's cloud infrastructure may store and process this data in countries outside your country of residence; any such transfer is made under Apple's own safeguards and is governed by Apple's <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">Privacy Policy</a>.</p>
 
         <h2 id="cloudkit-buddy-feature">CloudKit and Buddy Feature</h2>
-        <p>Restio offers an optional buddy feature that allows you to share limited information with another user you select. If you choose to use this feature, the following data is shared via Apple CloudKit:</p>
+        <p>Restio offers an optional buddy feature that allows you to share limited information with a buddy who has your buddy code. If you choose to use this feature, the following data is shared via Apple CloudKit:</p>
         <ul>
             <li>A display name you provide</li>
             <li>Your current rest streak count</li>
             <li>Your number of completed rest sessions today</li>
+            <li>The time your profile was last updated</li>
         </ul>
-        <p>This sharing is initiated solely by you and may be discontinued at any time by removing the buddy connection. No additional personal data is transmitted through this feature. CloudKit data is processed through Apple's infrastructure and is governed by Apple's privacy practices. Data shared through the buddy feature may be transferred to and processed in countries outside your country of residence in accordance with Apple's data handling practices.</p>
+        <p>This information is stored in Restio's public CloudKit database under a short buddy code, so anyone who has your code can view it. Sharing is initiated solely by you; removing the buddy connection in the app stops you from viewing your buddy's profile, but the last profile you shared may remain in CloudKit until we remove it. Contact us at the address below to request removal. No additional personal data is transmitted through this feature. CloudKit data is processed through Apple's infrastructure and is governed by Apple's privacy practices. Data shared through the buddy feature may be transferred to and processed in countries outside your country of residence in accordance with Apple's data handling practices.</p>
 
         <h2 id="healthkit">Apple HealthKit</h2>
         <p>With your explicit prior consent, Restio may write Mindful Minutes to Apple HealthKit. This access is <strong>write-only</strong> — Restio does not read, query, or access any existing health data from HealthKit.</p>
-        <p>All HealthKit data remains on your device (or in your private Health data store if you use iCloud for Health). Restio does not use HealthKit data for advertising, data mining, or any purpose other than recording your rest sessions. This is in full compliance with Apple's <a href="https://developer.apple.com/documentation/healthkit" rel="noopener noreferrer">HealthKit guidelines</a>.</p>
+        <p>All HealthKit data remains on your device (or in your private Health data store if you use iCloud for Health). Restio does not use HealthKit data for advertising, data mining, or any purpose other than recording your rest sessions. This is intended to be consistent with Apple's <a href="https://developer.apple.com/documentation/healthkit" rel="noopener noreferrer">HealthKit guidelines</a>.</p>
 
         <h2 id="network-access">Network Access</h2>
         <p>Restio makes no network requests to collect or transmit your personal data to us. Apart from Apple's iCloud and Buddy features described above, the only request the app makes to this website is a version check at launch: it downloads a small configuration file (appconfig.json) to see whether an update is available. The request contains no personal data, account, or device identifier. As with any website, our host, GitHub Pages (operated by GitHub, Inc.), may briefly process your IP address in its server logs for security and operation; we do not receive or use those logs. Restio otherwise opens the network only when you tap a link to the App Store, our legal pages, or a feedback email.</p>
@@ -96,7 +97,7 @@
         <p>Restio offers optional premium features through subscriptions and a one-time purchase, managed entirely by Apple's App Store. We do not receive, process, or store your payment information, billing address, or Apple ID credentials. All transaction data is governed by Apple's <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">Privacy Policy</a>.</p>
 
         <h2 id="data-retention">Data Retention and Deletion</h2>
-        <p>Because Restio does not collect data on external servers, there is no user data for us to retain. All app data stored on your device can be deleted at any time by deleting the app. If you use iCloud sync, you may also remove synced data through your iCloud storage settings.</p>
+        <p>Apart from the buddy profile described above, which may remain in Restio's public CloudKit database until you ask us to remove it, Restio does not store data on external servers, so there is no other user data for us to retain. All app data stored on your device can be deleted at any time by deleting the app. If you use iCloud sync, you may also remove synced data through your iCloud storage settings.</p>
 
         <h2 id="legal-basis">Legal Basis for Processing</h2>
         <p>Under the GDPR, KVKK, and equivalent data protection regulations, data processing requires a legal basis. Restio's legal basis for processing your data is:</p>

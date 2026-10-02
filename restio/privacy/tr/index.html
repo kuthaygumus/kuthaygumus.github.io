@@ -60,7 +60,7 @@
 
     <article role="main">
         <header>
-            <p>Son güncelleme: 25 Eylül 2026</p>
+            <p>Son güncelleme: 2 Ekim 2026</p>
             <h1>Gizlilik Politikası</h1>
         </header>
 
@@ -77,17 +77,18 @@
         <p>Cihazınızda iCloud etkinse, Restio uygulama verilerinizi özel iCloud kapsayıcınız aracılığıyla Apple cihazlarınız arasında eşitleyebilir. Bu verilere yalnızca siz Apple Kimliğiniz aracılığıyla erişebilirsiniz. iCloud verilerinize erişme, okuma veya değiştirme imkanımız yoktur. Apple'ın bulut altyapısı bu verileri ikamet ettiğiniz ülkenin dışındaki ülkelerde depolayabilir ve işleyebilir; bu tür aktarımlar Apple'ın kendi güvencesi altında yapılır ve Apple'ın <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">Gizlilik Politikası</a> tarafından yönetilmektedir.</p>
 
         <h2 id="cloudkit-arkadas-ozelligi">CloudKit ve Arkadaş Özelliği</h2>
-        <p>Restio, seçtiğiniz başka bir kullanıcıyla sınırlı bilgi paylaşmanıza olanak tanıyan isteğe bağlı bir arkadaş özelliği sunar. Bu özelliği kullanmayı tercih ederseniz, aşağıdaki veriler Apple CloudKit aracılığıyla paylaşılır:</p>
+        <p>Restio, arkadaş kodunuza sahip bir arkadaşınızla sınırlı bilgi paylaşmanıza olanak tanıyan isteğe bağlı bir arkadaş özelliği sunar. Bu özelliği kullanmayı tercih ederseniz, aşağıdaki veriler Apple CloudKit aracılığıyla paylaşılır:</p>
         <ul>
             <li>Sağladığınız bir görünen ad</li>
             <li>Mevcut dinlenme seri sayınız</li>
             <li>Bugün tamamladığınız dinlenme oturumu sayınız</li>
+            <li>Profilinizin son güncellenme zamanı</li>
         </ul>
-        <p>Bu paylaşım yalnızca sizin tarafınızdan başlatılır ve arkadaş bağlantısını kaldırarak istediğiniz zaman durdurulabilir. Bu özellik aracılığıyla ek kişisel veri iletilmez. CloudKit verileri Apple'ın altyapısı üzerinden işlenir ve Apple'ın gizlilik uygulamaları tarafından yönetilir. Arkadaş özelliği aracılığıyla paylaşılan veriler, Apple'ın veri işleme uygulamalarına uygun olarak ikamet ettiğiniz ülkenin dışındaki ülkelere aktarılabilir ve işlenebilir.</p>
+        <p>Bu bilgiler, Restio'nun herkese açık CloudKit veritabanında kısa bir arkadaş kodu altında saklanır; bu nedenle kodunuza sahip olan herkes bilgileri görüntüleyebilir. Paylaşım yalnızca sizin tarafınızdan başlatılır; uygulamada arkadaş bağlantısını kaldırmak, arkadaşınızın profilini görüntülemenizi durdurur ancak en son paylaştığınız profil, biz kaldırana kadar CloudKit'te kalabilir. Kaldırılmasını talep etmek için aşağıdaki adresten bize ulaşabilirsiniz. Bu özellik aracılığıyla ek kişisel veri iletilmez. CloudKit verileri Apple'ın altyapısı üzerinden işlenir ve Apple'ın gizlilik uygulamaları tarafından yönetilir. Arkadaş özelliği aracılığıyla paylaşılan veriler, Apple'ın veri işleme uygulamalarına uygun olarak ikamet ettiğiniz ülkenin dışındaki ülkelere aktarılabilir ve işlenebilir.</p>
 
         <h2 id="healthkit">Apple HealthKit</h2>
         <p>Açık önceden rızanızla, Restio Apple HealthKit'e Bilinçli Dakikalar yazabilir. Bu erişim <strong>yalnızca yazma</strong> amaçlıdır — Restio, HealthKit'ten mevcut sağlık verilerini okumaz, sorgulamaz veya erişmez.</p>
-        <p>Tüm HealthKit verileri cihazınızda (veya Sağlık için iCloud kullanıyorsanız özel Sağlık veri deponuzda) kalır. Restio, HealthKit verilerini reklam, veri madenciliği veya dinlenme oturumlarınızı kaydetme dışında herhangi bir amaç için kullanmaz. Bu, Apple'ın <a href="https://developer.apple.com/documentation/healthkit" rel="noopener noreferrer">HealthKit yönergeleri</a> ile tam uyumludur.</p>
+        <p>Tüm HealthKit verileri cihazınızda (veya Sağlık için iCloud kullanıyorsanız özel Sağlık veri deponuzda) kalır. Restio, HealthKit verilerini reklam, veri madenciliği veya dinlenme oturumlarınızı kaydetme dışında herhangi bir amaç için kullanmaz. Bu, Apple'ın <a href="https://developer.apple.com/documentation/healthkit" rel="noopener noreferrer">HealthKit yönergeleri</a> ile uyumlu olacak şekilde tasarlanmıştır.</p>
 
         <h2 id="ag-erisimi">Ağ Erişimi</h2>
         <p>Restio, kişisel verilerinizi bize toplamak veya iletmek için hiçbir ağ isteği göndermez. Yukarıda açıklanan Apple iCloud ve Buddy özellikleri dışında, uygulamanın bu web sitesine yaptığı tek istek açılıştaki sürüm kontrolüdür: güncelleme olup olmadığını görmek için küçük bir yapılandırma dosyası (appconfig.json) indirir. Bu istek hiçbir kişisel veri, hesap veya cihaz tanımlayıcısı içermez. Her web sitesinde olduğu gibi, barındırma sağlayıcımız GitHub Pages (GitHub, Inc. tarafından işletilir) güvenlik ve işletim amacıyla IP adresinizi sunucu kayıtlarında kısa süreliğine işleyebilir; bu kayıtları almıyor ve kullanmıyoruz. Restio bunun dışında ağa yalnızca App Store, yasal sayfalarımız veya bir geri bildirim e-postasına giden bir bağlantıya dokunduğunuzda erişir.</p>
@@ -96,7 +97,7 @@
         <p>Restio, tamamen Apple App Store tarafından yönetilen abonelikler ve tek seferlik satın alma yoluyla isteğe bağlı premium özellikler sunar. Ödeme bilgilerinizi, fatura adresinizi veya Apple Kimliği bilgilerinizi almıyor, işlemiyor veya saklamıyoruz. Tüm işlem verileri Apple'ın <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">Gizlilik Politikası</a> tarafından yönetilmektedir.</p>
 
         <h2 id="veri-saklama-ve-silme">Veri Saklama ve Silme</h2>
-        <p>Restio harici sunucularda veri toplamadığından, saklamamız gereken kullanıcı verisi yoktur. Cihazınızda saklanan tüm uygulama verileri uygulamayı silerek istediğiniz zaman kaldırılabilir. iCloud eşitleme kullanıyorsanız, eşitlenmiş verileri iCloud depolama ayarlarınız aracılığıyla da kaldırabilirsiniz.</p>
+        <p>Yukarıda açıklanan ve kaldırılmasını talep edene kadar Restio'nun herkese açık CloudKit veritabanında kalabilecek arkadaş profili dışında, Restio harici sunucularda veri saklamaz; bu nedenle saklamamız gereken başka bir kullanıcı verisi yoktur. Cihazınızda saklanan tüm uygulama verileri uygulamayı silerek istediğiniz zaman kaldırılabilir. iCloud eşitleme kullanıyorsanız, eşitlenmiş verileri iCloud depolama ayarlarınız aracılığıyla da kaldırabilirsiniz.</p>
 
         <h2 id="yasal-dayanak">İşlemenin Yasal Dayanağı</h2>
         <p>KVKK, GDPR ve eşdeğer veri koruma düzenlemeleri kapsamında veri işleme bir yasal dayanak gerektirir. Restio'nun verilerinizi işleme yasal dayanağı şunlardır:</p>
