@@ -171,6 +171,10 @@
         footer { margin-top: auto; }
 
         /* ---- Responsive ---- */
+        @media (min-width: 761px) {
+            /* An odd card count leaves the last card alone on its row: centre it instead of hugging the left. */
+            .app-grid > .app-card:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 10px); }
+        }
         @media (max-width: 760px) {
             .app-grid { grid-template-columns: 1fr; gap: 16px; }
         }
@@ -244,7 +248,7 @@
                     </a>
                     <p class="app-description">A thoughtful baby tracker that helps parents log feedings, sleep, diapers, growth, milestones, and health &mdash; all in one place. With helpful trends, widgets, and Apple Watch support. Not a medical device or medical advice.</p>
                     <div class="app-footer">
-                        <a href="https://apps.apple.com/app/bebito-baby-tracker/id6760252824" class="app-store-badge official" aria-label="Download Bebito on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
+                        <a href="https://apps.apple.com/app/bebito-baby-newborn-tracker/id6760252824" class="app-store-badge official" aria-label="Download Bebito on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
                         <nav class="app-legal" aria-label="Legal links for Bebito">
                             <a href="/bebito/privacy/">Privacy Policy</a>
                             <a href="/bebito/terms/">Terms of Use</a>
@@ -264,7 +268,7 @@
                     </a>
                     <p class="app-description">A breathing app where every session grows a living garden. 12 guided breathing techniques, mood tracking, ambient soundscapes, and a Panic Seed exercise for stressful moments &mdash; on iPhone, iPad, and Apple Watch. A wellness app, not medical care.</p>
                     <div class="app-footer">
-                        <a href="https://apps.apple.com/app/bloomind-anxiety-breathing/id6761011858" class="app-store-badge official" aria-label="Download Bloomind on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
+                        <a href="https://apps.apple.com/app/bloomind-stop-overthinking/id6761011858" class="app-store-badge official" aria-label="Download Bloomind on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
                         <nav class="app-legal" aria-label="Legal links for Bloomind">
                             <a href="/bloomind/privacy/">Privacy Policy</a>
                             <a href="/bloomind/terms/">Terms of Use</a>
@@ -284,7 +288,7 @@
                     </a>
                     <p class="app-description">A daily geography mystery and four-mode map guess game for Türkiye and the world &mdash; with streaks, a shareable emoji tile, Lock Screen widgets, Siri shortcuts, and Game Center leaderboards.</p>
                     <div class="app-footer">
-                        <a href="https://apps.apple.com/app/neredeydi-harita-tahmin-oyunu/id6763877439" class="app-store-badge official" aria-label="Download Neredeydi on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
+                        <a href="https://apps.apple.com/app/neredeydi-geography-quiz/id6763877439" class="app-store-badge official" aria-label="Download Neredeydi on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
                         <nav class="app-legal" aria-label="Legal links for Neredeydi">
                             <a href="/neredeydi/privacy/">Privacy Policy</a>
                             <a href="/neredeydi/terms/">Terms of Use</a>
@@ -322,13 +326,33 @@
                             <div class="app-tagline">Day 1. Again.</div>
                         </div>
                     </a>
-                    <p class="app-description">A funny, private little counter for the days since you last argued with your partner &mdash; usually stuck on Day 1. Reset it and Bicky, the long-suffering lovebird, reacts with a share card worth screenshotting. Private, on-device, and free to use. On iPhone &amp; iPad.</p>
+                    <p class="app-description">Counts the days you&rsquo;ve been together and the days since you last argued &mdash; a funny, private counter with Bicky, the long-suffering lovebird, and share cards worth screenshotting. On-device and free to use, with an optional Bicky Club. On iPhone.</p>
                     <div class="app-footer">
-                        <a href="https://apps.apple.com/app/truce-days-without-a-fight/id6780033643" class="app-store-badge official" aria-label="Download Truce on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
+                        <a href="https://apps.apple.com/app/truce-days-together/id6780033643" class="app-store-badge official" aria-label="Download Truce on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
                         <nav class="app-legal" aria-label="Legal links for Truce">
                             <a href="/truce/privacy/">Privacy Policy</a>
                             <a href="/truce/terms/">Terms of Use</a>
                             <a href="/truce/support/">Support</a>
+                        </nav>
+                    </div>
+                </div>
+                <div class="app-card">
+                    <a href="/strolla/" class="app-header" aria-label="Strolla — Japanese walking, coached out loud">
+                        <div class="app-icon">
+                            <img src="assets/icons/strolla.png" alt="Strolla app icon" width="72" height="72" loading="lazy">
+                        </div>
+                        <div class="app-meta">
+                            <div class="app-name">Strolla</div>
+                            <div class="app-tagline">Japanese walking, coached out loud.</div>
+                        </div>
+                    </a>
+                    <p class="app-description">Japanese interval walking, coached by voice: 3 minutes brisk, 3 minutes easy, five times. Spoken cues keep coming with your iPhone locked and your music playing. Counts your brisk minutes and, with your permission, saves walks to Apple Health. On iPhone, and Apple Watch with Premium. A walking coach, not a medical device.</p>
+                    <div class="app-footer">
+                        <a href="https://apps.apple.com/app/strolla-japanese-walking-app/id6816512312" class="app-store-badge official" aria-label="Download Strolla on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
+                        <nav class="app-legal" aria-label="Legal links for Strolla">
+                            <a href="/strolla/privacy/">Privacy Policy</a>
+                            <a href="/strolla/terms/">Terms of Use</a>
+                            <a href="/strolla/support/">Support</a>
                         </nav>
                     </div>
                 </div>
