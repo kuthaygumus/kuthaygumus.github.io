@@ -85,3 +85,8 @@ footer nav a:hover { color: var(--link); }
     .topbar-nav { gap: 16px; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
 }
+
+/* Apple's official "Download on the App Store" artwork (developer.apple.com marketing asset).
+   Apple's marketing guidelines do not allow a home-made badge or the Apple logo outside it. */
+.app-store-badge.official { background: none; padding: 0; border-radius: 0; gap: 0; line-height: 0; }
+.app-store-badge.official img { display: block; width: auto; height: 40px; }
