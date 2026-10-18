@@ -17,10 +17,10 @@
 
   var PAYLOAD_VERSION = 1;
 
-  // The real App Store product (com.kgumus.truce → 6780033643). SINGLE LAUNCH FLAG: while LAUNCHED is
-  // false the duel CTA points at the landing page (whose Smart App Banner handles iOS install once the
-  // app is live) because the apps.apple.com URL 404s before publication. Flip to true at App Store launch.
-  var LAUNCHED = false;
+  // The real App Store product (com.kgumus.truce → 6780033643). Truce is live, so the duel CTA goes
+  // straight to the store; LAUNCHED = false would route it to the landing page instead (pre-launch, the
+  // apps.apple.com URL 404s).
+  var LAUNCHED = true;
   var APP_STORE_URL = "https://apps.apple.com/app/id6780033643";
 
   // Canonical ReasonCode order (index === app enum rawValue: dishes=0 … other=7, then the 2.0.0
@@ -99,8 +99,7 @@
 
   function ctaButton() {
     var a = el("a", "duel-cta", T.cta);
-    // Pre-launch the apps.apple.com URL 404s, so fall back to the landing page (whose Smart App Banner
-    // carries the real app-id and handles iOS install). Flip LAUNCHED at App Store launch — one edit.
+    // Pre-launch fallback: the landing page, whose Smart App Banner carries the real app-id.
     a.setAttribute("href", LAUNCHED ? APP_STORE_URL : "/truce/");
     return a;
   }
