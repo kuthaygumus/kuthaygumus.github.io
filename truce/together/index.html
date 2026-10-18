@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A Truce partner invite — see how many days you two have been together.">
+    <!-- Smart App Banner: real numeric App Store ID (com.kgumus.truce → 6780033643). app-argument opens
+         an installed Truce on its Together sheet (the app never reads the date, 2.0.1 #9). -->
+    <meta name="apple-itunes-app" content="app-id=6780033643, app-argument=https://kuthaygumus.github.io/truce/together/">
+    <!-- The invite date rides the URL FRAGMENT (#d=YYYY-MM-DD[&one=1]): a browser never sends it to a
+         server, so GitHub Pages never sees it. together.js counts the days CLIENT-SIDE, hence
+         script-src 'self' like /truce/vs; connect-src 'none': the page never phones home. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="Truce — Days together">
+    <meta property="og:description" content="Your partner invited you to count your days together.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <title>Truce — Together</title>
+    <link rel="stylesheet" href="/assets/shared.css">
+    <style>
+        .together { max-width: 32rem; margin: 0 auto; padding: 2.5rem 1.25rem; text-align: center; }
+        .together-card { border: 1px solid currentColor; border-radius: 1.25rem; padding: 1.75rem 1.25rem; margin: 1.5rem 0; }
+        .together-day { font-size: clamp(3rem, 16vw, 5.5rem); font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+        .together-unit { font-size: 1.15rem; font-weight: 600; margin-top: 0.5rem; }
+        .together-since { font-size: 0.95rem; opacity: 0.65; margin-top: 0.5rem; }
+        .together-line { font-size: 1.2rem; line-height: 1.45; margin: 1.25rem 0; }
+        .together-badge { display: inline-block; margin-top: 0.5rem; }
+        .together-fine { font-size: 0.8rem; opacity: 0.55; margin-top: 1.5rem; }
+    </style>
+</head>
+<body>
+    <main class="together" id="together">
+        <!-- together.js fills this; the fallback keeps the invite and the store link working without JS. -->
+        <noscript>
+            <h1>Truce</h1>
+            <p class="together-line">Your partner invited you to Truce: count your days together 🐦</p>
+            <a class="together-badge" href="https://apps.apple.com/app/id6780033643"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
+        </noscript>
+    </main>
+    <script src="/truce/together/together.js"></script>
+</body>
+</html>
