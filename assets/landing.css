@@ -1,8 +1,9 @@
 /* =========================================
-   App landing pages — the homepage v2 language
+   App landing + doc pages — the homepage v2 language
    (glass header, accent aurora hero, glowing cards).
    Linked after each page's inline <style>, so equal-specificity rules here win.
    Each page sets its own tint: <body style="--accent:#…">
+   Doc pages also set --app-icon: url(/assets/icons/192/<slug>.webp).
    ========================================= */
 
 /* The rotating glow rings animate this angle; registering it is what makes it interpolate. */
@@ -122,7 +123,7 @@ main { flex: 1 0 auto; }
 .section-desc { margin-bottom: 28px; }
 
 /* ---- Cards: own accent glow; hover lights a rotating ring ---- */
-.feature, .technique-group, .track-list {
+.feature, .technique-group, .track-list, .card {
     position: relative; isolation: isolate;
     background: var(--bg-elevated);
     border: 1px solid var(--card-border);
@@ -131,7 +132,7 @@ main { flex: 1 0 auto; }
 }
 .features { gap: 14px; }
 .feature { padding: 22px; transition: box-shadow 0.35s ease, transform 0.35s cubic-bezier(.2,.8,.2,1), border-color 0.35s ease; }
-.feature::before {
+.feature::before, .card::before {
     content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
     background: radial-gradient(120% 70% at 0% 0%, color-mix(in srgb, var(--accent) 13%, transparent) 0%, transparent 60%);
 }
@@ -197,7 +198,7 @@ main { flex: 1 0 auto; }
 }
 
 /* ---- Pricing table as a card ---- */
-.plan-table {
+.plan-table, .fact-table {
     border-collapse: separate; border-spacing: 0; overflow: hidden;
     margin: 20px 0 14px;
     background: var(--bg-elevated);
@@ -205,11 +206,11 @@ main { flex: 1 0 auto; }
     border-radius: 18px;
     box-shadow: var(--card-shadow);
 }
-.plan-table th { padding: 14px 20px 12px; background: var(--card-bg); }
-.plan-table td { padding: 15px 20px; }
-.plan-table td:first-child { font-weight: 600; }
-.plan-table tbody tr { transition: background 0.2s ease; }
-.plan-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+.plan-table th, .fact-table th { padding: 14px 20px 12px; background: var(--card-bg); }
+.plan-table td, .fact-table td { padding: 15px 20px; }
+.plan-table td:first-child, .fact-table td:first-child { font-weight: 600; }
+.plan-table tbody tr, .fact-table tbody tr { transition: background 0.2s ease; }
+.plan-table tbody tr:hover, .fact-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
 
 /* ---- Closing CTA: the badge on a soft accent bloom ---- */
 .badge-wrap { padding: 8px 22px 88px; isolation: isolate; }
@@ -222,9 +223,67 @@ main { flex: 1 0 auto; }
 .badge-wrap .app-store-badge { transition: transform 0.2s ease; }
 .badge-wrap .app-store-badge:hover { transform: translateY(-2px); }
 
+/* ---- Doc pages (privacy · terms · support · guides): the same light, kept quiet for long reading ---- */
+body { overflow-x: clip; }
+article { position: relative; isolation: isolate; flex: 1 0 auto; width: 100%; padding-top: 64px; }
+article::before {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    left: 50%; top: -110px; width: 1100px; height: 560px; margin-left: -550px;
+    background:
+        radial-gradient(closest-side, color-mix(in srgb, var(--accent) 24%, transparent), transparent) 10% 30% / 520px 420px no-repeat,
+        radial-gradient(closest-side, var(--aurora-2), transparent) 60% 0 / 560px 420px no-repeat,
+        radial-gradient(closest-side, var(--aurora-3), transparent) 92% 55% / 460px 360px no-repeat;
+    animation: doc-drift 20s ease-in-out infinite alternate;
+}
+@keyframes doc-drift { to { transform: translateX(60px) scale(1.08); } }
+article::after {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    left: 50%; top: -60px; width: 1000px; height: 440px; margin-left: -500px;
+    background-image: radial-gradient(var(--dot) 1px, transparent 1.5px);
+    background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(ellipse 50% 60% at 50% 30%, #000 15%, transparent 70%);
+    mask-image: radial-gradient(ellipse 50% 60% at 50% 30%, #000 15%, transparent 70%);
+}
+article > header { margin-bottom: 48px; }
+article > header::before {
+    content: ""; display: block; width: 64px; height: 64px; margin-bottom: 22px;
+    border-radius: 14.5px;
+    background: var(--app-icon) center / cover no-repeat;
+    box-shadow: 0 14px 30px -12px color-mix(in srgb, var(--accent) 75%, transparent), 0 4px 12px rgba(0,0,0,0.14);
+}
+article > header > p:first-child, article > header .kicker {
+    display: inline-block; margin-bottom: 14px; padding: 4px 11px; border-radius: 999px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--accent-ink);
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+}
+article h1 { font-size: 52px; line-height: 1.04; letter-spacing: -0.045em; }
+/* Sections open on the accent bar instead of a hairline rule. */
+article h2 { margin-top: 56px; padding-top: 0; border-top: 0; font-size: 26px; letter-spacing: -0.03em; }
+/* The page's own h2:first-of-type zeroes the gap, which is only right straight under the header, not after an intro. */
+article h2:first-of-type { margin-top: 48px; }
+article > header + h2:first-of-type { margin-top: 0; }
+article h2::before {
+    content: ""; display: block; width: 28px; height: 4px; border-radius: 2px; margin-bottom: 14px;
+    background: linear-gradient(90deg, var(--accent), var(--ai-2));
+}
+article p a, article li a, article td a { color: var(--accent-ink); }
+article li::marker { color: var(--accent); }
+.card { padding: 22px; }
+.cta { position: relative; isolation: isolate; padding: 16px 0 8px; }
+.cta::before {
+    content: ""; position: absolute; left: 50%; top: 0; z-index: -1;
+    width: 420px; max-width: 90%; height: 100px; transform: translateX(-50%);
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 22%, transparent), transparent);
+    filter: blur(8px);
+}
+.cta .app-store-badge { transition: transform 0.2s ease; }
+.cta .app-store-badge:hover { transform: translateY(-2px); }
+
 /* ---- Scroll reveal: uses `translate`, so the hover `transform` still composes ---- */
 @supports (animation-timeline: view()) {
-    .feature, .rule-box, .pillar-box, .plan-table, .track-list, .technique-group, .safety-note {
+    .feature, .rule-box, .pillar-box, .plan-table, .fact-table, .card, .track-list, .technique-group, .safety-note {
         animation: reveal linear both;
         animation-timeline: view();
         animation-range: entry 0% entry 55%;
@@ -241,8 +300,18 @@ main { flex: 1 0 auto; }
     .section-title { font-size: 26px; }
     .feature { padding: 18px; }
     .rule-box, .pillar-box { padding: 22px; }
-    .plan-table { font-size: 14px; }
-    .plan-table th, .plan-table td { padding-left: 12px; padding-right: 12px; }
+    .plan-table, .fact-table { font-size: 14px; }
+    .plan-table th, .plan-table td, .fact-table th, .fact-table td { padding-left: 12px; padding-right: 12px; }
+    article { padding-top: 44px; }
+    article > header { margin-bottom: 40px; }
+    article > header::before { width: 56px; height: 56px; border-radius: 12.5px; margin-bottom: 18px; }
+    article h1 { font-size: 38px; }
+    article h2 { margin-top: 44px; font-size: 22px; }
+    article h2:first-of-type { margin-top: 40px; }
+    /* Privacy pages also carry the language flags; "All Apps" folds to its chevron (the aria-label stays). */
+    .topbar-inner:has(.lang-switch) .topbar-back { font-size: 0; padding: 6px 4px 6px 0; }
+    .topbar-inner:has(.lang-switch) .topbar-back::before { margin-right: 0; }
+    .topbar-inner:has(.lang-switch) .topbar-sep { display: none; }
     /* 390pt has no room for back link + brand + three nav links at desktop spacing. */
     .topbar-inner { padding: 0 16px; gap: 12px; }
     .topbar-brand { font-size: 16px; white-space: nowrap; }
@@ -251,7 +320,7 @@ main { flex: 1 0 auto; }
     .topbar-nav a { font-size: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .aurora, .hero::before, .feature::after,
+    .aurora, .hero::before, .feature::after, article::before,
     .rule-box::before, .rule-box::after, .pillar-box::before, .pillar-box::after { animation: none; }
-    .feature, .rule-box, .pillar-box, .plan-table, .track-list, .technique-group, .safety-note { animation: none; }
+    .feature, .rule-box, .pillar-box, .plan-table, .fact-table, .card, .track-list, .technique-group, .safety-note { animation: none; }
 }
