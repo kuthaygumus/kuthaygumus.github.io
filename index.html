@@ -22,21 +22,27 @@
         :root {
             --bg-elevated: #ffffff;
             --card-border: rgba(0,0,0,0.07);
-            --card-shadow: 0 1px 2px rgba(0,0,0,0.05);
-            --card-hover-shadow: 0 18px 40px -14px rgba(0,0,0,0.20), 0 6px 14px -8px rgba(0,0,0,0.10);
-            --icon-shadow: 0 6px 16px rgba(0,0,0,0.14);
-            --glow: rgba(0,102,204,0.10);
-            --ring: rgba(0,0,0,0.10);
+            --card-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px -8px rgba(0,0,0,0.08);
+            --card-hover-shadow: 0 24px 48px -18px rgba(0,0,0,0.22), 0 8px 18px -10px rgba(0,0,0,0.10);
+            --icon-shadow: 0 6px 16px rgba(0,0,0,0.16);
+            --glass: rgba(251,251,253,0.72);
+            --dock-bg: rgba(255,255,255,0.62);
+            --blob-a: rgba(35,163,166,0.20);
+            --blob-b: rgba(224,87,58,0.14);
+            --blob-c: rgba(124,108,240,0.16);
         }
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg-elevated: #181818;
+                --bg-elevated: #191919;
                 --card-border: rgba(255,255,255,0.08);
                 --card-shadow: 0 1px 2px rgba(0,0,0,0.4);
-                --card-hover-shadow: 0 18px 44px -14px rgba(0,0,0,0.65), 0 6px 14px -8px rgba(0,0,0,0.45);
+                --card-hover-shadow: 0 24px 52px -18px rgba(0,0,0,0.75), 0 8px 18px -10px rgba(0,0,0,0.5);
                 --icon-shadow: 0 6px 16px rgba(0,0,0,0.5);
-                --glow: rgba(41,151,255,0.16);
-                --ring: rgba(255,255,255,0.14);
+                --glass: rgba(17,17,17,0.70);
+                --dock-bg: rgba(40,40,40,0.55);
+                --blob-a: rgba(35,163,166,0.22);
+                --blob-b: rgba(224,87,58,0.16);
+                --blob-c: rgba(124,108,240,0.22);
             }
         }
 
@@ -52,151 +58,246 @@
         a { transition: color 0.15s ease; }
         a:focus-visible { outline-offset: 3px; border-radius: 4px; }
 
-        .container { max-width: 640px; width: 100%; margin: 0 auto; padding: 0 24px; }
+        .wrap { max-width: 1120px; width: 100%; margin: 0 auto; padding: 0 24px; }
 
-        /* ---- Hero ---- */
-        .hero { position: relative; padding: 104px 0 76px; text-align: center; overflow: hidden; }
+        /* ---- Header (sticky glass bar) ---- */
+        .site-header {
+            position: sticky; top: 0; z-index: 10;
+            background: var(--glass);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--rule);
+        }
+        .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+        .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
+        .brand:hover { text-decoration: none; color: var(--text); }
+        .brand-mark {
+            width: 30px; height: 30px; border-radius: 9px;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 700; letter-spacing: -0.03em; color: #fff;
+            background: linear-gradient(135deg, #23a3a6 0%, #7c6cf0 55%, #e0573a 100%);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+        }
+        .header-nav { display: flex; gap: 22px; }
+        .header-nav a { font-size: 13px; color: var(--text-secondary); }
+        .header-nav a:hover { color: var(--text); text-decoration: none; }
+
+        /* ---- Hero (compact; the dock puts every app above the fold) ---- */
+        /* clip only sideways: a vertical clip would draw a hard line where the hero ends. */
+        .hero { position: relative; padding: 56px 0 40px; text-align: center; overflow-x: clip; }
+        .hero::before, .hero::after {
+            content: ""; position: absolute; pointer-events: none;
+            width: 640px; height: 640px;
+        }
+        /* closest-side keeps every gradient fully faded inside its box, so no edge ever shows. */
         .hero::before {
-            content: "";
-            position: absolute; left: 50%; top: -120px;
-            width: 720px; height: 720px; max-width: 150vw;
-            transform: translateX(-50%);
-            background: radial-gradient(circle, var(--glow) 0%, transparent 62%);
-            pointer-events: none;
+            left: 50%; top: -320px; margin-left: -600px;
+            background: radial-gradient(closest-side, var(--blob-a) 0%, transparent 100%);
+            animation: drift-a 22s ease-in-out infinite alternate;
         }
-        .hero .container { position: relative; }
-        .hero-avatar {
-            width: 76px; height: 76px; margin: 0 auto 30px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 21px;
-            font-size: 29px; font-weight: 700; letter-spacing: -0.04em;
-            color: var(--text);
-            background: var(--bg-elevated);
-            border: 1px solid var(--card-border);
-            box-shadow: var(--icon-shadow);
+        .hero::after {
+            left: 50%; top: -300px; margin-left: -40px;
+            background: radial-gradient(closest-side at 45% 45%, var(--blob-c) 0%, transparent 100%),
+                        radial-gradient(closest-side at 65% 75%, var(--blob-b) 0%, transparent 100%);
+            animation: drift-b 26s ease-in-out infinite alternate;
         }
+        @keyframes drift-a { to { transform: translate(90px, 50px) scale(1.12); } }
+        @keyframes drift-b { to { transform: translate(-80px, 40px) scale(0.92); } }
+        .hero .wrap { position: relative; z-index: 1; }
+
         .hero-label {
             display: inline-flex; align-items: center; gap: 8px;
-            font-size: 13px; font-weight: 500;
-            color: var(--text-muted);
-            letter-spacing: 0.01em;
-            margin-bottom: 22px;
+            font-size: 13px; font-weight: 500; color: var(--text-secondary);
+            padding: 5px 14px 5px 10px; border-radius: 999px;
+            background: var(--dock-bg); border: 1px solid var(--card-border);
+            margin-bottom: 18px;
         }
-        .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--link); }
+        .hero-dot { width: 7px; height: 7px; border-radius: 50%; background: #30d158; box-shadow: 0 0 0 3px rgba(48,209,88,0.18); }
         .hero h1 {
-            font-size: 48px; font-weight: 700;
-            letter-spacing: -0.04em; line-height: 1.04;
-            color: var(--text); margin-bottom: 18px;
+            font-size: 52px; font-weight: 700;
+            letter-spacing: -0.045em; line-height: 1.02;
+            color: var(--text); margin-bottom: 12px;
         }
         .hero-subtitle {
-            font-size: 19px; line-height: 1.55;
+            font-size: 18px; line-height: 1.5;
             color: var(--text-secondary); letter-spacing: -0.01em;
-            max-width: 480px; margin: 0 auto;
+            max-width: 560px; margin: 0 auto;
         }
         .hero-values {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
-            margin-top: 30px;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px;
+            margin-top: 14px; font-size: 13px; font-weight: 500; color: var(--text-muted);
         }
-        .hero-values span {
-            font-size: 12px; font-weight: 500; color: var(--text-muted);
-            padding: 5px 13px; border-radius: 999px;
-            background: var(--card-bg); border: 1px solid var(--card-border);
+        .hero-values span { display: inline-flex; align-items: center; gap: 6px; }
+        .hero-values span::before { content: "✓"; font-size: 11px; color: #30a46c; }
+
+        /* ---- Dock: macOS-style magnification, pure CSS (:has picks the left neighbour) ---- */
+        .dock {
+            display: inline-flex; align-items: flex-end; gap: 10px;
+            margin-top: 30px; padding: 10px 12px;
+            border-radius: 24px;
+            background: var(--dock-bg);
+            border: 1px solid var(--card-border);
+            -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+            box-shadow: 0 18px 40px -20px rgba(0,0,0,0.30);
+        }
+        .dock a {
+            position: relative; display: block;
+            width: 58px; height: 58px; border-radius: 14px;
+            transform-origin: 50% 100%;
+            transition: transform 0.22s cubic-bezier(.2,.8,.2,1);
+        }
+        .dock img { width: 100%; height: 100%; display: block; border-radius: inherit; box-shadow: var(--icon-shadow); }
+        .dock-label {
+            position: absolute; left: 50%; bottom: calc(100% + 10px);
+            transform: translateX(-50%) translateY(4px);
+            white-space: nowrap; pointer-events: none;
+            font-size: 12px; font-weight: 600; color: var(--text);
+            padding: 4px 10px; border-radius: 8px;
+            background: var(--bg-elevated); border: 1px solid var(--card-border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            opacity: 0; transition: opacity 0.15s ease, transform 0.15s ease;
+        }
+        .dock a:hover .dock-label, .dock a:focus-visible .dock-label { opacity: 1; transform: translateX(-50%) translateY(0); }
+        @media (hover: hover) {
+            .dock a:hover { transform: scale(1.32) translateY(-4px); }
+            .dock a:hover + a, .dock a:has(+ a:hover) { transform: scale(1.14) translateY(-2px); }
         }
 
         /* ---- Apps ---- */
-        .apps-inner { max-width: 1040px; width: 100%; margin: 0 auto; padding: 0 24px 8px; }
-        .divider { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
-        .divider-line { flex: 1; height: 1px; background: var(--rule); }
-        .divider-text { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.10em; }
+        .apps { padding: 12px 0 64px; }
+        .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+        .section-head h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+        .section-head p { font-size: 13px; color: var(--text-muted); }
 
-        .app-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .app-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 
-        /* ---- App Card ---- */
+        /* ---- App Card (each card tints itself with its own --accent) ---- */
         .app-card {
+            --accent: #0066cc;
+            position: relative; isolation: isolate; overflow: hidden;
             display: flex; flex-direction: column;
             background: var(--bg-elevated);
             border: 1px solid var(--card-border);
-            border-radius: 22px;
-            padding: 28px;
+            border-radius: 20px;
+            padding: 22px;
             box-shadow: var(--card-shadow);
+            scroll-margin-top: 80px;
             transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
         }
-        .app-card:hover { box-shadow: var(--card-hover-shadow); transform: translateY(-3px); border-color: var(--ring); }
-
-        .app-header {
-            display: flex; align-items: center; gap: 18px;
-            margin-bottom: 20px; text-decoration: none; color: inherit;
+        .app-card::before {
+            content: ""; position: absolute; inset: 0; z-index: -1;
+            background: radial-gradient(120% 60% at 0% 0%, color-mix(in srgb, var(--accent) 16%, transparent) 0%, transparent 62%);
+            opacity: 0.75; transition: opacity 0.3s ease;
         }
-        .app-header:hover { color: inherit; }
+        .app-card:hover {
+            box-shadow: var(--card-hover-shadow); transform: translateY(-4px);
+            border-color: color-mix(in srgb, var(--accent) 40%, var(--card-border));
+        }
+        .app-card:hover::before { opacity: 1; }
+        .app-card:target { animation: ping 1.6s ease-out 1; border-color: var(--accent); }
+        @keyframes ping {
+            0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
+            100% { box-shadow: 0 0 0 14px transparent; }
+        }
+
+        .app-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; color: inherit; }
+        .app-header:hover { color: inherit; text-decoration: none; }
+        .app-header:hover .app-name { color: var(--accent); }
         .app-icon {
-            width: 72px; height: 72px; border-radius: 16px;
-            flex-shrink: 0; box-shadow: var(--icon-shadow); overflow: hidden;
+            width: 60px; height: 60px; border-radius: 14px;
+            flex-shrink: 0; overflow: hidden;
+            box-shadow: 0 10px 22px -8px color-mix(in srgb, var(--accent) 70%, transparent), var(--icon-shadow);
             transition: transform 0.3s ease;
         }
-        .app-card:hover .app-icon { transform: scale(1.04); }
+        .app-card:hover .app-icon { transform: scale(1.05) rotate(-2deg); }
         .app-icon img { width: 100%; height: 100%; display: block; }
         .app-meta { flex: 1; min-width: 0; }
-        .app-name { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 3px; }
-        .app-tagline { font-size: 15px; color: var(--text-secondary); line-height: 1.4; }
+        .app-name { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 1px; transition: color 0.2s ease; }
+        .app-tagline { font-size: 14px; color: var(--text-secondary); line-height: 1.35; }
 
-        .app-description {
-            font-size: 15px; line-height: 1.6; color: var(--text-secondary);
-            margin-bottom: 24px; padding-bottom: 24px;
-            border-bottom: 1px solid var(--rule);
-        }
+        .app-description { font-size: 14.5px; line-height: 1.55; color: var(--text-secondary); margin-bottom: 18px; }
 
         .app-footer {
             display: flex; align-items: center; justify-content: space-between;
-            flex-wrap: wrap; gap: 16px;
-            margin-top: auto;
+            flex-wrap: wrap; gap: 12px;
+            margin-top: auto; padding-top: 16px;
+            border-top: 1px solid var(--rule);
         }
-        .app-store-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: var(--text); color: var(--bg);
-            padding: 10px 18px; border-radius: 10px;
-            font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
-            transition: opacity 0.15s ease; text-decoration: none;
-        }
-        .app-store-badge:hover { opacity: 0.85; color: var(--bg); }
-        .app-store-badge svg { flex-shrink: 0; }
-        .badge-text-group { display: flex; flex-direction: column; line-height: 1; }
-        .badge-small { font-size: 9px; font-weight: 400; letter-spacing: 0.01em; opacity: 0.85; }
-        .badge-large { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; margin-top: 2px; }
+        .app-legal { display: flex; gap: 14px; }
+        .app-legal a { font-size: 12.5px; color: var(--text-muted); }
+        .app-legal a:hover { color: var(--accent); text-decoration: none; }
 
-        .app-legal { display: flex; gap: 18px; }
-        .app-legal a { font-size: 13px; color: var(--text-muted); transition: color 0.15s ease; }
-        .app-legal a:hover { color: var(--text-secondary); }
+        /* ---- Contact tile (fills the grid's last row) ---- */
+        .contact-card {
+            grid-column: span 2;
+            position: relative; overflow: hidden; isolation: isolate;
+            display: flex; flex-direction: column; justify-content: center; gap: 10px;
+            padding: 28px;
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            background: var(--bg-elevated);
+        }
+        .contact-card::before {
+            content: ""; position: absolute; inset: 0; z-index: -1;
+            background: radial-gradient(60% 90% at 100% 0%, var(--blob-c) 0%, transparent 70%),
+                        radial-gradient(50% 80% at 0% 100%, var(--blob-a) 0%, transparent 70%);
+        }
+        .contact-card h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+        .contact-card p { font-size: 15px; color: var(--text-secondary); max-width: 440px; }
+        .contact-btn {
+            align-self: flex-start; margin-top: 6px;
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 18px; border-radius: 999px;
+            font-size: 14px; font-weight: 600;
+            background: var(--text); color: var(--bg);
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        .contact-btn:hover { color: var(--bg); text-decoration: none; transform: translateY(-1px); opacity: 0.88; }
 
         /* ---- Footer ---- */
         footer { margin-top: auto; }
 
         /* ---- Responsive ---- */
-        @media (min-width: 761px) {
-            /* An odd card count leaves the last card alone on its row: centre it instead of hugging the left. */
-            .app-grid > .app-card:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 10px); }
+        @media (max-width: 1039px) {
+            .app-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-card { grid-column: span 1; }
         }
-        @media (max-width: 760px) {
-            .app-grid { grid-template-columns: 1fr; gap: 16px; }
+        @media (max-width: 679px) {
+            .app-grid { grid-template-columns: 1fr; gap: 14px; }
         }
         @media (max-width: 600px) {
-            .hero { padding: 72px 0 52px; }
-            .hero-avatar { width: 66px; height: 66px; font-size: 25px; border-radius: 18px; margin-bottom: 24px; }
-            .hero h1 { font-size: 36px; }
-            .hero-subtitle { font-size: 17px; }
-            .app-card { padding: 24px; border-radius: 18px; }
-            .app-icon { width: 60px; height: 60px; border-radius: 14px; }
-            .app-name { font-size: 20px; }
-            .app-footer { flex-direction: column; align-items: flex-start; }
+            .wrap { padding: 0 16px; }
+            .header-nav { gap: 16px; }
+            .hero { padding: 36px 0 28px; }
+            .hero h1 { font-size: 38px; }
+            .hero-subtitle { font-size: 16px; }
+            .dock { gap: 6px; padding: 8px; border-radius: 18px; margin-top: 24px; }
+            .dock a { width: 40px; height: 40px; border-radius: 10px; }
+            .section-head p { display: none; }
+            .app-card { padding: 20px; border-radius: 18px; }
+            .contact-card { padding: 22px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero::before, .hero::after { animation: none; }
         }
     </style>
 </head>
 <body>
 
+    <header class="site-header">
+        <div class="wrap">
+            <a href="/" class="brand" aria-label="Kuthay Gumus — home"><span class="brand-mark" aria-hidden="true">KG</span>Kuthay Gumus</a>
+            <nav class="header-nav" aria-label="Primary">
+                <a href="#apps">Apps</a>
+                <a href="mailto:kuthaygumus@icloud.com">Contact</a>
+            </nav>
+        </div>
+    </header>
+
     <main>
         <section class="hero">
-            <div class="container">
-                <div class="hero-avatar" aria-hidden="true">KG</div>
-                <p class="hero-label"><span class="hero-dot"></span>Passionate Software Engineer from Planet Earth 🌍</p>
+            <div class="wrap">
+                <p class="hero-label"><span class="hero-dot" aria-hidden="true"></span>Passionate Software Engineer from Planet Earth 🌍</p>
                 <h1>Kuthay Gumus</h1>
                 <p class="hero-subtitle">Building beautiful and useful iOS apps with a little too much love for the small things.</p>
                 <div class="hero-values">
@@ -204,22 +305,30 @@
                     <span>No ads</span>
                     <span>On-device by default</span>
                 </div>
+                <nav class="dock" aria-label="Jump to an app">
+                    <a href="#restio"><img src="assets/icons/192/restio.png" alt="Restio" width="58" height="58"><span class="dock-label" aria-hidden="true">Restio</span></a>
+                    <a href="#bebito"><img src="assets/icons/192/bebito.png" alt="Bebito" width="58" height="58"><span class="dock-label" aria-hidden="true">Bebito</span></a>
+                    <a href="#bloomind"><img src="assets/icons/192/bloomind.png" alt="Bloomind" width="58" height="58"><span class="dock-label" aria-hidden="true">Bloomind</span></a>
+                    <a href="#neredeydi"><img src="assets/icons/192/neredeydi.png" alt="Neredeydi" width="58" height="58"><span class="dock-label" aria-hidden="true">Neredeydi</span></a>
+                    <a href="#pipandpages"><img src="assets/icons/192/pipandpages.png" alt="Pip &amp; Pages" width="58" height="58"><span class="dock-label" aria-hidden="true">Pip &amp; Pages</span></a>
+                    <a href="#truce"><img src="assets/icons/192/truce.png" alt="Truce" width="58" height="58"><span class="dock-label" aria-hidden="true">Truce</span></a>
+                    <a href="#strolla"><img src="assets/icons/192/strolla.png" alt="Strolla" width="58" height="58"><span class="dock-label" aria-hidden="true">Strolla</span></a>
+                </nav>
             </div>
         </section>
 
-        <section class="apps">
-            <div class="apps-inner">
-                <div class="divider">
-                    <span class="divider-line"></span>
-                    <span class="divider-text">Apps</span>
-                    <span class="divider-line"></span>
+        <section class="apps" id="apps" aria-labelledby="apps-title">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 id="apps-title">Apps</h2>
+                    <p>iPhone · iPad · Apple Watch · Mac</p>
                 </div>
 
                 <div class="app-grid">
-                <div class="app-card">
+                <article class="app-card" id="restio" style="--accent:#23a3a6">
                     <a href="/restio/" class="app-header" aria-label="Restio — Your eye rest companion">
                         <div class="app-icon">
-                            <img src="assets/icons/restio.png" alt="Restio app icon" width="72" height="72" loading="eager">
+                            <img src="assets/icons/192/restio.png" alt="Restio app icon" width="60" height="60">
                         </div>
                         <div class="app-meta">
                             <div class="app-name">Restio</div>
@@ -230,16 +339,16 @@
                     <div class="app-footer">
                         <a href="https://apps.apple.com/app/restio-eye-rest-20-20-20/id6759984160" class="app-store-badge official" aria-label="Download Restio on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
                         <nav class="app-legal" aria-label="Legal links for Restio">
-                            <a href="/restio/privacy/">Privacy Policy</a>
-                            <a href="/restio/terms/">Terms of Use</a>
+                            <a href="/restio/privacy/">Privacy</a>
+                            <a href="/restio/terms/">Terms</a>
                             <a href="/restio/support/">Support</a>
                         </nav>
                     </div>
-                </div>
-                <div class="app-card">
+                </article>
+                <article class="app-card" id="bebito" style="--accent:#7c6cf0">
                     <a href="/bebito/" class="app-header" aria-label="Bebito — Your baby's daily companion">
                         <div class="app-icon">
-                            <img src="assets/icons/bebito.png" alt="Bebito app icon" width="72" height="72" loading="lazy">
+                            <img src="assets/icons/192/bebito.png" alt="Bebito app icon" width="60" height="60">
                         </div>
                         <div class="app-meta">
                             <div class="app-name">Bebito</div>
@@ -250,16 +359,16 @@
                     <div class="app-footer">
                         <a href="https://apps.apple.com/app/bebito-baby-newborn-tracker/id6760252824" class="app-store-badge official" aria-label="Download Bebito on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
                         <nav class="app-legal" aria-label="Legal links for Bebito">
-                            <a href="/bebito/privacy/">Privacy Policy</a>
-                            <a href="/bebito/terms/">Terms of Use</a>
+                            <a href="/bebito/privacy/">Privacy</a>
+                            <a href="/bebito/terms/">Terms</a>
                             <a href="/bebito/support/">Support</a>
                         </nav>
                     </div>
-                </div>
-                <div class="app-card">
+                </article>
+                <article class="app-card" id="bloomind" style="--accent:#e0573a">
                     <a href="/bloomind/" class="app-header" aria-label="Bloomind — Breathe, grow, find calm">
                         <div class="app-icon">
-                            <img src="assets/icons/bloomind.png" alt="Bloomind app icon" width="72" height="72" loading="lazy">
+                            <img src="assets/icons/192/bloomind.png" alt="Bloomind app icon" width="60" height="60">
                         </div>
                         <div class="app-meta">
                             <div class="app-name">Bloomind</div>
@@ -270,16 +379,16 @@
                     <div class="app-footer">
                         <a href="https://apps.apple.com/app/bloomind-stop-overthinking/id6761011858" class="app-store-badge official" aria-label="Download Bloomind on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
                         <nav class="app-legal" aria-label="Legal links for Bloomind">
-                            <a href="/bloomind/privacy/">Privacy Policy</a>
-                            <a href="/bloomind/terms/">Terms of Use</a>
+                            <a href="/bloomind/privacy/">Privacy</a>
+                            <a href="/bloomind/terms/">Terms</a>
                             <a href="/bloomind/support/">Support</a>
                         </nav>
                     </div>
-                </div>
-                <div class="app-card">
+                </article>
+                <article class="app-card" id="neredeydi" style="--accent:#e5484d">
                     <a href="/neredeydi/" class="app-header" aria-label="Neredeydi — Coğrafya tahmin oyunu">
                         <div class="app-icon">
-                            <img src="assets/icons/neredeydi.png" alt="Neredeydi app icon" width="72" height="72" loading="lazy">
+                            <img src="assets/icons/192/neredeydi.png" alt="Neredeydi app icon" width="60" height="60">
                         </div>
                         <div class="app-meta">
                             <div class="app-name">Neredeydi</div>
@@ -290,16 +399,16 @@
                     <div class="app-footer">
                         <a href="https://apps.apple.com/app/neredeydi-geography-quiz/id6763877439" class="app-store-badge official" aria-label="Download Neredeydi on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
                         <nav class="app-legal" aria-label="Legal links for Neredeydi">
-                            <a href="/neredeydi/privacy/">Privacy Policy</a>
-                            <a href="/neredeydi/terms/">Terms of Use</a>
+                            <a href="/neredeydi/privacy/">Privacy</a>
+                            <a href="/neredeydi/terms/">Terms</a>
                             <a href="/neredeydi/support/">Support</a>
                         </nav>
                     </div>
-                </div>
-                <div class="app-card">
+                </article>
+                <article class="app-card" id="pipandpages" style="--accent:#c8763a">
                     <a href="/pipandpages/" class="app-header" aria-label="Pip &amp; Pages — cozy reading companion">
                         <div class="app-icon">
-                            <img src="assets/icons/pipandpages.png" alt="Pip & Pages app icon" width="72" height="72" loading="lazy">
+                            <img src="assets/icons/192/pipandpages.png" alt="Pip & Pages app icon" width="60" height="60">
                         </div>
                         <div class="app-meta">
                             <div class="app-name">Pip &amp; Pages</div>
@@ -310,16 +419,16 @@
                     <div class="app-footer">
                         <a href="https://apps.apple.com/app/pip-pages-reading-journal/id6777044932" class="app-store-badge official" aria-label="Download Pip &amp; Pages on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
                         <nav class="app-legal" aria-label="Legal links for Pip &amp; Pages">
-                            <a href="/pipandpages/privacy/">Privacy Policy</a>
-                            <a href="/pipandpages/terms/">Terms of Use</a>
+                            <a href="/pipandpages/privacy/">Privacy</a>
+                            <a href="/pipandpages/terms/">Terms</a>
                             <a href="/pipandpages/support/">Support</a>
                         </nav>
                     </div>
-                </div>
-                <div class="app-card">
+                </article>
+                <article class="app-card" id="truce" style="--accent:#f59e3b">
                     <a href="/truce/" class="app-header" aria-label="Truce — Day 1. Again.">
                         <div class="app-icon">
-                            <img src="assets/icons/truce.png" alt="Truce app icon" width="72" height="72" loading="lazy">
+                            <img src="assets/icons/192/truce.png" alt="Truce app icon" width="60" height="60">
                         </div>
                         <div class="app-meta">
                             <div class="app-name">Truce</div>
@@ -330,16 +439,16 @@
                     <div class="app-footer">
                         <a href="https://apps.apple.com/app/truce-days-together/id6780033643" class="app-store-badge official" aria-label="Download Truce on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
                         <nav class="app-legal" aria-label="Legal links for Truce">
-                            <a href="/truce/privacy/">Privacy Policy</a>
-                            <a href="/truce/terms/">Terms of Use</a>
+                            <a href="/truce/privacy/">Privacy</a>
+                            <a href="/truce/terms/">Terms</a>
                             <a href="/truce/support/">Support</a>
                         </nav>
                     </div>
-                </div>
-                <div class="app-card">
+                </article>
+                <article class="app-card" id="strolla" style="--accent:#3f9a7f">
                     <a href="/strolla/" class="app-header" aria-label="Strolla — Japanese walking, coached out loud">
                         <div class="app-icon">
-                            <img src="assets/icons/strolla.png" alt="Strolla app icon" width="72" height="72" loading="lazy">
+                            <img src="assets/icons/192/strolla.png" alt="Strolla app icon" width="60" height="60">
                         </div>
                         <div class="app-meta">
                             <div class="app-name">Strolla</div>
@@ -350,12 +459,17 @@
                     <div class="app-footer">
                         <a href="https://apps.apple.com/app/strolla-japanese-walking-app/id6816512312" class="app-store-badge official" aria-label="Download Strolla on the App Store"><img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40"></a>
                         <nav class="app-legal" aria-label="Legal links for Strolla">
-                            <a href="/strolla/privacy/">Privacy Policy</a>
-                            <a href="/strolla/terms/">Terms of Use</a>
+                            <a href="/strolla/privacy/">Privacy</a>
+                            <a href="/strolla/terms/">Terms</a>
                             <a href="/strolla/support/">Support</a>
                         </nav>
                     </div>
-                </div>
+                </article>
+                <aside class="contact-card" aria-labelledby="contact-title">
+                    <h2 id="contact-title">Say hello</h2>
+                    <p>Feedback, bug reports, feature ideas &mdash; they all shape the next update.</p>
+                    <a class="contact-btn" href="mailto:kuthaygumus@icloud.com">kuthaygumus@icloud.com <span aria-hidden="true">→</span></a>
+                </aside>
                 </div>
             </div>
         </section>
