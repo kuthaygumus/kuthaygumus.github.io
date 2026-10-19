@@ -1,0 +1,257 @@
+/* =========================================
+   App landing pages — the homepage v2 language
+   (glass header, accent aurora hero, glowing cards).
+   Linked after each page's inline <style>, so equal-specificity rules here win.
+   Each page sets its own tint: <body style="--accent:#…">
+   ========================================= */
+
+/* The rotating glow rings animate this angle; registering it is what makes it interpolate. */
+@property --angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+
+:root {
+    --bg-elevated: #ffffff;
+    --card-border: rgba(0,0,0,0.07);
+    --card-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px -8px rgba(0,0,0,0.08);
+    --card-hover-shadow: 0 24px 48px -22px rgba(0,0,0,0.22);
+    --glass: rgba(251,251,253,0.72);
+    --dot: rgba(0,0,0,0.10);
+    /* Siri / Apple Intelligence spectrum; light stops are darkened to keep text contrast ≥ 4.5:1. */
+    --ai-1: #2563eb; --ai-2: #7c3aed; --ai-3: #be185d; --ai-4: #c2410c;
+    --aurora-2: rgba(139,92,246,0.16); --aurora-3: rgba(236,72,153,0.12);
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-elevated: #18181b;
+        --card-border: rgba(255,255,255,0.08);
+        --card-shadow: 0 1px 2px rgba(0,0,0,0.4);
+        --card-hover-shadow: 0 24px 56px -22px rgba(0,0,0,0.8);
+        --glass: rgba(17,17,17,0.70);
+        --dot: rgba(255,255,255,0.09);
+        --ai-1: #60a5fa; --ai-2: #a78bfa; --ai-3: #f472b6; --ai-4: #fb923c;
+        --aurora-2: rgba(139,92,246,0.24); --aurora-3: rgba(236,72,153,0.16);
+    }
+}
+
+body {
+    --accent: #0066cc;
+    /* The accent as text: pulled toward the ink so every app's tint clears 4.5:1 on the page. */
+    --accent-ink: color-mix(in srgb, var(--accent) 62%, #000);
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+@media (prefers-color-scheme: dark) {
+    body { --accent-ink: color-mix(in srgb, var(--accent) 70%, #fff); }
+}
+main { flex: 1 0 auto; }
+
+/* ---- Topbar: sticky glass with a spectrum hairline ---- */
+.topbar {
+    position: sticky; top: 0; z-index: 10;
+    border-bottom: 0; padding: 12px 0;
+    background: var(--glass);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+}
+.topbar::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ai-1), var(--ai-2), var(--ai-3), var(--ai-4), transparent);
+    opacity: 0.45;
+}
+.topbar-back::before { content: "‹"; margin-right: 5px; font-size: 17px; line-height: 0; }
+.topbar-brand { display: inline-flex; align-items: center; gap: 8px; font-size: 17px; letter-spacing: -0.02em; }
+.topbar-brand::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.topbar-nav a { font-size: 13px; }
+.topbar-nav a:hover { color: var(--text); text-decoration: none; }
+
+/* ---- Hero: dot grid + accent aurora + a glowing halo behind the icon ---- */
+.hero {
+    --pad-top: 64px; --icon: 120px;
+    position: relative; overflow-x: clip;
+    max-width: none; padding: var(--pad-top) 22px 56px;
+}
+.hero > :not(.hero-bg) { position: relative; }
+.hero-bg { position: absolute; inset: -60px 0 -96px; pointer-events: none; }
+.hero-bg::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(var(--dot) 1px, transparent 1.5px);
+    background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(ellipse 55% 65% at 50% 40%, #000 20%, transparent 75%);
+    mask-image: radial-gradient(ellipse 55% 65% at 50% 40%, #000 20%, transparent 75%);
+}
+.aurora { position: absolute; width: 560px; height: 560px; left: 50%; top: 50%; }
+.aurora-1 { margin: -460px 0 0 -620px; background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 26%, transparent), transparent); animation: drift-1 18s ease-in-out infinite alternate; }
+.aurora-2 { margin: -400px 0 0 -180px; background: radial-gradient(closest-side, var(--aurora-2), transparent); animation: drift-2 22s ease-in-out infinite alternate; }
+.aurora-3 { margin: -360px 0 0 80px;   background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 18%, transparent), transparent); animation: drift-3 20s ease-in-out infinite alternate; }
+.aurora-4 { margin: -200px 0 0 -120px; background: radial-gradient(closest-side, var(--aurora-3), transparent); animation: drift-1 26s ease-in-out infinite alternate-reverse; }
+@keyframes drift-1 { to { transform: translate(110px, 50px) scale(1.15); } }
+@keyframes drift-2 { to { transform: translate(-80px, 70px) scale(0.9); } }
+@keyframes drift-3 { to { transform: translate(-120px, -30px) scale(1.1); } }
+
+.hero::before {
+    content: ""; position: absolute; left: 50%; top: calc(var(--pad-top) + var(--icon) / 2);
+    width: calc(var(--icon) * 1.9); height: calc(var(--icon) * 1.9);
+    margin: calc(var(--icon) * -0.95) 0 0 calc(var(--icon) * -0.95);
+    border-radius: 50%;
+    background: conic-gradient(from var(--angle), var(--accent), var(--ai-2), var(--ai-3), var(--accent));
+    filter: blur(36px); opacity: 0.38;
+    animation: spin 9s linear infinite;
+}
+@keyframes spin { to { --angle: 360deg; } }
+
+.hero-icon {
+    display: block; margin: 0 auto 28px;
+    box-shadow: 0 18px 40px -14px color-mix(in srgb, var(--accent) 75%, transparent), 0 6px 16px rgba(0,0,0,0.16);
+}
+.hero h1 { font-size: 60px; line-height: 1.02; letter-spacing: -0.05em; margin-bottom: 16px; }
+.hero-subtitle { font-size: 21px; line-height: 1.45; letter-spacing: -0.015em; max-width: 620px; margin: 0 auto; }
+.hero-cta { margin-top: 30px; }
+.hero-cta .app-store-badge { display: inline-block; transition: transform 0.2s ease, filter 0.2s ease; }
+.hero-cta .app-store-badge:hover { transform: translateY(-2px); filter: drop-shadow(0 10px 18px color-mix(in srgb, var(--accent) 45%, transparent)); }
+
+/* ---- Sections ---- */
+.section, .badge-wrap { position: relative; }
+.section { max-width: 780px; padding: 0 22px 72px; }
+.section-title { font-size: 32px; font-weight: 700; letter-spacing: -0.04em; margin-bottom: 10px; }
+.section-title::before {
+    content: ""; display: block; width: 28px; height: 4px; border-radius: 2px; margin-bottom: 16px;
+    background: linear-gradient(90deg, var(--accent), var(--ai-2));
+}
+.section-desc { margin-bottom: 28px; }
+
+/* ---- Cards: own accent glow; hover lights a rotating ring ---- */
+.feature, .technique-group, .track-list {
+    position: relative; isolation: isolate;
+    background: var(--bg-elevated);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    box-shadow: var(--card-shadow);
+}
+.features { gap: 14px; }
+.feature { padding: 22px; transition: box-shadow 0.35s ease, transform 0.35s cubic-bezier(.2,.8,.2,1), border-color 0.35s ease; }
+.feature::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+    background: radial-gradient(120% 70% at 0% 0%, color-mix(in srgb, var(--accent) 13%, transparent) 0%, transparent 60%);
+}
+.feature::after {
+    content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1.5px; pointer-events: none;
+    background: conic-gradient(from var(--angle), transparent 0deg, var(--accent) 70deg, var(--ai-2) 140deg, var(--ai-3) 190deg, transparent 260deg);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    opacity: 0; transition: opacity 0.35s ease;
+    animation: spin 3.5s linear infinite;
+}
+.feature:hover {
+    transform: translateY(-3px); border-color: transparent;
+    box-shadow: var(--card-hover-shadow), 0 16px 44px -24px color-mix(in srgb, var(--accent) 80%, transparent);
+}
+.feature:hover::after { opacity: 1; }
+.feature-name { font-size: 16px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 6px; }
+.feature-desc { font-size: 14.5px; color: var(--text-secondary); line-height: 1.5; }
+.feature .tag {
+    display: inline-block; vertical-align: 1px; white-space: nowrap;
+    margin-left: 8px; padding: 2px 7px; border-radius: 999px;
+    color: var(--accent-ink);
+    background: color-mix(in srgb, var(--accent) 13%, transparent);
+}
+
+/* Stat boxes (Restio's 20-20-20, Neredeydi's pillars): an always-on spectrum edge */
+.rule-box, .pillar-box {
+    position: relative; isolation: isolate;
+    background: var(--bg-elevated);
+    border-radius: 20px; padding: 28px;
+}
+.rule-box::before, .pillar-box::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; z-index: -1;
+    background: conic-gradient(from var(--angle), var(--accent), var(--ai-2), var(--ai-3), var(--ai-1), var(--accent));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    animation: spin 8s linear infinite;
+}
+.rule-box::after, .pillar-box::after {
+    content: ""; position: absolute; inset: 8px; border-radius: inherit; z-index: -2;
+    background: conic-gradient(from var(--angle), color-mix(in srgb, var(--accent) 30%, transparent), var(--aurora-2), var(--aurora-3), color-mix(in srgb, var(--accent) 30%, transparent));
+    filter: blur(26px); opacity: 0.8;
+    animation: spin 8s linear infinite;
+}
+.rule-steps, .pillar-row { gap: 12px; margin-top: 22px; }
+.rule-step, .pillar { padding: 16px 8px; border-radius: 14px; background: var(--card-bg); }
+.rule-step .num, .pillar .num {
+    font-size: 40px; line-height: 1.1; letter-spacing: -0.04em;
+    background: linear-gradient(135deg, var(--accent-ink), var(--ai-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* Lists as cards (Bebito's tracks, Bloomind's techniques) */
+.track-list { padding: 6px 22px; gap: 0 28px; }
+.track-list li:last-child { border-bottom: 0; }
+.technique-group { padding: 18px 22px 8px; margin-bottom: 14px; }
+.technique-group-title { color: var(--accent-ink); }
+.technique-list li:last-child { border-bottom: 0; }
+.safety-note {
+    border-radius: 14px; padding: 14px 18px;
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+}
+
+/* ---- Pricing table as a card ---- */
+.plan-table {
+    border-collapse: separate; border-spacing: 0; overflow: hidden;
+    margin: 20px 0 14px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    box-shadow: var(--card-shadow);
+}
+.plan-table th { padding: 14px 20px 12px; background: var(--card-bg); }
+.plan-table td { padding: 15px 20px; }
+.plan-table td:first-child { font-weight: 600; }
+.plan-table tbody tr { transition: background 0.2s ease; }
+.plan-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+
+/* ---- Closing CTA: the badge on a soft accent bloom ---- */
+.badge-wrap { padding: 8px 22px 88px; isolation: isolate; }
+.badge-wrap::before {
+    content: ""; position: absolute; left: 50%; top: 0; z-index: -1;
+    width: 420px; max-width: 90%; height: 120px; transform: translateX(-50%);
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 22%, transparent), transparent);
+    filter: blur(8px);
+}
+.badge-wrap .app-store-badge { transition: transform 0.2s ease; }
+.badge-wrap .app-store-badge:hover { transform: translateY(-2px); }
+
+/* ---- Scroll reveal: uses `translate`, so the hover `transform` still composes ---- */
+@supports (animation-timeline: view()) {
+    .feature, .rule-box, .pillar-box, .plan-table, .track-list, .technique-group, .safety-note {
+        animation: reveal linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 55%;
+    }
+    @keyframes reveal { from { opacity: 0; translate: 0 28px; scale: 0.98; } to { opacity: 1; translate: 0 0; scale: 1; } }
+}
+
+@media (max-width: 600px) {
+    .hero { --pad-top: 44px; --icon: 96px; padding-bottom: 44px; }
+    .hero h1 { font-size: 42px; }
+    .hero-subtitle { font-size: 18px; }
+    .hero-cta { margin-top: 24px; }
+    .section { padding: 0 16px 56px; }
+    .section-title { font-size: 26px; }
+    .feature { padding: 18px; }
+    .rule-box, .pillar-box { padding: 22px; }
+    .plan-table { font-size: 14px; }
+    .plan-table th, .plan-table td { padding-left: 12px; padding-right: 12px; }
+    /* 390pt has no room for back link + brand + three nav links at desktop spacing. */
+    .topbar-inner { padding: 0 16px; gap: 12px; }
+    .topbar-brand { font-size: 16px; white-space: nowrap; }
+    .topbar-brand::before { display: none; }
+    .topbar-nav { gap: 14px; }
+    .topbar-nav a { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .aurora, .hero::before, .feature::after,
+    .rule-box::before, .rule-box::after, .pillar-box::before, .pillar-box::after { animation: none; }
+    .feature, .rule-box, .pillar-box, .plan-table, .track-list, .technique-group, .safety-note { animation: none; }
+}
