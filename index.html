@@ -19,30 +19,34 @@
     <link rel="stylesheet" href="/assets/shared.css">
     <title>Kuthay Gumus — Apps</title>
     <style>
+        /* The rotating glow rings animate this angle; registering it is what makes it interpolate. */
+        @property --angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+
         :root {
             --bg-elevated: #ffffff;
             --card-border: rgba(0,0,0,0.07);
             --card-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px -8px rgba(0,0,0,0.08);
-            --card-hover-shadow: 0 24px 48px -18px rgba(0,0,0,0.22), 0 8px 18px -10px rgba(0,0,0,0.10);
+            --card-hover-shadow: 0 28px 56px -22px rgba(0,0,0,0.25);
             --icon-shadow: 0 6px 16px rgba(0,0,0,0.16);
             --glass: rgba(251,251,253,0.72);
-            --dock-bg: rgba(255,255,255,0.62);
-            --blob-a: rgba(35,163,166,0.20);
-            --blob-b: rgba(224,87,58,0.14);
-            --blob-c: rgba(124,108,240,0.16);
+            --pill-bg: rgba(255,255,255,0.75);
+            --dot: rgba(0,0,0,0.10);
+            /* Siri / Apple Intelligence spectrum; light stops are darkened to keep text contrast ≥ 4.5:1. */
+            --ai-1: #2563eb; --ai-2: #7c3aed; --ai-3: #be185d; --ai-4: #c2410c;
+            --aurora-1: rgba(47,124,255,0.20); --aurora-2: rgba(139,92,246,0.18); --aurora-3: rgba(236,72,153,0.14); --aurora-4: rgba(249,115,22,0.12);
         }
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg-elevated: #191919;
+                --bg-elevated: #18181b;
                 --card-border: rgba(255,255,255,0.08);
                 --card-shadow: 0 1px 2px rgba(0,0,0,0.4);
-                --card-hover-shadow: 0 24px 52px -18px rgba(0,0,0,0.75), 0 8px 18px -10px rgba(0,0,0,0.5);
+                --card-hover-shadow: 0 28px 60px -22px rgba(0,0,0,0.8);
                 --icon-shadow: 0 6px 16px rgba(0,0,0,0.5);
                 --glass: rgba(17,17,17,0.70);
-                --dock-bg: rgba(40,40,40,0.55);
-                --blob-a: rgba(35,163,166,0.22);
-                --blob-b: rgba(224,87,58,0.16);
-                --blob-c: rgba(124,108,240,0.22);
+                --pill-bg: rgba(30,30,34,0.70);
+                --dot: rgba(255,255,255,0.09);
+                --ai-1: #60a5fa; --ai-2: #a78bfa; --ai-3: #f472b6; --ai-4: #fb923c;
+                --aurora-1: rgba(47,124,255,0.26); --aurora-2: rgba(139,92,246,0.26); --aurora-3: rgba(236,72,153,0.18); --aurora-4: rgba(249,115,22,0.14);
             }
         }
 
@@ -60,13 +64,17 @@
 
         .wrap { max-width: 1120px; width: 100%; margin: 0 auto; padding: 0 24px; }
 
-        /* ---- Header (sticky glass bar) ---- */
+        /* ---- Header (sticky glass bar with a spectrum hairline) ---- */
         .site-header {
             position: sticky; top: 0; z-index: 10;
             background: var(--glass);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid var(--rule);
+        }
+        .site-header::after {
+            content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--ai-1), var(--ai-2), var(--ai-3), var(--ai-4), transparent);
+            opacity: 0.45;
         }
         .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
         .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
@@ -75,130 +83,129 @@
             width: 30px; height: 30px; border-radius: 9px;
             display: inline-flex; align-items: center; justify-content: center;
             font-size: 12px; font-weight: 700; letter-spacing: -0.03em; color: #fff;
-            background: linear-gradient(135deg, #23a3a6 0%, #7c6cf0 55%, #e0573a 100%);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+            background: linear-gradient(135deg, #2f7cff 0%, #8b5cf6 45%, #ec4899 75%, #f97316 100%);
+            box-shadow: 0 2px 8px rgba(139,92,246,0.35);
         }
         .header-nav { display: flex; gap: 22px; }
         .header-nav a { font-size: 13px; color: var(--text-secondary); }
         .header-nav a:hover { color: var(--text); text-decoration: none; }
 
-        /* ---- Hero (compact; the dock puts every app above the fold) ---- */
-        /* clip only sideways: a vertical clip would draw a hard line where the hero ends. */
-        .hero { position: relative; padding: 56px 0 40px; text-align: center; overflow-x: clip; }
-        .hero::before, .hero::after {
-            content: ""; position: absolute; pointer-events: none;
-            width: 640px; height: 640px;
+        /* ---- Hero: dot grid + drifting aurora ---- */
+        .hero { position: relative; padding: 72px 0 56px; text-align: center; overflow-x: clip; }
+        .hero-bg { position: absolute; inset: -56px 0 -80px; pointer-events: none; }
+        .hero-bg::before {
+            content: ""; position: absolute; inset: 0;
+            background-image: radial-gradient(var(--dot) 1px, transparent 1.5px);
+            background-size: 22px 22px;
+            -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 40%, #000 20%, transparent 75%);
+            mask-image: radial-gradient(ellipse 60% 70% at 50% 40%, #000 20%, transparent 75%);
         }
-        /* closest-side keeps every gradient fully faded inside its box, so no edge ever shows. */
-        .hero::before {
-            left: 50%; top: -320px; margin-left: -600px;
-            background: radial-gradient(closest-side, var(--blob-a) 0%, transparent 100%);
-            animation: drift-a 22s ease-in-out infinite alternate;
-        }
-        .hero::after {
-            left: 50%; top: -300px; margin-left: -40px;
-            background: radial-gradient(closest-side at 45% 45%, var(--blob-c) 0%, transparent 100%),
-                        radial-gradient(closest-side at 65% 75%, var(--blob-b) 0%, transparent 100%);
-            animation: drift-b 26s ease-in-out infinite alternate;
-        }
-        @keyframes drift-a { to { transform: translate(90px, 50px) scale(1.12); } }
-        @keyframes drift-b { to { transform: translate(-80px, 40px) scale(0.92); } }
+        .aurora { position: absolute; width: 620px; height: 620px; left: 50%; top: 50%; }
+        .aurora-1 { margin: -470px 0 0 -700px; background: radial-gradient(closest-side, var(--aurora-1), transparent); animation: drift-1 18s ease-in-out infinite alternate; }
+        .aurora-2 { margin: -420px 0 0 -260px; background: radial-gradient(closest-side, var(--aurora-2), transparent); animation: drift-2 22s ease-in-out infinite alternate; }
+        .aurora-3 { margin: -380px 0 0 120px;  background: radial-gradient(closest-side, var(--aurora-3), transparent); animation: drift-3 20s ease-in-out infinite alternate; }
+        .aurora-4 { margin: -200px 0 0 -40px;  background: radial-gradient(closest-side, var(--aurora-4), transparent); animation: drift-1 26s ease-in-out infinite alternate-reverse; }
+        @keyframes drift-1 { to { transform: translate(120px, 60px) scale(1.15); } }
+        @keyframes drift-2 { to { transform: translate(-90px, 80px) scale(0.9); } }
+        @keyframes drift-3 { to { transform: translate(-140px, -30px) scale(1.1); } }
         .hero .wrap { position: relative; z-index: 1; }
 
+        /* Eyebrow pill with a rotating spectrum ring */
         .hero-label {
+            position: relative; isolation: isolate;
             display: inline-flex; align-items: center; gap: 8px;
             font-size: 13px; font-weight: 500; color: var(--text-secondary);
-            padding: 5px 14px 5px 10px; border-radius: 999px;
-            background: var(--dock-bg); border: 1px solid var(--card-border);
-            margin-bottom: 18px;
+            padding: 6px 15px 6px 11px; border-radius: 999px;
+            background: var(--pill-bg);
+            margin-bottom: 22px;
         }
-        .hero-dot { width: 7px; height: 7px; border-radius: 50%; background: #30d158; box-shadow: 0 0 0 3px rgba(48,209,88,0.18); }
+        .hero-label::before {
+            content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; z-index: -1;
+            background: conic-gradient(from var(--angle), var(--ai-1), var(--ai-2), var(--ai-3), var(--ai-4), var(--ai-1));
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude;
+            animation: spin 6s linear infinite;
+        }
+        @keyframes spin { to { --angle: 360deg; } }
+        .hero-dot { position: relative; width: 7px; height: 7px; border-radius: 50%; background: #30d158; }
+        .hero-dot::after {
+            content: ""; position: absolute; inset: 0; border-radius: 50%; background: #30d158;
+            animation: pulse 2.4s ease-out infinite;
+        }
+        @keyframes pulse { from { transform: scale(1); opacity: 0.6; } to { transform: scale(3); opacity: 0; } }
+
         .hero h1 {
-            font-size: 52px; font-weight: 700;
-            letter-spacing: -0.045em; line-height: 1.02;
-            color: var(--text); margin-bottom: 12px;
+            font-size: 64px; font-weight: 700;
+            letter-spacing: -0.05em; line-height: 1;
+            color: var(--text); margin-bottom: 18px;
         }
         .hero-subtitle {
-            font-size: 18px; line-height: 1.5;
-            color: var(--text-secondary); letter-spacing: -0.01em;
-            max-width: 560px; margin: 0 auto;
+            font-size: 20px; line-height: 1.5;
+            color: var(--text-secondary); letter-spacing: -0.015em;
+            max-width: 600px; margin: 0 auto;
         }
+        .spectrum {
+            font-weight: 600;
+            background: linear-gradient(90deg, var(--ai-1), var(--ai-2), var(--ai-3), var(--ai-4), var(--ai-2), var(--ai-1));
+            background-size: 300% 100%;
+            -webkit-background-clip: text; background-clip: text;
+            color: transparent;
+            animation: flow 10s linear infinite;
+        }
+        @keyframes flow { to { background-position: 300% 0; } }
         .hero-values {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px;
-            margin-top: 14px; font-size: 13px; font-weight: 500; color: var(--text-muted);
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+            margin-top: 26px;
         }
-        .hero-values span { display: inline-flex; align-items: center; gap: 6px; }
-        .hero-values span::before { content: "✓"; font-size: 11px; color: #30a46c; }
-
-        /* ---- Dock: macOS-style magnification, pure CSS (:has picks the left neighbour) ---- */
-        .dock {
-            display: inline-flex; align-items: flex-end; gap: 10px;
-            margin-top: 30px; padding: 10px 12px;
-            border-radius: 24px;
-            background: var(--dock-bg);
-            border: 1px solid var(--card-border);
-            -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
-            box-shadow: 0 18px 40px -20px rgba(0,0,0,0.30);
+        .hero-values span {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 12.5px; font-weight: 500; color: var(--text-secondary);
+            padding: 5px 12px; border-radius: 999px;
+            background: var(--pill-bg); border: 1px solid var(--card-border);
+            -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
         }
-        .dock a {
-            position: relative; display: block;
-            width: 58px; height: 58px; border-radius: 14px;
-            transform-origin: 50% 100%;
-            transition: transform 0.22s cubic-bezier(.2,.8,.2,1);
-        }
-        .dock img { width: 100%; height: 100%; display: block; border-radius: inherit; box-shadow: var(--icon-shadow); }
-        .dock-label {
-            position: absolute; left: 50%; bottom: calc(100% + 10px);
-            transform: translateX(-50%) translateY(4px);
-            white-space: nowrap; pointer-events: none;
-            font-size: 12px; font-weight: 600; color: var(--text);
-            padding: 4px 10px; border-radius: 8px;
-            background: var(--bg-elevated); border: 1px solid var(--card-border);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-            opacity: 0; transition: opacity 0.15s ease, transform 0.15s ease;
-        }
-        .dock a:hover .dock-label, .dock a:focus-visible .dock-label { opacity: 1; transform: translateX(-50%) translateY(0); }
-        @media (hover: hover) {
-            .dock a:hover { transform: scale(1.32) translateY(-4px); }
-            .dock a:hover + a, .dock a:has(+ a:hover) { transform: scale(1.14) translateY(-2px); }
-        }
+        .hero-values span::before { content: "✓"; font-size: 11px; font-weight: 700; color: #30a46c; }
 
         /* ---- Apps ---- */
-        .apps { padding: 12px 0 64px; }
+        .apps { position: relative; padding: 8px 0 72px; }
         .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
-        .section-head h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+        .section-head h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.035em; color: var(--text); }
         .section-head p { font-size: 13px; color: var(--text-muted); }
 
         .app-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 
-        /* ---- App Card (each card tints itself with its own --accent) ---- */
+        /* ---- App Card: own --accent tint; hover lights a rotating ring + bloom ---- */
         .app-card {
             --accent: #0066cc;
-            position: relative; isolation: isolate; overflow: hidden;
+            position: relative; isolation: isolate;
             display: flex; flex-direction: column;
             background: var(--bg-elevated);
             border: 1px solid var(--card-border);
-            border-radius: 20px;
+            border-radius: 22px;
             padding: 22px;
             box-shadow: var(--card-shadow);
-            scroll-margin-top: 80px;
-            transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+            transition: box-shadow 0.35s ease, transform 0.35s cubic-bezier(.2,.8,.2,1), border-color 0.35s ease;
         }
         .app-card::before {
-            content: ""; position: absolute; inset: 0; z-index: -1;
+            content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
             background: radial-gradient(120% 60% at 0% 0%, color-mix(in srgb, var(--accent) 16%, transparent) 0%, transparent 62%);
-            opacity: 0.75; transition: opacity 0.3s ease;
+            opacity: 0.8; transition: opacity 0.35s ease;
+        }
+        .app-card::after {
+            content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1.5px; pointer-events: none;
+            background: conic-gradient(from var(--angle), transparent 0deg, var(--accent) 70deg, var(--ai-2) 140deg, var(--ai-3) 190deg, transparent 260deg);
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude;
+            opacity: 0; transition: opacity 0.35s ease;
+            animation: spin 3.5s linear infinite;
         }
         .app-card:hover {
-            box-shadow: var(--card-hover-shadow); transform: translateY(-4px);
-            border-color: color-mix(in srgb, var(--accent) 40%, var(--card-border));
+            transform: translateY(-5px);
+            border-color: transparent;
+            box-shadow: var(--card-hover-shadow), 0 0 0 1px transparent, 0 20px 60px -24px color-mix(in srgb, var(--accent) 80%, transparent);
         }
         .app-card:hover::before { opacity: 1; }
-        .app-card:target { animation: ping 1.6s ease-out 1; border-color: var(--accent); }
-        @keyframes ping {
-            0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
-            100% { box-shadow: 0 0 0 14px transparent; }
-        }
+        .app-card:hover::after { opacity: 1; }
 
         .app-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; color: inherit; }
         .app-header:hover { color: inherit; text-decoration: none; }
@@ -207,13 +214,18 @@
             width: 60px; height: 60px; border-radius: 14px;
             flex-shrink: 0; overflow: hidden;
             box-shadow: 0 10px 22px -8px color-mix(in srgb, var(--accent) 70%, transparent), var(--icon-shadow);
-            transition: transform 0.3s ease;
+            transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
         }
-        .app-card:hover .app-icon { transform: scale(1.05) rotate(-2deg); }
+        .app-card:hover .app-icon { transform: scale(1.06) rotate(-3deg); }
         .app-icon img { width: 100%; height: 100%; display: block; }
         .app-meta { flex: 1; min-width: 0; }
-        .app-name { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 1px; transition: color 0.2s ease; }
+        .app-name { display: flex; align-items: center; gap: 8px; font-size: 19px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 1px; transition: color 0.2s ease; }
         .app-tagline { font-size: 14px; color: var(--text-secondary); line-height: 1.35; }
+        .tag-new {
+            font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+            color: #fff; padding: 2px 7px; border-radius: 999px;
+            background: linear-gradient(90deg, #2f7cff, #8b5cf6, #ec4899);
+        }
 
         .app-description { font-size: 14.5px; line-height: 1.55; color: var(--text-secondary); margin-bottom: 18px; }
 
@@ -227,32 +239,50 @@
         .app-legal a { font-size: 12.5px; color: var(--text-muted); }
         .app-legal a:hover { color: var(--accent); text-decoration: none; }
 
-        /* ---- Contact tile (fills the grid's last row) ---- */
+        /* ---- Contact tile: the always-on Siri-style edge glow ---- */
         .contact-card {
             grid-column: span 2;
-            position: relative; overflow: hidden; isolation: isolate;
+            position: relative; isolation: isolate;
             display: flex; flex-direction: column; justify-content: center; gap: 10px;
-            padding: 28px;
-            border-radius: 20px;
-            border: 1px solid var(--card-border);
+            padding: 32px;
+            border-radius: 22px;
             background: var(--bg-elevated);
         }
         .contact-card::before {
-            content: ""; position: absolute; inset: 0; z-index: -1;
-            background: radial-gradient(60% 90% at 100% 0%, var(--blob-c) 0%, transparent 70%),
-                        radial-gradient(50% 80% at 0% 100%, var(--blob-a) 0%, transparent 70%);
+            content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; z-index: -1;
+            background: conic-gradient(from var(--angle), var(--ai-1), var(--ai-2), var(--ai-3), var(--ai-4), var(--ai-1));
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude;
+            animation: spin 8s linear infinite;
         }
-        .contact-card h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+        .contact-card::after {
+            content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -2;
+            background: conic-gradient(from var(--angle), var(--aurora-1), var(--aurora-2), var(--aurora-3), var(--aurora-4), var(--aurora-1));
+            filter: blur(28px); opacity: 0.9;
+            animation: spin 8s linear infinite;
+        }
+        .contact-inner { position: relative; }
+        .contact-card h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.035em; color: var(--text); margin-bottom: 6px; }
         .contact-card p { font-size: 15px; color: var(--text-secondary); max-width: 440px; }
         .contact-btn {
-            align-self: flex-start; margin-top: 6px;
+            margin-top: 18px;
             display: inline-flex; align-items: center; gap: 8px;
-            padding: 10px 18px; border-radius: 999px;
+            padding: 11px 20px; border-radius: 999px;
             font-size: 14px; font-weight: 600;
             background: var(--text); color: var(--bg);
-            transition: transform 0.2s ease, opacity 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .contact-btn:hover { color: var(--bg); text-decoration: none; transform: translateY(-1px); opacity: 0.88; }
+        .contact-btn:hover { color: var(--bg); text-decoration: none; transform: translateY(-1px); box-shadow: 0 8px 24px -8px rgba(139,92,246,0.6); }
+
+        /* ---- Scroll reveal: uses `translate`, so the hover `transform` still composes on top ---- */
+        @supports (animation-timeline: view()) {
+            .app-card, .contact-card {
+                animation: reveal linear both;
+                animation-timeline: view();
+                animation-range: entry 0% entry 60%;
+            }
+            @keyframes reveal { from { opacity: 0; translate: 0 32px; scale: 0.97; } to { opacity: 1; translate: 0 0; scale: 1; } }
+        }
 
         /* ---- Footer ---- */
         footer { margin-top: auto; }
@@ -268,17 +298,19 @@
         @media (max-width: 600px) {
             .wrap { padding: 0 16px; }
             .header-nav { gap: 16px; }
-            .hero { padding: 36px 0 28px; }
-            .hero h1 { font-size: 38px; }
-            .hero-subtitle { font-size: 16px; }
-            .dock { gap: 6px; padding: 8px; border-radius: 18px; margin-top: 24px; }
-            .dock a { width: 40px; height: 40px; border-radius: 10px; }
+            .hero { padding: 44px 0 36px; }
+            .hero-label { font-size: 12px; }
+            .hero h1 { font-size: 42px; }
+            .hero-subtitle { font-size: 17px; }
+            .hero-values { margin-top: 20px; }
             .section-head p { display: none; }
-            .app-card { padding: 20px; border-radius: 18px; }
-            .contact-card { padding: 22px; }
+            .app-card { padding: 20px; border-radius: 20px; }
+            .contact-card { padding: 24px; }
         }
         @media (prefers-reduced-motion: reduce) {
-            .hero::before, .hero::after { animation: none; }
+            .aurora, .spectrum, .hero-label::before, .hero-dot::after,
+            .app-card::after, .contact-card::before, .contact-card::after { animation: none; }
+            .app-card, .contact-card { animation: none; }
         }
     </style>
 </head>
@@ -296,24 +328,21 @@
 
     <main>
         <section class="hero">
+            <div class="hero-bg" aria-hidden="true">
+                <span class="aurora aurora-1"></span>
+                <span class="aurora aurora-2"></span>
+                <span class="aurora aurora-3"></span>
+                <span class="aurora aurora-4"></span>
+            </div>
             <div class="wrap">
                 <p class="hero-label"><span class="hero-dot" aria-hidden="true"></span>Passionate Software Engineer from Planet Earth 🌍</p>
                 <h1>Kuthay Gumus</h1>
-                <p class="hero-subtitle">Building beautiful and useful iOS apps with a little too much love for the small things.</p>
+                <p class="hero-subtitle">Building <span class="spectrum">beautiful and useful</span> iOS apps with a little too much love for the small things.</p>
                 <div class="hero-values">
                     <span>Privacy-first</span>
                     <span>No ads</span>
                     <span>On-device by default</span>
                 </div>
-                <nav class="dock" aria-label="Jump to an app">
-                    <a href="#restio"><img src="assets/icons/192/restio.png" alt="Restio" width="58" height="58"><span class="dock-label" aria-hidden="true">Restio</span></a>
-                    <a href="#bebito"><img src="assets/icons/192/bebito.png" alt="Bebito" width="58" height="58"><span class="dock-label" aria-hidden="true">Bebito</span></a>
-                    <a href="#bloomind"><img src="assets/icons/192/bloomind.png" alt="Bloomind" width="58" height="58"><span class="dock-label" aria-hidden="true">Bloomind</span></a>
-                    <a href="#neredeydi"><img src="assets/icons/192/neredeydi.png" alt="Neredeydi" width="58" height="58"><span class="dock-label" aria-hidden="true">Neredeydi</span></a>
-                    <a href="#pipandpages"><img src="assets/icons/192/pipandpages.png" alt="Pip &amp; Pages" width="58" height="58"><span class="dock-label" aria-hidden="true">Pip &amp; Pages</span></a>
-                    <a href="#truce"><img src="assets/icons/192/truce.png" alt="Truce" width="58" height="58"><span class="dock-label" aria-hidden="true">Truce</span></a>
-                    <a href="#strolla"><img src="assets/icons/192/strolla.png" alt="Strolla" width="58" height="58"><span class="dock-label" aria-hidden="true">Strolla</span></a>
-                </nav>
             </div>
         </section>
 
@@ -451,7 +480,7 @@
                             <img src="assets/icons/192/strolla.png" alt="Strolla app icon" width="60" height="60">
                         </div>
                         <div class="app-meta">
-                            <div class="app-name">Strolla</div>
+                            <div class="app-name">Strolla <span class="tag-new">New</span></div>
                             <div class="app-tagline">Japanese walking, coached out loud.</div>
                         </div>
                     </a>
@@ -466,9 +495,11 @@
                     </div>
                 </article>
                 <aside class="contact-card" aria-labelledby="contact-title">
-                    <h2 id="contact-title">Say hello</h2>
-                    <p>Feedback, bug reports, feature ideas &mdash; they all shape the next update.</p>
-                    <a class="contact-btn" href="mailto:kuthaygumus@icloud.com">kuthaygumus@icloud.com <span aria-hidden="true">→</span></a>
+                    <div class="contact-inner">
+                        <h2 id="contact-title">Say hello</h2>
+                        <p>Feedback, bug reports, feature ideas &mdash; they all shape the next update.</p>
+                        <a class="contact-btn" href="mailto:kuthaygumus@icloud.com">kuthaygumus@icloud.com <span aria-hidden="true">→</span></a>
+                    </div>
                 </aside>
                 </div>
             </div>
